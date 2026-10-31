@@ -1,8 +1,20 @@
 <script>
+	import { onMount } from 'svelte';
 	import Photo from '#lib/components/Photo.svelte';
 	import { events } from '#lib/data/events.js';
 
 	let { data } = $props();
+	let logoElement;
+	let brandWidth = $state(0);
+
+	onMount(() => {
+		const observer = new ResizeObserver(([entry]) => {
+			brandWidth = entry.contentRect.width;
+		});
+		observer.observe(logoElement);
+		return () => observer.disconnect();
+	});
+
 	// The three events on the Home page. Sundays at Beit uses a drawing here.
 	const find = (slug) => events.find((event) => event.slug === slug);
 	const nextEvents = [
@@ -19,8 +31,8 @@
 </svelte:head>
 
 <section class="hero">
-	<div class="brand">
-		<h1 class="big-logo"><span>BEIT</span><span>KULTUR</span></h1>
+	<div class="brand" style={brandWidth ? `--brand-width: ${brandWidth}px` : undefined}>
+		<h1 class="big-logo" bind:this={logoElement}><span>BEIT</span><span>KULTUR</span></h1>
 		<p class="tagline">
 			A non-profit cultural association creating space for diverse voices through the arts.
 		</p>
@@ -90,9 +102,10 @@
 	.big-logo {
 		display: flex;
 		flex-direction: column;
-		font-size: clamp(4rem, 15vw, 9rem);
+		font-size: clamp(2.8rem, 15vw, 9rem);
 		line-height: 0.9;
 		margin-bottom: 0.25rem;
+		width: max-content;
 	}
 
 	.big-logo span:last-child {
@@ -100,12 +113,19 @@
 	}
 
 	.brand {
+		width: var(--brand-width, max-content);
+		max-width: 100%;
 		margin-bottom: 1.5rem;
 	}
 
 	.tagline {
-		font-size: 1.5rem;
+		width: 100%;
+		max-width: none;
+		font-size: clamp(0.875rem, 2vw, 1.125rem);
 		font-weight: 600;
+		line-height: 1.4;
+		text-align: justify;
+		text-align-last: justify;
 		margin: 0;
 	}
 

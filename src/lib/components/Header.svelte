@@ -74,11 +74,16 @@
 
 <style>
 	header {
-		background: var(--bg);
-		border-bottom: 1px solid var(--card-border);
+		background: var(--text);
+		border-bottom: 1px solid var(--text);
 		position: sticky;
 		top: 0;
 		z-index: 10;
+	}
+
+	.logo,
+	ul a {
+		color: #fff;
 	}
 
 	.inner {
@@ -157,8 +162,8 @@
 			gap: 1rem;
 			margin: 0;
 			padding: 1rem var(--gutter) 1.5rem;
-			background: var(--bg);
-			border-bottom: 1px solid var(--card-border);
+			background: var(--text);
+			border-bottom: 1px solid var(--text);
 		}
 
 		nav.open {
