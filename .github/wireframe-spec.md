@@ -66,7 +66,7 @@ Two lines: `BEIT` (weight 900) and `KULTUR` (weight 900, italic). Links to Home.
 
 ### Header (every page)
 Left to right: logo · menu · "Easy read" button · lime "Donate" button.
-Menu links: **About, Projects, Events, News, Gallery, Get involved**.
+Menu links: **About, Projects, Events, News, Gallery, Get involved, Membership**.
 
 "Easy read" button: makes text bigger and adds more spacing (this is the theme switcher for task 4). Uses `aria-pressed`.
 
@@ -74,7 +74,7 @@ Menu links: **About, Projects, Events, News, Gallery, Get involved**.
 
 ### Footer (every page)
 Dark background. Logo, the same menu links, Donate button.
-Bottom row: "Beit Kultur · non-profit cultural association · Stockholm" and links: Privacy, Contact us (→ /about#contact), Membership, Volunteer login.
+Bottom row: "Beit Kultur · non-profit cultural association · Stockholm" and links: Privacy, Contact us (→ /about#contact), Volunteer login.
 
 ---
 

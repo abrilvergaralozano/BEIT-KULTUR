@@ -124,7 +124,7 @@
 	}
 
 	/* Phone: logo · Donate · Menu. The links open in a list below. */
-	@media (max-width: 960px) {
+	@media (max-width: 1100px) {
 		.donate {
 			margin-left: auto;
 		}

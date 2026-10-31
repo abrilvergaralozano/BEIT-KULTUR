@@ -23,7 +23,6 @@
 			<ul>
 				<li><a href="/privacy">Privacy</a></li>
 				<li><a href="/about#contact">Contact us</a></li>
-				<li><a href="/members">Membership</a></li>
 				<li><a href="/login">Volunteer login</a></li>
 			</ul>
 		</div>
