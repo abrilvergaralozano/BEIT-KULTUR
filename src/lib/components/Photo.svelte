@@ -5,7 +5,8 @@
 
 	let { file, ratio = '4 / 3' } = $props();
 
-	let missing = $state(!file);
+	let failed = $state(false);
+	let missing = $derived(!file || failed);
 </script>
 
 {#if missing}
@@ -17,7 +18,7 @@
 		src="/images/{file}"
 		alt={altText[file]}
 		style:aspect-ratio={ratio}
-		onerror={() => (missing = true)}
+		onerror={() => (failed = true)}
 	/>
 {/if}
 

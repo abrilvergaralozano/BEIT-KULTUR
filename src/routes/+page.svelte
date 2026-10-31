@@ -1,6 +1,7 @@
 <script>
 	import Photo from '#lib/components/Photo.svelte';
 	import { events } from '#lib/data/events.js';
+	import { posts } from '#lib/data/news.js';
 
 	// The three events on the Home page. Sundays at Beit uses a drawing here.
 	const find = (slug) => events.find((event) => event.slug === slug);
@@ -10,12 +11,7 @@
 		{ ...find('exhibition'), category: 'Exhibition' }
 	];
 
-	// Placeholder until the posts come from the database
-	const latestNews = [
-		{ id: 1, date: '[DATE]', title: '[POST TITLE]' },
-		{ id: 2, date: '[DATE]', title: '[POST TITLE]' },
-		{ id: 3, date: '[DATE]', title: '[POST TITLE]' }
-	];
+	const latestNews = posts.slice(0, 3);
 </script>
 
 <svelte:head>
