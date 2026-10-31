@@ -219,10 +219,10 @@
 
 	.hero-video {
 		display: block;
-		width: min(100%, 48rem, 60vh);
+		width: min(100%, 56rem);
 		height: auto;
 		aspect-ratio: 3 / 4;
-		object-fit: cover;
+		object-fit: contain;
 	}
 
 	.who {
