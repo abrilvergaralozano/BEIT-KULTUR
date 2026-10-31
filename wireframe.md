@@ -56,7 +56,7 @@ Two lines: `BEIT` (weight 900) and `KULTUR` (weight 900, italic). Links to Home.
 - Every image has a real `alt` text (see image list below).
 - Filter and search results are announced with `aria-live="polite"`, for example "Showing 3 events".
 - Toggle buttons use `aria-pressed`. The phone menu button uses `aria-expanded`.
-- Videos never autoplay and have captions.
+- Autoplaying videos are muted, show controls, respect `prefers-reduced-motion`, and have captions.
 - Login: allow paste and password managers (`autocomplete="username"` and `autocomplete="current-password"`), and a "Show" button for the password.
 - Respect `prefers-reduced-motion`.
 
@@ -82,7 +82,7 @@ Bottom row: "Beit Kultur · non-profit cultural association · Stockholm" and li
 
 ### Home — `/`
 1. Big logo (BEIT / KULTUR), tagline "A non-profit community that makes culture". Buttons: **Donate** (main) and **Get involved** (second).
-2. Main video: `static/videos/home-event.mp4`, with `beit-kultur-main.jpeg` as its poster.
+2. Main video: `static/videos/home-event.mp4`, with `beit-kultur-main.jpeg` as its poster. It autoplays muted and loops, with controls; show the full 3:4 video frame.
 3. **Who we are**:
    - We create culture from the grassroots, embracing intersectionality and opening spaces for artists from the global majority.
    - We believe in art as a powerful channel that breaks down borders, brings people together and creates dialogue, while building community.

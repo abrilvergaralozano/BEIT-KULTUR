@@ -5,14 +5,30 @@
 
 	let { data } = $props();
 	let logoElement;
+	let heroVideo;
 	let brandWidth = $state(0);
+	let autoplayVideo = $state(false);
 
 	onMount(() => {
 		const observer = new ResizeObserver(([entry]) => {
 			brandWidth = entry.contentRect.width;
 		});
 		observer.observe(logoElement);
-		return () => observer.disconnect();
+
+		const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+		const updateVideoPlayback = () => {
+			autoplayVideo = !motionPreference.matches;
+			if (motionPreference.matches) {
+				heroVideo.pause();
+			}
+		};
+		updateVideoPlayback();
+		motionPreference.addEventListener('change', updateVideoPlayback);
+
+		return () => {
+			observer.disconnect();
+			motionPreference.removeEventListener('change', updateVideoPlayback);
+		};
 	});
 
 	// The three events on the Home page. Sundays at Beit uses a drawing here.
@@ -52,6 +68,10 @@
 <div class="big-photo">
 	<video
 		class="hero-video"
+		bind:this={heroVideo}
+		autoplay={autoplayVideo}
+		muted
+		loop
 		controls
 		playsinline
 		preload="metadata"
@@ -192,15 +212,16 @@
 	}
 
 	.big-photo {
+		display: flex;
+		justify-content: center;
 		margin-bottom: 4rem;
 	}
 
 	.hero-video {
 		display: block;
-		width: 100%;
+		width: min(100%, 48rem, 60vh);
 		height: auto;
 		aspect-ratio: 3 / 4;
-		max-height: 80vh;
 		object-fit: cover;
 	}
 
