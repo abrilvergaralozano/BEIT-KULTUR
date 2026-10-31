@@ -60,6 +60,16 @@
 	:root {
 		--gutter: 16px;
 	}
+
+	main {
+		background-image: repeating-linear-gradient(
+			to right,
+			transparent 0,
+			transparent calc(16.666667% - 1px),
+			rgba(26, 26, 26, 0.035) calc(16.666667% - 1px),
+			rgba(26, 26, 26, 0.035) 16.666667%
+		);
+	}
 }
 
 *,
@@ -200,6 +210,13 @@ main {
 	margin: 0 auto;
 	padding: 3rem var(--gutter) 4rem;
 	min-height: 60vh;
+	background-image: repeating-linear-gradient(
+		to right,
+		transparent 0,
+		transparent calc(8.333333% - 1px),
+		rgba(26, 26, 26, 0.035) calc(8.333333% - 1px),
+		rgba(26, 26, 26, 0.035) 8.333333%
+	);
 }
 
 /* Logo: BEIT on one line, KULTUR in italic on the next */

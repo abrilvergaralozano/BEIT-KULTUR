@@ -31,6 +31,7 @@
 </svelte:head>
 
 <section class="hero">
+	<p class="eyebrow">Stockholm · Culture · Community</p>
 	<div class="brand" style={brandWidth ? `--brand-width: ${brandWidth}px` : undefined}>
 		<h1 class="big-logo" bind:this={logoElement}><span>BEIT</span><span>KULTUR</span></h1>
 		<p class="tagline">
@@ -49,16 +50,18 @@
 
 <section class="box who" aria-labelledby="who-we-are">
 	<h2 id="who-we-are">Who we are</h2>
-	<p>
-		Beit Kultur is a grassroots, non-profit cultural association in Stockholm, run by volunteers.
-	</p>
-	<p>We create culture together: live sets, poetry, film and visual art.</p>
-	<p>Everyone is welcome: artists, audiences of all ages, volunteers and partners.</p>
-	<p><strong>This is Beit Kultur.</strong></p>
-	<a href="/about" class="link">Read about our mission</a>
+	<div class="who-copy">
+		<p>
+			Beit Kultur is a grassroots, non-profit cultural association in Stockholm, run by volunteers.
+		</p>
+		<p>We create culture together: live sets, poetry, film and visual art.</p>
+		<p>Everyone is welcome: artists, audiences of all ages, volunteers and partners.</p>
+		<p><strong>This is Beit Kultur.</strong></p>
+		<a href="/about" class="link">Read about our mission</a>
+	</div>
 </section>
 
-<section aria-labelledby="next-events">
+<section class="home-section" aria-labelledby="next-events">
 	<h2 id="next-events">Next events</h2>
 	<ul class="cards">
 		{#each nextEvents as event}
@@ -77,7 +80,7 @@
 	<a href="/events" class="link">See all events</a>
 </section>
 
-<section aria-labelledby="latest-news">
+<section class="home-section" aria-labelledby="latest-news">
 	<h2 id="latest-news">Latest news</h2>
 	<ul class="news">
 		{#each latestNews as post}
@@ -96,7 +99,23 @@
 	}
 
 	.hero {
-		padding: 1rem 0 0;
+		padding: 1rem 0 2rem;
+		margin-bottom: 2rem;
+		background-image: repeating-linear-gradient(
+			to right,
+			transparent 0,
+			transparent calc(8.333333% - 1px),
+			rgba(26, 26, 26, 0.045) calc(8.333333% - 1px),
+			rgba(26, 26, 26, 0.045) 8.333333%
+		);
+	}
+
+	.eyebrow {
+		margin-bottom: 1rem;
+		font-size: 0.875rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
 	}
 
 	.big-logo {
@@ -135,17 +154,56 @@
 	}
 
 	.big-photo {
+		border: 1px solid var(--text);
 		border-radius: var(--radius);
+		background: var(--text);
+		padding: clamp(0.4rem, 1.2vw, 1rem);
 		overflow: hidden;
 		margin-bottom: 4rem;
 	}
 
-	.who p {
-		max-width: none;
+	.who {
+		display: grid;
+		grid-template-columns: minmax(12rem, 0.75fr) minmax(0, 1.25fr);
+		gap: 1rem clamp(1.5rem, 5vw, 4rem);
+		align-items: start;
 	}
 
-	.who p:last-of-type {
-		margin-bottom: 1.5rem;
+	.who h2 {
+		grid-column: 1;
+	}
+
+	.who-copy {
+		grid-column: 2;
+		grid-row: 1 / span 2;
+	}
+
+	.who-copy p {
+		max-width: 58ch;
+	}
+
+	.who-copy p:last-of-type {
+		margin-bottom: 0.5rem;
+	}
+
+	.home-section > h2,
+	.who > h2 {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding-bottom: 0.75rem;
+		border-bottom: 1px solid var(--card-border);
+	}
+
+	.home-section > h2::before,
+	.who > h2::before {
+		content: '';
+		width: 0.75rem;
+		height: 0.75rem;
+		flex: 0 0 auto;
+		background: var(--lime);
+		border: 1px solid var(--text);
+		transform: rotate(45deg);
 	}
 
 	.link {
@@ -171,6 +229,17 @@
 		margin-bottom: 0.5rem;
 	}
 
+	.card-body .muted {
+		font-size: 0.875rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+	}
+
+	.card h3 {
+		letter-spacing: -0.025em;
+	}
+
 	.news {
 		list-style: none;
 		margin: 0 0 1.5rem;
@@ -178,12 +247,19 @@
 	}
 
 	.news li {
+		display: grid;
+		grid-template-columns: minmax(8rem, 0.4fr) minmax(0, 1fr);
+		align-items: center;
 		border-bottom: 1px solid var(--card-border);
-		padding: 1rem 0;
+		padding: 0.75rem 0;
 	}
 
 	.news p {
 		margin: 0;
+		font-size: 0.875rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
 	}
 
 	.news a {
@@ -194,10 +270,19 @@
 		font-weight: 800;
 	}
 
-	/* Small screens: everything in one column */
 	@media (max-width: 800px) {
 		.cards {
 			grid-template-columns: 1fr;
+		}
+
+		.who {
+			grid-template-columns: 1fr;
+		}
+
+		.who h2,
+		.who-copy {
+			grid-column: 1;
+			grid-row: auto;
 		}
 	}
 
@@ -205,5 +290,11 @@
 		.buttons {
 			flex-direction: column;
 		}
+
+		.news li {
+			grid-template-columns: 1fr;
+			gap: 0.25rem;
+		}
 	}
+
 </style>
