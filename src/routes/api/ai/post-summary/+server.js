@@ -10,7 +10,7 @@ export async function POST({ request, cookies }) {
 		return json({ error: 'Sign in as a volunteer to use the AI writing helper.' }, { status: 401 });
 	}
 	if (!isAiConfigured()) {
-		return json({ error: 'Set GEMINI_API_KEY to enable AI summaries.' }, { status: 503 });
+		return json({ error: 'Add a valid GEMINI_API_KEY to enable AI summaries.' }, { status: 503 });
 	}
 
 	let input;

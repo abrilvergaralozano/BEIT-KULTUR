@@ -1,7 +1,9 @@
 import { GoogleGenAI } from '@google/genai';
 import { GEMINI_API_KEY } from '$app/env/private';
 
-const client = GEMINI_API_KEY ? new GoogleGenAI({ apiKey: GEMINI_API_KEY }) : null;
+const apiKey = GEMINI_API_KEY?.trim();
+const isPlaceholderKey = /^(your[_\s-]?|replace\b|example\b|xxx)/i.test(apiKey ?? '');
+const client = apiKey && !isPlaceholderKey ? new GoogleGenAI({ apiKey }) : null;
 const MAX_SUMMARY_LENGTH = 280;
 
 export function isAiConfigured() {

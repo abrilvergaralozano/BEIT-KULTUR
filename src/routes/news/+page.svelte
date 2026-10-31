@@ -105,7 +105,7 @@
 				{#if data.aiConfigured}
 					Your draft is sent to Gemini. Check the summary before publishing. You can edit it.
 				{:else}
-					Set GEMINI_API_KEY in .env to enable AI summaries.
+					Add a valid GEMINI_API_KEY to .env to enable AI summaries.
 				{/if}
 			</p>
 			<textarea
