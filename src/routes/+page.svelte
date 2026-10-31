@@ -44,7 +44,7 @@
 </section>
 
 <div class="big-photo">
-	<Photo file="event-crowd.jpg" ratio="16 / 9" />
+	<Photo file="beit-kultur-main.jpeg" ratio="796 / 768" />
 </div>
 
 <section class="box who" aria-labelledby="who-we-are">

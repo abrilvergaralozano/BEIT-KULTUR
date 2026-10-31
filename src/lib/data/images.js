@@ -1,5 +1,7 @@
 // Alt text for every image in static/images/.
 export const altText = {
+	'beit-kultur-main.jpeg':
+		'A crowd at a Beit Kultur event beneath colorful hanging textiles and artwork',
 	'event-crowd.jpg':
 		'A crowd at a Beit Kultur event in a bright room with textiles hanging from the ceiling',
 	'sundays-at-beit.jpg':
