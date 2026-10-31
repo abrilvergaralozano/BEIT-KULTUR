@@ -208,10 +208,8 @@
 
 	.who h2 {
 		grid-column: 1;
-		font-family: Georgia, 'Times New Roman', serif;
 		font-size: clamp(2.5rem, 5vw, 4rem);
-		font-weight: 400;
-		letter-spacing: -0.04em;
+		font-weight: 800;
 	}
 
 	.who-copy {
@@ -229,8 +227,8 @@
 
 	.who-copy .who-lead {
 		max-width: 16ch;
-		font-family: Georgia, 'Times New Roman', serif;
 		font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+		font-weight: 700;
 		line-height: 1.15;
 	}
 

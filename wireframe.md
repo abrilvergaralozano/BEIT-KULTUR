@@ -22,7 +22,7 @@ Language: English for now (not decided yet).
 | Footer | `#1A1A1A` background, `#FAF8F2` text |
 
 ### Text
-- Font: **Archivo** from Google Fonts (weights 400, 600, 800, 900, and 900 italic for the logo). Fallback: Helvetica, Arial, sans-serif.
+- Use **TeX Gyre Adventor** for body text, headings, logo and buttons. Use the regular, bold, italic and bold-italic font files in `static/fonts/`.
 - Body text: **18px**, line-height **1.6**.
 - Headings: bold (800–900). Page title 56px desktop, 44px phone.
 - **Left-aligned text. Never justified.**
