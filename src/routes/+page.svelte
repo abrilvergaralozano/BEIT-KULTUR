@@ -182,13 +182,6 @@
 	.hero {
 		padding: 1rem 0 2rem;
 		margin-bottom: 2rem;
-		background-image: repeating-linear-gradient(
-			to right,
-			transparent 0,
-			transparent calc(8.333333% - 1px),
-			rgba(26, 26, 26, 0.045) calc(8.333333% - 1px),
-			rgba(26, 26, 26, 0.045) 8.333333%
-		);
 	}
 
 	.hero-index {
