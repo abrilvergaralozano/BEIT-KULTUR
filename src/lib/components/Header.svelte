@@ -178,4 +178,36 @@
 			font-size: 1.375rem;
 		}
 	}
+
+	@media (max-width: 400px) {
+		.inner {
+			gap: 0.75rem;
+		}
+
+		.logo {
+			font-size: 1.5rem;
+		}
+
+		.donate,
+		.menu-toggle {
+			padding: 6px 10px;
+			font-size: 1rem;
+		}
+	}
+
+	@media (max-width: 320px) {
+		.inner {
+			gap: 0.25rem;
+		}
+
+		.logo {
+			font-size: 1.25rem;
+		}
+
+		.donate,
+		.menu-toggle {
+			padding: 4px 6px;
+			font-size: 0.875rem;
+		}
+	}
 </style>

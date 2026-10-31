@@ -158,7 +158,7 @@
 <style>
 	.search {
 		max-width: 36rem;
-		margin-top: 2rem;
+		margin: 2rem auto 0;
 	}
 
 	.add-post {

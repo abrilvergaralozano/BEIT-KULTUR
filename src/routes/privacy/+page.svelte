@@ -41,6 +41,7 @@
 <style>
 	.text {
 		max-width: 48rem;
+		margin-inline: auto;
 	}
 
 	li {

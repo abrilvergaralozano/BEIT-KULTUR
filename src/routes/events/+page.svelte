@@ -70,6 +70,7 @@
 <style>
 	.weather {
 		max-width: 28rem;
+		margin-inline: auto;
 	}
 
 	.weather h2 {

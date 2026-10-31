@@ -185,6 +185,7 @@
 
 	.details {
 		max-width: 40rem;
+		margin-inline: auto;
 	}
 
 	.you-chose {
@@ -211,6 +212,7 @@
 
 	.pay {
 		max-width: 40rem;
+		margin-inline: auto;
 	}
 
 	.pay dl {

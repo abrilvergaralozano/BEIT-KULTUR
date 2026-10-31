@@ -165,6 +165,7 @@
 
 	.questions {
 		max-width: 48rem;
+		margin-inline: auto;
 	}
 
 	details {

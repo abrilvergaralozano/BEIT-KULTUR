@@ -9,57 +9,63 @@
 	<title>{event.title} – Beit Kultur</title>
 </svelte:head>
 
-<a href="/events" class="link">← Back to all events</a>
+<div class="article-container">
+	<a href="/events" class="link">← Back to all events</a>
 
-<article>
-	<div class="photo"><Photo file={event.image} ratio="16 / 9" /></div>
+	<article>
+		<div class="photo"><Photo file={event.image} ratio="16 / 9" /></div>
 
-	<span class="tag">{event.category}</span>
-	<h1>{event.title}</h1>
+		<span class="tag">{event.category}</span>
+		<h1>{event.title}</h1>
 
-	<dl class="details">
-		<div>
-			<dt>Date</dt>
-			<dd>{event.day} {event.month}</dd>
-		</div>
-		<div>
-			<dt>Time</dt>
-			<dd>{event.time}</dd>
-		</div>
-		<div>
-			<dt>Place</dt>
-			<dd>[ADDRESS], Stockholm</dd>
-		</div>
-		<div>
-			<dt>Price</dt>
-			<dd>{event.price}</dd>
-		</div>
-	</dl>
-
-	<section class="section">
-		<h2>About the event</h2>
-		<p>[ABOUT THE EVENT AND THE ARTIST]</p>
-	</section>
-
-	<section class="section box">
-		<h2>Access information</h2>
-		<dl class="access">
-			<dt>Entrance</dt>
-			<dd>[STEP-FREE OR STAIRS]</dd>
-			<dt>Toilets</dt>
-			<dd>[ACCESSIBLE TOILET YES / NO]</dd>
-			<dt>Sound and light</dt>
-			<dd>[LOUD MUSIC, FLASHING LIGHTS?]</dd>
-			<dt>Quiet space</dt>
-			<dd>[YES / NO]</dd>
+		<dl class="details">
+			<div>
+				<dt>Date</dt>
+				<dd>{event.day} {event.month}</dd>
+			</div>
+			<div>
+				<dt>Time</dt>
+				<dd>{event.time}</dd>
+			</div>
+			<div>
+				<dt>Place</dt>
+				<dd>[ADDRESS], Stockholm</dd>
+			</div>
+			<div>
+				<dt>Price</dt>
+				<dd>{event.price}</dd>
+			</div>
 		</dl>
-		<p>Questions about access? <a href="/about#contact" class="link">Contact us</a></p>
-	</section>
-</article>
+
+		<section class="section">
+			<h2>About the event</h2>
+			<p>[ABOUT THE EVENT AND THE ARTIST]</p>
+		</section>
+
+		<section class="section box">
+			<h2>Access information</h2>
+			<dl class="access">
+				<dt>Entrance</dt>
+				<dd>[STEP-FREE OR STAIRS]</dd>
+				<dt>Toilets</dt>
+				<dd>[ACCESSIBLE TOILET YES / NO]</dd>
+				<dt>Sound and light</dt>
+				<dd>[LOUD MUSIC, FLASHING LIGHTS?]</dd>
+				<dt>Quiet space</dt>
+				<dd>[YES / NO]</dd>
+			</dl>
+			<p>Questions about access? <a href="/about#contact" class="link">Contact us</a></p>
+		</section>
+	</article>
+</div>
 
 <style>
-	article {
+	.article-container {
 		max-width: 48rem;
+		margin: 0 auto;
+	}
+
+	article {
 		margin-top: 1.5rem;
 	}
 
