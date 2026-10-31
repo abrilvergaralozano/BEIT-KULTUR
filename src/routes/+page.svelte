@@ -3,10 +3,10 @@
 </svelte:head>
 
 <section class="hero">
-	<h1><span>BEIT</span> <span class="kultur">KULTUR</span></h1>
+	<h1>BEIT KULTUR</h1>
 	<div class="hero-buttons">
 		<a href="/donate" class="button">Donate</a>
-		<a href="/get-involved" class="button button-outline">Join us</a>
+		<a href="/members" class="button button-outline">Join us</a>
 	</div>
 </section>
 
@@ -35,21 +35,11 @@
 		padding: 2rem 0 3rem;
 	}
 
-	/* Stacked logo: BEIT on top, KULTUR in italics below */
 	h1 {
-		font-size: clamp(3.5rem, 14vw, 9rem);
+		font-size: clamp(3rem, 12vw, 8rem);
 		font-weight: 900;
-		line-height: 0.9;
-		letter-spacing: -0.02em;
-		margin-bottom: 2.5rem;
-	}
-
-	h1 span {
-		display: block;
-	}
-
-	.kultur {
-		font-style: italic;
+		line-height: 1;
+		margin-bottom: 2rem;
 	}
 
 	.hero-buttons {
@@ -66,13 +56,14 @@
 		margin-bottom: 4rem;
 	}
 
-	/* About us sits in its own box, like the wireframe */
+	/* About us sits in a light grey box, with black text */
 	.about {
 		display: grid;
 		grid-template-columns: 2fr 1fr;
 		gap: 3rem;
 		align-items: start;
-		background: var(--grey);
+		background: var(--light-grey);
+		color: var(--black);
 		padding: clamp(1.5rem, 5vw, 3.5rem);
 	}
 
@@ -86,12 +77,29 @@
 		gap: 1rem;
 	}
 
+	/* Black outlined buttons, so they show on the light box */
 	.values .button {
 		text-align: center;
+		background: transparent;
+		color: var(--black);
+		border-color: var(--black);
 	}
 
-	/* Small screens: stack text and buttons */
+	.values .button:hover {
+		background: var(--black);
+		color: var(--white);
+	}
+
+	.values .button:focus-visible {
+		outline-color: var(--black);
+	}
+
+	/* Small screens: everything in one column */
 	@media (max-width: 700px) {
+		.hero-buttons {
+			flex-direction: column;
+		}
+
 		.about {
 			grid-template-columns: 1fr;
 			gap: 1.5rem;
