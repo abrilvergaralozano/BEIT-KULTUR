@@ -82,7 +82,7 @@ Bottom row: "Beit Kultur · non-profit cultural association · Stockholm" and li
 
 ### Home — `/`
 1. Big logo (BEIT / KULTUR), tagline "A non-profit community that makes culture". Buttons: **Donate** (main) and **Get involved** (second).
-2. Big photo: `event-crowd.jpg`.
+2. Main video: `static/videos/home-event.mp4`, with `beit-kultur-main.jpeg` as its poster.
 3. **Who we are**:
    - We create culture from the grassroots, embracing intersectionality and opening spaces for artists from the global majority.
    - We believe in art as a powerful channel that breaks down borders, brings people together and creates dialogue, while building community.

@@ -58,7 +58,7 @@
 		poster="/images/beit-kultur-main.jpeg"
 		aria-label="Video from a Beit Kultur event"
 	>
-		<source src="/videos/home-event.mov" />
+		<source src="/videos/home-event.mp4" type="video/mp4" />
 		Your browser does not support this video.
 	</video>
 </div>
@@ -206,7 +206,8 @@
 		display: block;
 		width: 100%;
 		height: auto;
-		aspect-ratio: 796 / 768;
+		aspect-ratio: 3 / 4;
+		max-height: 80vh;
 		object-fit: cover;
 	}
 
