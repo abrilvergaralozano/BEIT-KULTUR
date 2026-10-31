@@ -34,15 +34,12 @@
 <section class="box who" aria-labelledby="who-we-are">
 	<h2 id="who-we-are">Who we are</h2>
 	<p>
-		We create culture from the grassroots, embracing intersectionality and opening spaces for
-		artists from the global majority.
+		Beit Kultur is a grassroots, non-profit cultural association in Stockholm, run by volunteers.
 	</p>
-	<p>
-		We believe in art as a powerful channel that breaks down borders, brings people together and
-		creates dialogue, while building community.
-	</p>
-	<p><strong>This is what Beit Kultur is.</strong></p>
-	<a href="/about" class="link">Read more about us</a>
+	<p>We create culture together: live sets, poetry, film and visual art.</p>
+	<p>Everyone is welcome: artists, audiences of all ages, volunteers and partners.</p>
+	<p><strong>This is Beit Kultur.</strong></p>
+	<a href="/about" class="link">Read about our mission</a>
 </section>
 
 <section aria-labelledby="next-events">

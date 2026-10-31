@@ -48,11 +48,16 @@
 <div class="mission">
 	<section class="box">
 		<h2>Our mission</h2>
-		<p>Beit Kultur is a non-profit cultural association.</p>
 		<p>
-			We give artists from the global majority (BIPOC: Black, Indigenous and People of Color) a
-			platform to show their work in music, poetry and film.
+			With an intersectional approach, we open spaces for artists from the global majority and
+			queer artists to share their work.
 		</p>
+		<p>
+			We believe art can break down borders, bring people together and create dialogue, while
+			building community.
+		</p>
+		<p>We work with artists, associations and galleries to make projects together.</p>
+		<p>Want to be part of it? <a href="/get-involved">Get involved</a></p>
 	</section>
 
 	<section class="box">
