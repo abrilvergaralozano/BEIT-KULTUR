@@ -42,6 +42,11 @@
 		<a href="/donate" class="button">Donate</a>
 		<a href="/get-involved" class="button button-second">Get involved</a>
 	</div>
+	<nav class="hero-index" aria-label="Explore Beit Kultur">
+		<a href="#who-we-are"><span aria-hidden="true">01</span> About us</a>
+		<a href="#next-events"><span aria-hidden="true">02</span> Events</a>
+		<a href="#latest-news"><span aria-hidden="true">03</span> News</a>
+	</nav>
 </section>
 
 <div class="big-photo">
@@ -51,6 +56,7 @@
 <section class="box who" aria-labelledby="who-we-are">
 	<h2 id="who-we-are">Who we are</h2>
 	<div class="who-copy">
+		<p class="who-lead">We create culture together.</p>
 		<p>
 			Beit Kultur is a grassroots, non-profit cultural association in Stockholm, run by volunteers.
 		</p>
@@ -61,12 +67,15 @@
 	</div>
 </section>
 
-<section class="home-section" aria-labelledby="next-events">
-	<h2 id="next-events">Next events</h2>
+<section id="next-events" class="home-section" aria-labelledby="next-events-heading">
+	<h2 id="next-events-heading">Next events</h2>
 	<ul class="cards">
-		{#each nextEvents as event}
+		{#each nextEvents as event, index}
 			<li class="card">
-				<Photo file={event.image} />
+				<div class="card-image">
+					<Photo file={event.image} />
+					<span class="card-number" aria-hidden="true">0{index + 1}</span>
+				</div>
 				<div class="card-body">
 					<p class="muted">{event.day} {event.month} · {event.category}</p>
 					<h3>{event.title}</h3>
@@ -80,8 +89,8 @@
 	<a href="/events" class="link">See all events</a>
 </section>
 
-<section class="home-section" aria-labelledby="latest-news">
-	<h2 id="latest-news">Latest news</h2>
+<section id="latest-news" class="home-section" aria-labelledby="latest-news-heading">
+	<h2 id="latest-news-heading">Latest news</h2>
 	<ul class="news">
 		{#each latestNews as post}
 			<li>
@@ -108,6 +117,32 @@
 			rgba(26, 26, 26, 0.045) calc(8.333333% - 1px),
 			rgba(26, 26, 26, 0.045) 8.333333%
 		);
+	}
+
+	.hero-index {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem 2rem;
+		margin-top: 2rem;
+		border-top: 1px solid var(--card-border);
+	}
+
+	.hero-index a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		min-height: 44px;
+		text-decoration: none;
+	}
+
+	.hero-index a:hover {
+		text-decoration: underline;
+	}
+
+	.hero-index span {
+		color: var(--muted);
+		font-size: 0.75rem;
+		font-weight: 800;
 	}
 
 	.eyebrow {
@@ -167,10 +202,16 @@
 		grid-template-columns: minmax(12rem, 0.75fr) minmax(0, 1.25fr);
 		gap: 1rem clamp(1.5rem, 5vw, 4rem);
 		align-items: start;
+		background: var(--text);
+		color: var(--bg);
 	}
 
 	.who h2 {
 		grid-column: 1;
+		font-family: Georgia, 'Times New Roman', serif;
+		font-size: clamp(2.5rem, 5vw, 4rem);
+		font-weight: 400;
+		letter-spacing: -0.04em;
 	}
 
 	.who-copy {
@@ -184,6 +225,21 @@
 
 	.who-copy p:last-of-type {
 		margin-bottom: 0.5rem;
+	}
+
+	.who-copy .who-lead {
+		max-width: 16ch;
+		font-family: Georgia, 'Times New Roman', serif;
+		font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+		line-height: 1.15;
+	}
+
+	.who .link {
+		color: var(--lime);
+	}
+
+	.who a:focus-visible {
+		outline-color: var(--lime);
 	}
 
 	.home-section > h2,
@@ -223,6 +279,36 @@
 
 	.card-body {
 		padding: 1.25rem;
+	}
+
+	.card-image {
+		position: relative;
+		overflow: hidden;
+		background: var(--text);
+	}
+
+	.card-image :global(img),
+	.card-image :global(.placeholder) {
+		transition: transform 250ms ease;
+	}
+
+	.card:hover .card-image :global(img) {
+		transform: scale(1.025);
+	}
+
+	.card-number {
+		position: absolute;
+		right: 0.75rem;
+		bottom: 0.75rem;
+		display: grid;
+		width: 2.5rem;
+		height: 2.5rem;
+		place-items: center;
+		border-radius: 50%;
+		background: var(--lime);
+		color: var(--text);
+		font-size: 0.875rem;
+		font-weight: 800;
 	}
 
 	.card-body p {
@@ -291,10 +377,24 @@
 			flex-direction: column;
 		}
 
+		.hero-index {
+			gap: 0.25rem 1rem;
+		}
+
 		.news li {
 			grid-template-columns: 1fr;
 			gap: 0.25rem;
 		}
 	}
 
+	@media (prefers-reduced-motion: reduce) {
+		.card-image :global(img),
+		.card-image :global(.placeholder) {
+			transition: none;
+		}
+
+		.card:hover .card-image :global(img) {
+			transform: none;
+		}
+	}
 </style>
