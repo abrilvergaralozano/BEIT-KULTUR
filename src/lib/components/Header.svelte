@@ -83,7 +83,7 @@
 
 	.logo,
 	ul a {
-		color: #fff;
+		color: var(--bg);
 	}
 
 	.inner {

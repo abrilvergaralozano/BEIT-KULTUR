@@ -166,7 +166,7 @@
 	}
 
 	:global(body.home-background-active header) {
-		background-color: rgba(26, 26, 26, 0.88);
+		background-color: var(--text);
 	}
 
 	:global(body.home-background-active footer) {
