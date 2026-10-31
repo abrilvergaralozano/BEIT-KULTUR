@@ -75,7 +75,7 @@
 	<a href="/get-involved" class="button button-outline">Get involved</a>
 </div>
 
-<section class="contact">
+<section class="contact" id="contact">
 	<form onsubmit={handleSubmit}>
 		<h2>Contact us</h2>
 
