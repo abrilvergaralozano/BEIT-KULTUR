@@ -96,13 +96,14 @@ body {
 	font-family: var(--font);
 	font-size: 1.125rem; /* 18px */
 	line-height: 1.6;
-	text-align: left;
+	text-align: justify;
 }
 
 h1,
 h2,
 h3 {
 	font-family: var(--font-heading);
+	text-align: left;
 }
 
 .logo {
@@ -147,7 +148,6 @@ h3 {
 p {
 	margin: 0 0 1.25rem;
 	max-width: 65ch;
-	text-align: justify;
 }
 
 a {
