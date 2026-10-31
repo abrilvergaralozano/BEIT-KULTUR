@@ -5,11 +5,12 @@
 
 	let { data } = $props();
 	let logoElement;
-	let heroVideo;
+	let backgroundVideo;
 	let brandWidth = $state(0);
 	let autoplayVideo = $state(false);
 
 	onMount(() => {
+		document.body.classList.add('home-background-active');
 		const observer = new ResizeObserver(([entry]) => {
 			brandWidth = entry.contentRect.width;
 		});
@@ -19,7 +20,7 @@
 		const updateVideoPlayback = () => {
 			autoplayVideo = !motionPreference.matches;
 			if (motionPreference.matches) {
-				heroVideo.pause();
+				backgroundVideo.pause();
 			}
 		};
 		updateVideoPlayback();
@@ -28,6 +29,7 @@
 		return () => {
 			observer.disconnect();
 			motionPreference.removeEventListener('change', updateVideoPlayback);
+			document.body.classList.remove('home-background-active');
 		};
 	});
 
@@ -45,6 +47,22 @@
 <svelte:head>
 	<title>Beit Kultur</title>
 </svelte:head>
+
+<div class="home-page">
+	<div class="page-background" aria-hidden="true">
+		<video
+			class="background-video"
+			bind:this={backgroundVideo}
+			autoplay={autoplayVideo}
+			muted
+			loop
+			playsinline
+			preload="metadata"
+			poster="/images/home-background-poster.jpg"
+		>
+			<source src="/videos/home-background.mp4" type="video/mp4" />
+		</video>
+	</div>
 
 <section class="hero">
 	<p class="eyebrow">Stockholm · Culture · Community</p>
@@ -64,24 +82,6 @@
 		<a href="#latest-news">News</a>
 	</nav>
 </section>
-
-<div class="big-photo">
-	<video
-		class="hero-video"
-		bind:this={heroVideo}
-		autoplay={autoplayVideo}
-		muted
-		loop
-		controls
-		playsinline
-		preload="metadata"
-		poster="/images/beit-kultur-main.jpeg"
-		aria-label="Video from a Beit Kultur event"
-	>
-		<source src="/videos/home-event.mp4" type="video/mp4" />
-		Your browser does not support this video.
-	</video>
-</div>
 
 <section class="box who" aria-labelledby="who-we-are">
 	<h2 id="who-we-are">Who we are</h2>
@@ -130,8 +130,46 @@
 	</ul>
 	<a href="/news" class="link">All news</a>
 </section>
+</div>
 
 <style>
+	.home-page {
+		position: relative;
+		isolation: isolate;
+	}
+
+	.page-background {
+		position: fixed;
+		z-index: -1;
+		inset: 0;
+		overflow: hidden;
+		background: var(--bg);
+		pointer-events: none;
+	}
+
+	.page-background::after {
+		position: absolute;
+		inset: 0;
+		background: rgba(250, 248, 242, 0.62);
+		content: '';
+	}
+
+	.background-video {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	:global(body.home-background-active main) {
+		background-image: none;
+	}
+
+	:global(body.home-background-active header),
+	:global(body.home-background-active footer) {
+		background-color: rgba(26, 26, 26, 0.88);
+	}
+
 	section {
 		margin-bottom: 4rem;
 	}
@@ -209,20 +247,6 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 1rem;
-	}
-
-	.big-photo {
-		display: flex;
-		justify-content: center;
-		margin-bottom: 4rem;
-	}
-
-	.hero-video {
-		display: block;
-		width: min(100%, 56rem);
-		height: auto;
-		aspect-ratio: 3 / 4;
-		object-fit: contain;
 	}
 
 	.who {
