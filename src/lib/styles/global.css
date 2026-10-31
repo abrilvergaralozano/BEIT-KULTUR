@@ -113,3 +113,15 @@ main {
 	background: var(--black);
 	color: var(--lime);
 }
+
+/* Outlined button, black with a white border */
+.button-outline {
+	background: var(--black);
+	color: var(--white);
+	border-color: var(--white);
+}
+
+.button-outline:hover {
+	background: var(--white);
+	color: var(--black);
+}
