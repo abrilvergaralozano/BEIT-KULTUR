@@ -1,18 +1,20 @@
 <script>
 	const amounts = [100, 200, 300, 400];
 
+	let monthly = $state(false);
 	let selectedAmount = $state(null);
 	let otherAmount = $state('');
 	let sent = $state(false);
 
 	let amount = $derived(otherAmount ? Number(otherAmount) : selectedAmount);
+	let giveText = $derived(`Give ${amount} kr${monthly ? ' every month' : ''}`);
 
 	function chooseAmount(value) {
 		selectedAmount = value;
 		otherAmount = '';
 	}
 
-	// Test mode: later this saves the amount and the date to Neon.
+	// Test mode: later this saves the amount, once or monthly, and the date to Neon.
 	function handleSubmit(event) {
 		event.preventDefault();
 		if (amount) sent = true;
@@ -38,15 +40,36 @@
 
 <section class="section gift" aria-labelledby="gift-title">
 	<h2 id="gift-title">Give a gift</h2>
+	<p>Want a vote at our annual meeting? <a href="/members" class="link">Become a member instead.</a></p>
 	<p class="notice">Test mode: no real money is taken.</p>
 
 	{#if sent}
-		<p class="notice" role="status">Thank you for your gift of {amount} kr!</p>
+		<p class="notice" role="status">
+			Thank you for your gift of {amount} kr{monthly ? ' every month' : ''}!
+		</p>
 	{:else}
 		<form onsubmit={handleSubmit}>
 			<fieldset>
-				<legend>Step 1: Choose an amount</legend>
-				<div class="amounts">
+				<legend>Step 1: How often?</legend>
+				<div class="choices">
+					<button
+						type="button"
+						class="button button-second"
+						aria-pressed={!monthly}
+						onclick={() => (monthly = false)}>Once</button
+					>
+					<button
+						type="button"
+						class="button button-second"
+						aria-pressed={monthly}
+						onclick={() => (monthly = true)}>Every month</button
+					>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<legend>Step 2: Choose an amount</legend>
+				<div class="choices">
 					{#each amounts as value}
 						<button
 							type="button"
@@ -68,19 +91,22 @@
 			</fieldset>
 
 			<fieldset>
-				<legend>Step 2: Your email (optional, for a thank-you)</legend>
+				<legend>Step 3: Your email (optional, for a thank-you)</legend>
 				<label for="donate-email">Email</label>
 				<input id="donate-email" type="email" autocomplete="email" />
 			</fieldset>
 
 			<fieldset>
-				<legend>Step 3: Give</legend>
+				<legend>Step 4: Give</legend>
 				<button type="submit" class="button" disabled={!amount}>
-					{amount ? `Give ${amount} kr` : 'Choose an amount first'}
+					{amount ? giveText : 'Choose an amount first'}
 				</button>
 			</fieldset>
 
-			<p class="muted">We only save the amount and the date. <a href="/privacy">Privacy</a></p>
+			<p class="muted">
+				We only save the amount, how often and the date. You can stop monthly giving any time.
+				<a href="/privacy">Privacy</a>
+			</p>
 		</form>
 	{/if}
 </section>
@@ -131,14 +157,14 @@
 		margin-bottom: 0.75rem;
 	}
 
-	.amounts {
+	.choices {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.75rem;
 		margin-bottom: 1.25rem;
 	}
 
-	.amounts .button[aria-pressed='true'] {
+	.choices .button[aria-pressed='true'] {
 		background: var(--text);
 		color: var(--bg);
 	}
