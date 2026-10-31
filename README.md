@@ -1,56 +1,68 @@
-# sv
+# Beit Kultur
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Beit Kultur is a Stockholm non-profit cultural association. This site uses the marketing-site
+alternative in the individual blog project brief: it includes an articles feed and lets volunteers
+add articles.
 
-## Creating a project
+## Audience and direction
 
-If you're seeing this, you've probably already done this step. Congrats!
+The site is for artists, audiences, volunteers and cultural partners in Stockholm, with a focus on
+artists from the global majority and queer artists. It uses Beit Kultur's warm off-white and beige
+surfaces, dark text, lime buttons and event imagery. The sample news articles are demonstration
+copy and should be reviewed before a public launch.
 
-```sh
-# create a new project
-npx sv create my-app
+## What works
+
+- Readers can browse the news list, search titles and summaries, open an article, and return to the
+  list.
+- Volunteers can sign in, publish an article, and sign out. Only a signed-in volunteer can publish.
+- Articles created by volunteers are held temporarily in the running server's memory. They are lost
+  when the server restarts, which is within the Pass requirement.
+- The site has responsive layouts, an Easy read control, and event-category filters.
+- The Events page fetches and displays Stockholm forecast data from SMHI.
+- Donation and contact forms are test interfaces. They do not process real payments or send
+  messages.
+
+## Run locally
+
+You need Node.js and npm.
+
+```powershell
+npm install
+Copy-Item .env.example .env
 ```
 
-To recreate this project with the same configuration:
+Edit `.env` and set a volunteer username, a strong password, and a random session secret with at
+least 32 characters. To generate a session secret:
 
-```sh
-# recreate this project
-npx sv@1.2.0 create --template minimal --no-types --install npm .
+```powershell
+node -e "console.log(require('node:crypto').randomBytes(32).toString('base64url'))"
 ```
 
-## Adding features
+Then start the site:
 
-Add features to your project with `sv add`:
-
-```sh
-npx sv add
-```
-
-For example, to add Tailwind CSS:
-
-```sh
-npx sv add tailwindcss
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
+```powershell
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+The login uses the values in `.env`. Never use example credentials or commit `.env`. The session
+cookie is signed, HTTP-only, and expires after eight hours.
 
-To create a production version of your app:
+To create a production build, run `npm run build`.
 
-```sh
-npm run build
-```
+## Scope and known limits
 
-You can preview the production build with `npm run preview`.
+This project currently targets the Pass requirements. Posts and comments are not stored in a
+database, and there is no AI API feature. PostgreSQL on Neon, database-backed comments and posts,
+and an AI API feature are required for Pass with distinction. The project presentation slides also
+need to be prepared for final submission.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+The temporary article store is for demonstrating the workflow locally. It is not durable and is not
+suitable for a multi-instance or serverless deployment. Use a database before relying on published
+articles in production.
+
+## Presentation
+
+The site demonstrates a searchable article feed, volunteer authentication, temporary article
+creation, the SMHI external API, and responsive layouts. Before presenting, be ready to explain the
+code and data flow, and to demonstrate the feature yourself.

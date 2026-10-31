@@ -1,12 +1,6 @@
 <script>
+	let { data, form } = $props();
 	let showPassword = $state(false);
-	let error = $state(false);
-
-	// No volunteer accounts yet, so every login shows the error for now.
-	function handleSubmit(event) {
-		event.preventDefault();
-		error = true;
-	}
 </script>
 
 <svelte:head>
@@ -17,15 +11,26 @@
 	<h1>Volunteer login</h1>
 	<p>Only volunteers can add news posts.</p>
 
-	{#if error}
-		<p class="error" role="alert">
-			<span aria-hidden="true">⚠</span> The username or password is wrong. Please try again.
+	{#if !data.isConfigured}
+		<p class="notice" role="status">
+			Volunteer login is not configured yet. Follow the setup steps in README.md.
 		</p>
 	{/if}
 
-	<form onsubmit={handleSubmit}>
+	{#if form?.error}
+		<p class="error" role="alert">{form.error}</p>
+	{/if}
+
+	<form method="POST">
 		<label for="username">Username</label>
-		<input id="username" name="username" type="text" autocomplete="username" required />
+		<input
+			id="username"
+			name="username"
+			type="text"
+			autocomplete="username"
+			required
+			disabled={!data.isConfigured}
+		/>
 
 		<label for="password">Password</label>
 		<div class="password-row">
@@ -36,6 +41,7 @@
 				autocomplete="current-password"
 				aria-describedby="password-note"
 				required
+				disabled={!data.isConfigured}
 			/>
 			<button
 				type="button"
@@ -48,7 +54,7 @@
 		</div>
 		<p id="password-note" class="muted">You can paste your password or use a password manager.</p>
 
-		<button type="submit" class="button button-dark">Log in</button>
+		<button type="submit" class="button button-dark" disabled={!data.isConfigured}>Log in</button>
 	</form>
 
 	<a href="/" class="link">Back to the home page</a>

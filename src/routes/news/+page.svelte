@@ -1,12 +1,12 @@
 <script>
 	import Photo from '#lib/components/Photo.svelte';
-	import { posts } from '#lib/data/news.js';
 
+	let { data, form } = $props();
 	let searchText = $state('');
 	let query = $state('');
 
 	let shown = $derived(
-		posts.filter((post) =>
+		data.posts.filter((post) =>
 			(post.title + ' ' + post.summary).toLowerCase().includes(query.trim().toLowerCase())
 		)
 	);
@@ -26,8 +26,28 @@
 	News from Beit Kultur. Members also get it by email. <a href="/members">Become a member</a>
 </p>
 
-<!-- Logged in volunteers will see a "+ Add post" button here instead -->
-<p>Volunteer? <a href="/login" class="link">Log in to add a post</a></p>
+{#if data.isVolunteer}
+	<section class="box add-post" id="add-post" aria-labelledby="add-post-title">
+		<h2 id="add-post-title">Add a post</h2>
+		{#if form?.createError}
+			<p class="notice" role="alert">{form.createError}</p>
+		{/if}
+		<form method="POST" action="?/create">
+			<label for="post-title">Title</label>
+			<input id="post-title" name="title" maxlength="120" required />
+
+			<label for="post-summary">Short summary</label>
+			<textarea id="post-summary" name="summary" maxlength="280" required></textarea>
+
+			<label for="post-text">Article</label>
+			<textarea id="post-text" name="text" rows="8" required></textarea>
+
+			<button type="submit" class="button">Publish post</button>
+		</form>
+	</section>
+{:else}
+	<p>Volunteer? <a href="/login" class="link">Log in to add a post</a></p>
+{/if}
 
 <form role="search" class="search" onsubmit={handleSearch}>
 	<label for="search">Search news</label>
@@ -59,6 +79,18 @@
 	.search {
 		max-width: 36rem;
 		margin-top: 2rem;
+	}
+
+	.add-post {
+		margin: 2rem 0;
+	}
+
+	.add-post h2 {
+		font-size: 1.5rem;
+	}
+
+	.add-post textarea {
+		max-width: 100%;
 	}
 
 	.search-row {

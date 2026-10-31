@@ -2,6 +2,7 @@
 	import { page } from '$app/state';
 	import { navLinks } from '#lib/nav.js';
 
+	let { isVolunteer = false } = $props();
 	let menuOpen = $state(false);
 	let easyRead = $state(false);
 
@@ -42,10 +43,18 @@
 						>
 					</li>
 				{/each}
+				{#if isVolunteer}
+					<li><a href="/news#add-post" onclick={closeMenu}>Add a post</a></li>
+				{/if}
 			</ul>
 			<button type="button" class="button button-second" aria-pressed={easyRead} onclick={toggleEasyRead}>
 				Easy read
 			</button>
+			{#if isVolunteer}
+				<form method="POST" action="/logout" class="logout-form">
+					<button type="submit" class="button button-second">Sign out</button>
+				</form>
+			{/if}
 		</nav>
 
 		<a href="/donate" class="button donate" onclick={closeMenu}>Donate</a>
@@ -86,6 +95,10 @@
 		align-items: center;
 		gap: 1.5rem;
 		margin-left: auto;
+	}
+
+	.logout-form {
+		margin: 0;
 	}
 
 	ul {

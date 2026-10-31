@@ -4,7 +4,7 @@
 	import Header from '#lib/components/Header.svelte';
 	import Footer from '#lib/components/Footer.svelte';
 
-	let { children } = $props();
+	let { children, data } = $props();
 </script>
 
 <svelte:head>
@@ -13,7 +13,7 @@
 
 <a href="#main" class="skip-link">Skip to main content</a>
 
-<Header />
+<Header isVolunteer={data.isVolunteer} />
 
 <main id="main" tabindex="-1">
 	{@render children()}
