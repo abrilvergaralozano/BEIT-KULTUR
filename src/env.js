@@ -5,6 +5,10 @@ export const variables = defineEnvVars({
 		description: 'Private Neon PostgreSQL connection string.',
 		schema: (value) => value || undefined
 	},
+	GEMINI_API_KEY: {
+		description: 'Private Google Gemini API key for the volunteer post-summary helper.',
+		schema: (value) => value || undefined
+	},
 	VOLUNTEER_USERNAME: {
 		description: 'Username used for volunteer sign-in.',
 		schema: (value) => value || undefined

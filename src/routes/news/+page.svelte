@@ -2,6 +2,12 @@
 	import Photo from '#lib/components/Photo.svelte';
 
 	let { data, form } = $props();
+	let draftTitle = $state('');
+	let draftSummary = $state('');
+	let draftText = $state('');
+	let aiLoading = $state(false);
+	let aiError = $state('');
+	let aiStatus = $state('');
 	let searchText = $state('');
 	let query = $state('');
 
@@ -14,6 +20,41 @@
 	function handleSearch(event) {
 		event.preventDefault();
 		query = searchText;
+	}
+
+	async function generateSummary() {
+		if (!draftTitle.trim() || !draftText.trim()) {
+			aiError = 'Add a title and article before generating a summary.';
+			aiStatus = '';
+			return;
+		}
+
+		aiLoading = true;
+		aiError = '';
+		aiStatus = '';
+
+		try {
+			const response = await fetch('/api/ai/post-summary', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ title: draftTitle, text: draftText })
+			});
+			const result = await response.json().catch(() => null);
+
+			if (!response.ok) {
+				throw new Error(result?.error ?? 'The AI summary could not be generated.');
+			}
+			if (typeof result?.summary !== 'string' || !result.summary.trim()) {
+				throw new Error('The AI service returned an empty summary.');
+			}
+
+			draftSummary = result.summary;
+			aiStatus = 'Summary drafted. Review and edit it before publishing.';
+		} catch (error) {
+			aiError = error instanceof Error ? error.message : 'The AI summary could not be generated.';
+		} finally {
+			aiLoading = false;
+		}
 	}
 </script>
 
@@ -33,27 +74,57 @@
 	</p>
 {/if}
 
-{#if data.isVolunteer && data.databaseConfigured}
+{#if data.isVolunteer}
 	<section class="box add-post" id="add-post" aria-labelledby="add-post-title">
 		<h2 id="add-post-title">Add a post</h2>
+		{#if !data.databaseConfigured}
+			<p class="notice">Connect Neon to publish posts. You can still draft a summary with AI.</p>
+		{/if}
 		{#if form?.createError}
 			<p class="notice" role="alert">{form.createError}</p>
 		{/if}
 		<form method="POST" action="?/create">
 			<label for="post-title">Title</label>
-			<input id="post-title" name="title" maxlength="120" required />
-
-			<label for="post-summary">Short summary</label>
-			<textarea id="post-summary" name="summary" maxlength="280" required></textarea>
+			<input id="post-title" name="title" maxlength="120" bind:value={draftTitle} required />
 
 			<label for="post-text">Article</label>
-			<textarea id="post-text" name="text" rows="8" required></textarea>
+			<textarea id="post-text" name="text" rows="8" bind:value={draftText} required></textarea>
 
-			<button type="submit" class="button">Publish post</button>
+			<label for="post-summary">Short summary</label>
+			<button
+				type="button"
+				class="button button-second"
+				disabled={!data.aiConfigured || aiLoading}
+				aria-describedby="ai-summary-note"
+				aria-busy={aiLoading}
+				onclick={generateSummary}
+			>
+				{aiLoading ? 'Generating summary…' : 'Generate summary with AI'}
+			</button>
+			<p id="ai-summary-note">
+				{#if data.aiConfigured}
+					Your draft is sent to Gemini. Check the summary before publishing. You can edit it.
+				{:else}
+					Set GEMINI_API_KEY in .env to enable AI summaries.
+				{/if}
+			</p>
+			<textarea
+				id="post-summary"
+				name="summary"
+				maxlength="280"
+				bind:value={draftSummary}
+				required
+			></textarea>
+			{#if aiStatus}
+				<p role="status">{aiStatus}</p>
+			{/if}
+			{#if aiError}
+				<p class="notice" role="alert">{aiError}</p>
+			{/if}
+
+			<button type="submit" class="button" disabled={!data.databaseConfigured}>Publish post</button>
 		</form>
 	</section>
-{:else if data.isVolunteer}
-	<p class="notice">Connect Neon to publish new posts.</p>
 {:else}
 	<p>Volunteer? <a href="/login" class="link">Log in to add a post</a></p>
 {/if}

@@ -2,12 +2,14 @@ import { fail, redirect } from '@sveltejs/kit';
 import { createPost, getPosts } from '#lib/server/posts.js';
 import { isVolunteer } from '#lib/server/auth.js';
 import { isDatabaseConfigured } from '#lib/server/db.js';
+import { isAiConfigured } from '#lib/server/ai.js';
 
 export async function load({ cookies }) {
 	return {
 		posts: await getPosts(),
 		isVolunteer: isVolunteer(cookies),
-		databaseConfigured: isDatabaseConfigured()
+		databaseConfigured: isDatabaseConfigured(),
+		aiConfigured: isAiConfigured()
 	};
 }
 
