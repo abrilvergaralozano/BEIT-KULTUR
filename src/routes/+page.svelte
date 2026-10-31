@@ -165,9 +165,14 @@
 		background-image: none;
 	}
 
-	:global(body.home-background-active header),
-	:global(body.home-background-active footer) {
+	:global(body.home-background-active header) {
 		background-color: rgba(26, 26, 26, 0.88);
+	}
+
+	:global(body.home-background-active footer) {
+		position: relative;
+		z-index: 1;
+		background-color: var(--text);
 	}
 
 	section {
