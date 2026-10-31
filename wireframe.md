@@ -35,7 +35,7 @@ Two lines: `BEIT` (weight 900) and `KULTUR` (weight 900, italic). Links to Home.
 ### Layout
 - Max content width 1120px, centred, padding 24px (16px on phone).
 - On small screens, everything is one column.
-- Rounded corners: 4px for buttons and inputs, 8px for cards and sections.
+- Use square corners on all boxes, buttons, inputs, cards, and images.
 
 ### Buttons
 - Main: lime background, `2px solid #1A1A1A` border, bold text, padding 14px 28px.

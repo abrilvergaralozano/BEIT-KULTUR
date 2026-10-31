@@ -52,8 +52,8 @@
 	--font-brand: var(--font);
 	--max-width: 1120px;
 	--gutter: 24px;
-	--radius-small: 4px;
-	--radius: 8px;
+	--radius-small: 0;
+	--radius: 0;
 }
 
 @media (max-width: 600px) {

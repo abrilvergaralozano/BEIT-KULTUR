@@ -100,7 +100,7 @@
 		justify-content: center;
 		width: 3rem;
 		height: 3rem;
-		border-radius: 50%;
+		border-radius: 0;
 		background: var(--text);
 		color: var(--bg);
 		font-weight: 900;

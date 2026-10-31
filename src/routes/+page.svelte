@@ -297,7 +297,7 @@
 		width: 2.5rem;
 		height: 2.5rem;
 		place-items: center;
-		border-radius: 50%;
+		border-radius: 0;
 		background: var(--lime);
 		color: var(--text);
 		font-size: 0.875rem;
