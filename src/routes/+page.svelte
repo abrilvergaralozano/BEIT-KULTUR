@@ -18,7 +18,7 @@
 	// The three events on the Home page. Sundays at Beit uses a drawing here.
 	const find = (slug) => events.find((event) => event.slug === slug);
 	const nextEvents = [
-		{ ...find('sundays-at-beit-softronic'), image: 'drawing-stage.jpg' },
+		{ ...find('sundays-at-beit-softronic'), image: 'live-performance.jpeg' },
 		{ ...find('food-festival'), category: 'Festival' },
 		{ ...find('exhibition'), category: 'Exhibition' }
 	];

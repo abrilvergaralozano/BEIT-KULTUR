@@ -14,12 +14,17 @@ function formatDate(value) {
 }
 
 function fromRow(row) {
+	const image =
+		row.image === 'drawing-hanging-art.jpg'
+			? 'live-performance.jpeg'
+			: (row.image ?? 'event-crowd.jpg');
+
 	return {
 		id: row.id,
 		date: formatDate(row.created_at),
 		author: row.author,
 		title: row.title,
-		image: row.image,
+		image,
 		summary: row.summary,
 		text: row.body.split(/\r?\n\s*\r?\n/).map((paragraph) => paragraph.trim()).filter(Boolean)
 	};

@@ -6,17 +6,17 @@
 		{
 			title: 'Community',
 			text: 'We bring people of all ages together through culture.',
-			image: 'drawing-street-dance.jpg'
+			image: 'event-crowd.jpg'
 		},
 		{
 			title: 'Collaboration',
 			text: 'We connect artists, cultural associations and galleries to make projects together.',
-			image: 'drawing-hanging-art.jpg'
+			image: 'live-performance.jpeg'
 		},
 		{
 			title: 'Inclusion',
 			text: 'We make space for artists who are often left out of mainstream art spaces.',
-			image: 'drawing-gallery.jpg'
+			image: 'beit-kultur-main.jpeg'
 		}
 	];
 

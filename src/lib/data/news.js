@@ -29,7 +29,7 @@ export const posts = [
 		date: '4 October 2026',
 		author: 'Beit Kultur',
 		title: 'A new digital home for Beit Kultur',
-		image: 'drawing-hanging-art.jpg',
+		image: 'beit-kultur-main.jpeg',
 		summary: 'The website makes it easier to find our events, projects and ways to take part.',
 		text: [
 			'This website brings Beit Kultur news, events and projects together in one place.',

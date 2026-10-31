@@ -38,7 +38,7 @@
 		<p class="intro">Beit Kultur is run by volunteers.</p>
 		<p class="intro">There are four ways you can take part.</p>
 	</div>
-	<div class="photo"><Photo file="drawing-hanging-art.jpg" /></div>
+	<div class="photo"><Photo file="event-crowd.jpg" /></div>
 </div>
 
 <ol class="ways">
