@@ -22,7 +22,8 @@ Language: English for now (not decided yet).
 | Footer | `#1A1A1A` background, `#FAF8F2` text |
 
 ### Text
-- Font: **Archivo** from Google Fonts (weights 400, 600, 800, 900, and 900 italic for the logo). Fallback: Helvetica, Arial, sans-serif.
+- Body text font: **Glacial Indifference** (files in `static/fonts/`, weights 400 and 700). Fallback: Helvetica, Arial, sans-serif.
+- Headings, logo and buttons: **Archivo** from Google Fonts (weights 400, 600, 800, 900, and 900 italic for the logo).
 - Body text: **18px**, line-height **1.6**.
 - Headings: bold (800–900). Page title 56px desktop, 44px phone.
 - **Left-aligned text. Never justified.**

@@ -1,5 +1,20 @@
 /* Shared styles for the whole site. Colours and sizes come from .github/wireframe-spec.md */
 
+/* Body text font. The files are in static/fonts/ */
+@font-face {
+	font-family: 'Glacial Indifference';
+	font-weight: 400;
+	font-display: swap;
+	src: url('/fonts/GlacialIndifference-Regular.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Glacial Indifference';
+	font-weight: 700;
+	font-display: swap;
+	src: url('/fonts/GlacialIndifference-Bold.woff') format('woff');
+}
+
 :root {
 	--bg: #faf8f2;
 	--text: #1a1a1a;
@@ -16,7 +31,8 @@
 	--grey: var(--card-border);
 	--light-grey: var(--box);
 
-	--font: 'Archivo', Helvetica, Arial, sans-serif;
+	--font: 'Glacial Indifference', Helvetica, Arial, sans-serif;
+	--font-heading: 'Archivo', Helvetica, Arial, sans-serif;
 	--max-width: 1120px;
 	--gutter: 24px;
 	--radius-small: 4px;
@@ -64,6 +80,14 @@ body {
 	font-size: 1.125rem; /* 18px */
 	line-height: 1.6;
 	text-align: left;
+}
+
+h1,
+h2,
+h3,
+.logo,
+.button {
+	font-family: var(--font-heading);
 }
 
 h1,
@@ -180,7 +204,6 @@ main {
 	min-height: 44px;
 	background: var(--lime);
 	color: var(--text);
-	font-family: inherit;
 	font-weight: 800;
 	font-size: 1.125rem;
 	line-height: 1.2;
