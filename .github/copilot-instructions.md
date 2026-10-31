@@ -8,3 +8,4 @@
 - I have dyslexia: explain changes in short, simple sentences.
 - Make small changes, one feature at a time.
 - After each change, tell me what files changed and why.
+- Follow .github/wireframe-spec.md when building pages (design, accessibility and page content).

@@ -11,9 +11,11 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
+<a href="#main" class="skip-link">Skip to main content</a>
+
 <Header />
 
-<main>
+<main id="main" tabindex="-1">
 	{@render children()}
 </main>
 

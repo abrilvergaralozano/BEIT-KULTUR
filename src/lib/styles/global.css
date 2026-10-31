@@ -1,15 +1,32 @@
-/* Shared styles for the whole site. */
+/* Shared styles for the whole site. Colours and sizes come from .github/wireframe-spec.md */
 
 :root {
-	--black: #000000;
-	--white: #ffffff;
+	--bg: #faf8f2;
+	--text: #1a1a1a;
+	--muted: #555555;
 	--lime: #e8ff5a;
-	--grey: #2a2a2a;
-	--light-grey: #e6e6e6;
+	--box: #efebe0;
+	--card: #ffffff;
+	--card-border: #cfcabd;
+	--input-border: #6b675e;
 
-	--font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	--max-width: 1200px;
-	--gutter: 1.25rem;
+	/* Old names, still used by the Donate and Members pages */
+	--black: var(--text);
+	--white: var(--bg);
+	--grey: var(--card-border);
+	--light-grey: var(--box);
+
+	--font: 'Archivo', Helvetica, Arial, sans-serif;
+	--max-width: 1120px;
+	--gutter: 24px;
+	--radius-small: 4px;
+	--radius: 8px;
+}
+
+@media (max-width: 600px) {
+	:root {
+		--gutter: 16px;
+	}
 }
 
 *,
@@ -20,17 +37,33 @@
 
 html {
 	-webkit-text-size-adjust: 100%;
-	/* Keep jump links (like /donate#contact) from hiding under the sticky header */
-	scroll-padding-top: 6rem;
+	/* Keep jump links (like /about#contact) from hiding under the sticky header */
+	scroll-padding-top: 7rem;
+}
+
+/* Easy read: bigger text and more space. Turned on with the button in the header. */
+html[data-easy-read='on'] {
+	font-size: 125%;
+}
+
+html[data-easy-read='on'] body {
+	line-height: 1.9;
+	letter-spacing: 0.02em;
+	word-spacing: 0.12em;
+}
+
+html[data-easy-read='on'] p {
+	margin-bottom: 1.75em;
 }
 
 body {
 	margin: 0;
-	background: var(--black);
-	color: var(--white);
+	background: var(--bg);
+	color: var(--text);
 	font-family: var(--font);
 	font-size: 1.125rem; /* 18px */
 	line-height: 1.6;
+	text-align: left;
 }
 
 h1,
@@ -38,21 +71,30 @@ h2,
 h3 {
 	font-weight: 800;
 	line-height: 1.15;
-	letter-spacing: -0.01em;
 	margin: 0 0 1rem;
 }
 
 h1 {
-	font-size: clamp(2.25rem, 6vw, 4rem);
-	text-transform: uppercase;
+	font-size: 3.5rem; /* 56px */
+	font-weight: 900;
 }
 
 h2 {
-	font-size: clamp(1.75rem, 4vw, 2.5rem);
+	font-size: 2rem;
 }
 
 h3 {
-	font-size: 1.5rem;
+	font-size: 1.375rem;
+}
+
+@media (max-width: 600px) {
+	h1 {
+		font-size: 2.75rem; /* 44px */
+	}
+
+	h2 {
+		font-size: 1.75rem;
+	}
 }
 
 p {
@@ -61,7 +103,8 @@ p {
 }
 
 a {
-	color: var(--lime);
+	color: var(--text);
+	font-weight: 600;
 	text-underline-offset: 0.2em;
 }
 
@@ -69,14 +112,38 @@ a:hover {
 	text-decoration-thickness: 2px;
 }
 
-:focus-visible {
-	outline: 3px solid var(--lime);
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+	outline: 3px solid var(--text);
 	outline-offset: 3px;
 }
 
 img {
+	display: block;
 	max-width: 100%;
 	height: auto;
+}
+
+/* Skip link: hidden until it gets keyboard focus */
+.skip-link {
+	position: absolute;
+	top: 0.5rem;
+	left: 0.5rem;
+	z-index: 100;
+	background: var(--lime);
+	color: var(--text);
+	border: 2px solid var(--text);
+	border-radius: var(--radius-small);
+	padding: 0.7rem 1.2rem;
+	transform: translateY(-200%);
+}
+
+.skip-link:focus {
+	transform: none;
 }
 
 /* Page content area */
@@ -87,60 +154,113 @@ main {
 	min-height: 60vh;
 }
 
-/* Logo text, used in header and footer */
+/* Logo: BEIT on one line, KULTUR in italic on the next */
 .logo {
-	color: var(--white);
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: center;
+	min-height: 44px;
+	color: inherit;
 	font-weight: 900;
-	font-size: 1.5rem;
-	letter-spacing: 0.04em;
+	font-size: 1.25rem;
+	line-height: 1;
+	letter-spacing: 0.02em;
 	text-decoration: none;
-	white-space: nowrap;
 }
 
-/* Yellow button, used for Donate */
+.logo span:last-child {
+	font-style: italic;
+}
+
+/* Buttons. Main = lime (Donate). */
 .button {
-	display: inline-block;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 44px;
 	background: var(--lime);
-	color: var(--black);
+	color: var(--text);
+	font-family: inherit;
 	font-weight: 800;
 	font-size: 1.125rem;
-	text-transform: uppercase;
-	letter-spacing: 0.04em;
+	line-height: 1.2;
 	text-decoration: none;
-	padding: 0.7rem 1.4rem;
-	border: 2px solid var(--lime);
-	border-radius: 0;
+	padding: 14px 28px;
+	border: 2px solid var(--text);
+	border-radius: var(--radius-small);
+	cursor: pointer;
 }
 
 .button:hover {
-	background: var(--black);
-	color: var(--lime);
+	text-decoration: underline;
+	text-decoration-thickness: 2px;
 }
 
-button.button {
-	font-family: inherit;
-	cursor: pointer;
+/* Second button: off-white */
+.button-second,
+.button-outline {
+	background: var(--bg);
+	color: var(--text);
+}
+
+/* Dark button */
+.button-dark {
+	background: var(--text);
+	color: var(--bg);
+}
+
+/* Small dates and info */
+.muted {
+	color: var(--muted);
+}
+
+/* Category tag, like "Music" */
+.tag {
+	display: inline-block;
+	background: var(--lime);
+	color: var(--text);
+	font-size: 0.875rem;
+	font-weight: 800;
+	padding: 0.15rem 0.6rem;
+	border-radius: var(--radius-small);
+}
+
+/* Light box section */
+.box {
+	background: var(--box);
+	border-radius: var(--radius);
+	padding: clamp(1.5rem, 5vw, 3rem);
+}
+
+/* White card */
+.card {
+	background: var(--card);
+	border: 1px solid var(--card-border);
+	border-radius: var(--radius);
+	overflow: hidden;
 }
 
 /* Form fields */
 label {
 	display: block;
-	font-weight: 700;
+	font-weight: 600;
 	margin-bottom: 0.4rem;
 }
 
 input,
+select,
 textarea {
 	display: block;
 	width: 100%;
+	min-height: 44px;
 	font-family: inherit;
 	font-size: 1.125rem;
 	line-height: 1.5;
-	color: var(--black);
-	background: var(--white);
-	border: 2px solid var(--white);
-	border-radius: 0;
-	padding: 0.7rem 0.9rem;
+	color: var(--text);
+	background: var(--card);
+	border: 2px solid var(--input-border);
+	border-radius: var(--radius-small);
+	padding: 0.6rem 0.8rem;
 	margin-bottom: 1.25rem;
 }
 
@@ -149,14 +269,21 @@ textarea {
 	resize: vertical;
 }
 
-/* Outlined button, black with a white border */
-.button-outline {
-	background: var(--black);
-	color: var(--white);
-	border-color: var(--white);
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	white-space: nowrap;
 }
 
-.button-outline:hover {
-	background: var(--white);
-	color: var(--black);
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation: none !important;
+		transition: none !important;
+		scroll-behavior: auto !important;
+	}
 }
