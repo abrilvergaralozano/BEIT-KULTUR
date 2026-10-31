@@ -43,9 +43,9 @@
 		<a href="/get-involved" class="button button-second">Get involved</a>
 	</div>
 	<nav class="hero-index" aria-label="Explore Beit Kultur">
-		<a href="#who-we-are"><span aria-hidden="true">01</span> About us</a>
-		<a href="#next-events"><span aria-hidden="true">02</span> Events</a>
-		<a href="#latest-news"><span aria-hidden="true">03</span> News</a>
+		<a href="#who-we-are">About us</a>
+		<a href="#next-events">Events</a>
+		<a href="#latest-news">News</a>
 	</nav>
 </section>
 
@@ -80,11 +80,10 @@
 <section id="next-events" class="home-section" aria-labelledby="next-events-heading">
 	<h2 id="next-events-heading">Next events</h2>
 	<ul class="cards">
-		{#each nextEvents as event, index}
+		{#each nextEvents as event}
 			<li class="card">
 				<div class="card-image">
 					<Photo file={event.image} />
-					<span class="card-number" aria-hidden="true">0{index + 1}</span>
 				</div>
 				<div class="card-body">
 					<p class="muted">{event.day} {event.month} · {event.category}</p>
@@ -147,12 +146,6 @@
 
 	.hero-index a:hover {
 		text-decoration: underline;
-	}
-
-	.hero-index span {
-		color: var(--muted);
-		font-size: 0.75rem;
-		font-weight: 800;
 	}
 
 	.eyebrow {
@@ -256,22 +249,8 @@
 
 	.home-section > h2,
 	.who > h2 {
-		display: flex;
-		align-items: center;
-		gap: 0.75rem;
 		padding-bottom: 0.75rem;
 		border-bottom: 1px solid var(--card-border);
-	}
-
-	.home-section > h2::before,
-	.who > h2::before {
-		content: '';
-		width: 0.75rem;
-		height: 0.75rem;
-		flex: 0 0 auto;
-		background: var(--lime);
-		border: 1px solid var(--text);
-		transform: rotate(45deg);
 	}
 
 	.link {
@@ -306,21 +285,6 @@
 
 	.card:hover .card-image :global(img) {
 		transform: scale(1.025);
-	}
-
-	.card-number {
-		position: absolute;
-		right: 0.75rem;
-		bottom: 0.75rem;
-		display: grid;
-		width: 2.5rem;
-		height: 2.5rem;
-		place-items: center;
-		border-radius: 0;
-		background: var(--lime);
-		color: var(--text);
-		font-size: 0.875rem;
-		font-weight: 800;
 	}
 
 	.card-body p {

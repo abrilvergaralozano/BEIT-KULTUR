@@ -42,10 +42,9 @@
 </div>
 
 <ol class="ways">
-	{#each ways as way, i}
+	{#each ways as way}
 		<li class="card">
 			<div class="card-body">
-				<span class="number" aria-hidden="true">{i + 1}</span>
 				<h2>{way.title}</h2>
 				{#each way.text as line}
 					<p>{line}</p>
@@ -92,20 +91,6 @@
 		align-items: flex-start;
 		height: 100%;
 		padding: 1.75rem;
-	}
-
-	.number {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: 3rem;
-		height: 3rem;
-		border-radius: 0;
-		background: var(--text);
-		color: var(--bg);
-		font-weight: 900;
-		font-size: 1.5rem;
-		margin-bottom: 1rem;
 	}
 
 	h2 {
