@@ -50,7 +50,17 @@
 </section>
 
 <div class="big-photo">
-	<Photo file="beit-kultur-main.jpeg" ratio="796 / 768" />
+	<video
+		class="hero-video"
+		controls
+		playsinline
+		preload="metadata"
+		poster="/images/beit-kultur-main.jpeg"
+		aria-label="Video from a Beit Kultur event"
+	>
+		<source src="/videos/home-event.mov" />
+		Your browser does not support this video.
+	</video>
 </div>
 
 <section class="box who" aria-labelledby="who-we-are">
@@ -190,6 +200,14 @@
 
 	.big-photo {
 		margin-bottom: 4rem;
+	}
+
+	.hero-video {
+		display: block;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 796 / 768;
+		object-fit: cover;
 	}
 
 	.who {
