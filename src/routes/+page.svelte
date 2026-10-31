@@ -56,7 +56,7 @@
 <section class="box who" aria-labelledby="who-we-are">
 	<h2 id="who-we-are">Who we are</h2>
 	<div class="who-copy">
-		<p class="who-lead">We create culture together.</p>
+		<p class="who-lead">A space for diverse voices.</p>
 		<p>
 			Beit Kultur is a grassroots, non-profit cultural association in Stockholm, run by volunteers.
 		</p>
