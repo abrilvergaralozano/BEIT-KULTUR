@@ -1,46 +1,34 @@
 /* Shared styles for the whole site. Colours and sizes come from .github/wireframe-spec.md */
 
-/* Body text font. The files are in static/fonts/ */
+/* Font files are in static/fonts/. */
 @font-face {
-	font-family: 'Glacial Indifference';
+	font-family: 'TeX Gyre Adventor';
 	font-weight: 400;
 	font-display: swap;
-	src: url('/fonts/GlacialIndifference-Regular.woff') format('woff');
+	src: url('/fonts/texgyreadventor-regular.otf') format('opentype');
 }
 
 @font-face {
-	font-family: 'Glacial Indifference';
-	font-weight: 700;
-	font-display: swap;
-	src: url('/fonts/GlacialIndifference-Bold.woff') format('woff');
-}
-
-@font-face {
-	font-family: 'Nunito';
+	font-family: 'TeX Gyre Adventor';
+	font-style: italic;
 	font-weight: 400;
 	font-display: swap;
-	src: url('/fonts/Nunito-Regular.ttf') format('truetype');
+	src: url('/fonts/texgyreadventor-italic.otf') format('opentype');
 }
 
 @font-face {
-	font-family: 'Nunito';
+	font-family: 'TeX Gyre Adventor';
 	font-weight: 700;
 	font-display: swap;
-	src: url('/fonts/Nunito-Bold.ttf') format('truetype');
+	src: url('/fonts/texgyreadventor-bold.otf') format('opentype');
 }
 
 @font-face {
-	font-family: 'Nunito';
-	font-weight: 800;
+	font-family: 'TeX Gyre Adventor';
+	font-style: italic;
+	font-weight: 700;
 	font-display: swap;
-	src: url('/fonts/Nunito-ExtraBold.ttf') format('truetype');
-}
-
-@font-face {
-	font-family: 'Nunito';
-	font-weight: 900;
-	font-display: swap;
-	src: url('/fonts/Nunito-Black.ttf') format('truetype');
+	src: url('/fonts/texgyreadventor-bolditalic.otf') format('opentype');
 }
 
 :root {
@@ -59,8 +47,8 @@
 	--grey: var(--card-border);
 	--light-grey: var(--box);
 
-	--font: 'Glacial Indifference', Helvetica, Arial, sans-serif;
-	--font-heading: 'Nunito', Helvetica, Arial, sans-serif;
+	--font: 'TeX Gyre Adventor', Helvetica, Arial, sans-serif;
+	--font-heading: var(--font);
 	--font-brand: 'Archivo', Helvetica, Arial, sans-serif;
 	--max-width: 1120px;
 	--gutter: 24px;
@@ -117,9 +105,12 @@ h3 {
 	font-family: var(--font-heading);
 }
 
-.logo,
-.button {
+.logo {
 	font-family: var(--font-brand);
+}
+
+.button {
+	font-family: var(--font);
 }
 
 h1,
