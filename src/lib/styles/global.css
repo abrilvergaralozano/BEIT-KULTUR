@@ -15,6 +15,34 @@
 	src: url('/fonts/GlacialIndifference-Bold.woff') format('woff');
 }
 
+@font-face {
+	font-family: 'Nunito';
+	font-weight: 400;
+	font-display: swap;
+	src: url('/fonts/Nunito-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Nunito';
+	font-weight: 700;
+	font-display: swap;
+	src: url('/fonts/Nunito-Bold.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Nunito';
+	font-weight: 800;
+	font-display: swap;
+	src: url('/fonts/Nunito-ExtraBold.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Nunito';
+	font-weight: 900;
+	font-display: swap;
+	src: url('/fonts/Nunito-Black.ttf') format('truetype');
+}
+
 :root {
 	--bg: #faf8f2;
 	--text: #1a1a1a;
@@ -32,7 +60,8 @@
 	--light-grey: var(--box);
 
 	--font: 'Glacial Indifference', Helvetica, Arial, sans-serif;
-	--font-heading: 'Archivo', Helvetica, Arial, sans-serif;
+	--font-heading: 'Nunito', Helvetica, Arial, sans-serif;
+	--font-brand: 'Archivo', Helvetica, Arial, sans-serif;
 	--max-width: 1120px;
 	--gutter: 24px;
 	--radius-small: 4px;
@@ -84,10 +113,13 @@ body {
 
 h1,
 h2,
-h3,
+h3 {
+	font-family: var(--font-heading);
+}
+
 .logo,
 .button {
-	font-family: var(--font-heading);
+	font-family: var(--font-brand);
 }
 
 h1,
@@ -190,6 +222,10 @@ main {
 	line-height: 0.95;
 	letter-spacing: 0.02em;
 	text-decoration: none;
+}
+
+.big-logo {
+	font-family: var(--font-brand);
 }
 
 .logo span:last-child {
@@ -314,6 +350,11 @@ input[type='radio'] {
 /* Intro text under a page title */
 .intro {
 	font-size: 1.25rem;
+	font-family: var(--font-heading);
+}
+
+.tagline {
+	font-family: var(--font-heading);
 }
 
 /* Page sections */
