@@ -124,8 +124,7 @@
 		font-size: clamp(0.875rem, 2vw, 1.125rem);
 		font-weight: 600;
 		line-height: 1.4;
-		text-align: justify;
-		text-align-last: justify;
+		text-align: left;
 		margin: 0;
 	}
 

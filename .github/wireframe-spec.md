@@ -26,7 +26,7 @@ Language: English for now (not decided yet).
 - Headings, logo and buttons: **Archivo** from Google Fonts (weights 400, 600, 800, 900, and 900 italic for the logo).
 - Body text: **18px**, line-height **1.6**.
 - Headings: bold (800–900). Page title 56px desktop, 44px phone.
-- **Body paragraphs are justified.** Headings, navigation and controls remain left-aligned.
+- **All text is left-aligned.** Use normal word spacing and natural wrapping throughout the site.
 - No italics or underlines for emphasis. Use bold. (Exception: the logo.)
 - Short paragraphs, one idea each.
 

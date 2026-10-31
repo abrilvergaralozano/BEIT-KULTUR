@@ -127,13 +127,13 @@
 	.video {
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: flex-start;
 		aspect-ratio: 16 / 9;
 		background: var(--text);
 		color: var(--bg);
 		border-radius: var(--radius);
 		font-weight: 800;
-		text-align: center;
+		text-align: left;
 		padding: 1rem;
 	}
 
