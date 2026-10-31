@@ -60,6 +60,11 @@ The login uses the values in `.env`. Never use example credentials or commit `.e
 cookie is signed, HTTP-only, and expires after eight hours. Keep `DATABASE_URL` and `GEMINI_API_KEY`
 private too.
 
+For the deployed site, add `VOLUNTEER_USERNAME`, `VOLUNTEER_PASSWORD`, and `SESSION_SECRET` as
+environment variables in the Vercel project settings. Use a new random session secret with at least
+32 characters. Enable the variables for Production, then redeploy. Do not copy `.env` into the
+repository or share these values in chat.
+
 To create a production build, run `npm run build`.
 
 ## Scope and known limits
