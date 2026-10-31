@@ -112,6 +112,10 @@
 		margin-bottom: 4rem;
 	}
 
+	.who p {
+		max-width: none;
+	}
+
 	.who p:last-of-type {
 		margin-bottom: 1.5rem;
 	}
