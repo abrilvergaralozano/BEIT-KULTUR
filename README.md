@@ -16,8 +16,9 @@ copy and should be reviewed before a public launch.
 - Readers can browse the news list, search titles and summaries, open an article, and return to the
   list.
 - Volunteers can sign in, publish an article, and sign out. Only a signed-in volunteer can publish.
-- Articles created by volunteers are held temporarily in the running server's memory. They are lost
-  when the server restarts, which is within the Pass requirement.
+- Posts and comments are stored in Neon PostgreSQL after the database is configured.
+- Without a database connection, the site shows sample articles. Publishing and comments are
+  disabled with a setup message.
 - The site has responsive layouts, an Easy read control, and event-category filters.
 - The Events page fetches and displays Stockholm forecast data from SMHI.
 - Donation and contact forms are test interfaces. They do not process real payments or send
@@ -32,8 +33,11 @@ npm install
 Copy-Item .env.example .env
 ```
 
-Edit `.env` and set a volunteer username, a strong password, and a random session secret with at
-least 32 characters. To generate a session secret:
+Create a free Neon project. In the Neon SQL Editor, run `database/schema.sql` to create the tables
+and add the sample articles. Copy the Neon connection string into `DATABASE_URL` in `.env`.
+
+Then set a volunteer username, a strong password, and a random session secret with at least 32
+characters. To generate a session secret:
 
 ```powershell
 node -e "console.log(require('node:crypto').randomBytes(32).toString('base64url'))"
@@ -46,20 +50,17 @@ npm run dev
 ```
 
 The login uses the values in `.env`. Never use example credentials or commit `.env`. The session
-cookie is signed, HTTP-only, and expires after eight hours.
+cookie is signed, HTTP-only, and expires after eight hours. Keep `DATABASE_URL` private too.
 
 To create a production build, run `npm run build`.
 
 ## Scope and known limits
 
-This project currently targets the Pass requirements. Posts and comments are not stored in a
-database, and there is no AI API feature. PostgreSQL on Neon, database-backed comments and posts,
-and an AI API feature are required for Pass with distinction. The project presentation slides also
-need to be prepared for final submission.
+The brief's distinction extension also requires one AI API feature. It has not been added yet. The
+project presentation slides need to be prepared for final submission.
 
-The temporary article store is for demonstrating the workflow locally. It is not durable and is not
-suitable for a multi-instance or serverless deployment. Use a database before relying on published
-articles in production.
+The database connection uses Neon's serverless driver. Posts and comments are persistent when
+`DATABASE_URL` points to the Neon project and the schema has been applied.
 
 ## Presentation
 

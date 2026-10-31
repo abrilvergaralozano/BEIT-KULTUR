@@ -1,6 +1,10 @@
 import { defineEnvVars } from '@sveltejs/kit/env';
 
 export const variables = defineEnvVars({
+	DATABASE_URL: {
+		description: 'Private Neon PostgreSQL connection string.',
+		schema: (value) => value || undefined
+	},
 	VOLUNTEER_USERNAME: {
 		description: 'Username used for volunteer sign-in.',
 		schema: (value) => value || undefined

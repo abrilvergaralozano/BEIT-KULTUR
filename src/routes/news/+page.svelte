@@ -26,7 +26,14 @@
 	News from Beit Kultur. Members also get it by email. <a href="/members">Become a member</a>
 </p>
 
-{#if data.isVolunteer}
+{#if !data.databaseConfigured}
+	<p class="notice" role="status">
+		Sample articles are shown. Connect Neon by setting DATABASE_URL to publish posts and save
+		comments.
+	</p>
+{/if}
+
+{#if data.isVolunteer && data.databaseConfigured}
 	<section class="box add-post" id="add-post" aria-labelledby="add-post-title">
 		<h2 id="add-post-title">Add a post</h2>
 		{#if form?.createError}
@@ -45,6 +52,8 @@
 			<button type="submit" class="button">Publish post</button>
 		</form>
 	</section>
+{:else if data.isVolunteer}
+	<p class="notice">Connect Neon to publish new posts.</p>
 {:else}
 	<p>Volunteer? <a href="/login" class="link">Log in to add a post</a></p>
 {/if}

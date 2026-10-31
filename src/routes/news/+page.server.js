@@ -1,15 +1,23 @@
 import { fail, redirect } from '@sveltejs/kit';
 import { createPost, getPosts } from '#lib/server/posts.js';
 import { isVolunteer } from '#lib/server/auth.js';
+import { isDatabaseConfigured } from '#lib/server/db.js';
 
-export function load({ cookies }) {
-	return { posts: getPosts(), isVolunteer: isVolunteer(cookies) };
+export async function load({ cookies }) {
+	return {
+		posts: await getPosts(),
+		isVolunteer: isVolunteer(cookies),
+		databaseConfigured: isDatabaseConfigured()
+	};
 }
 
 export const actions = {
 	create: async ({ request, cookies }) => {
 		if (!isVolunteer(cookies)) {
 			return fail(401, { createError: 'Your volunteer session has ended. Please sign in again.' });
+		}
+		if (!isDatabaseConfigured()) {
+			return fail(503, { createError: 'Set DATABASE_URL to publish posts to Neon.' });
 		}
 
 		const formData = await request.formData();
@@ -25,7 +33,7 @@ export const actions = {
 			return fail(400, { createError: 'The title, summary or article is too long.' });
 		}
 
-		const post = createPost({ title, summary, text });
+		const post = await createPost({ title, summary, text });
 		redirect(303, `/news/${post.id}`);
 	}
 };

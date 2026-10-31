@@ -1,7 +1,7 @@
-// Sample articles for the blog. New posts are held in memory during the current server process.
+// Sample articles are shown until a Neon database is configured and seeded.
 export const posts = [
 	{
-		id: 1,
+		id: '00000000-0000-4000-8000-000000000001',
 		date: '30 October 2026',
 		author: 'Beit Kultur',
 		title: 'Sundays at Beit brings live music to Stockholm',
@@ -13,7 +13,7 @@ export const posts = [
 		]
 	},
 	{
-		id: 2,
+		id: '00000000-0000-4000-8000-000000000002',
 		date: '18 October 2026',
 		author: 'Beit Kultur',
 		title: 'Making space for artists and new ideas',
@@ -25,7 +25,7 @@ export const posts = [
 		]
 	},
 	{
-		id: 3,
+		id: '00000000-0000-4000-8000-000000000003',
 		date: '4 October 2026',
 		author: 'Beit Kultur',
 		title: 'A new digital home for Beit Kultur',
