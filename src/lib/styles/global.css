@@ -115,6 +115,38 @@ main {
 	color: var(--lime);
 }
 
+button.button {
+	font-family: inherit;
+	cursor: pointer;
+}
+
+/* Form fields */
+label {
+	display: block;
+	font-weight: 700;
+	margin-bottom: 0.4rem;
+}
+
+input,
+textarea {
+	display: block;
+	width: 100%;
+	font-family: inherit;
+	font-size: 1.125rem;
+	line-height: 1.5;
+	color: var(--black);
+	background: var(--white);
+	border: 2px solid var(--white);
+	border-radius: 0;
+	padding: 0.7rem 0.9rem;
+	margin-bottom: 1.25rem;
+}
+
+textarea {
+	min-height: 9rem;
+	resize: vertical;
+}
+
 /* Outlined button, black with a white border */
 .button-outline {
 	background: var(--black);
