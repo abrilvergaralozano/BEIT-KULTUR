@@ -70,8 +70,7 @@
 	}
 
 	.photo {
-		border-radius: var(--radius);
-		overflow: hidden;
+		min-width: 0;
 	}
 
 	.intro {

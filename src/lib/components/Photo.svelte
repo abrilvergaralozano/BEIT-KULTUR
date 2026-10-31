@@ -27,7 +27,7 @@
 	.placeholder {
 		width: 100%;
 		object-fit: cover;
-		border-radius: inherit;
+		border-radius: 0;
 	}
 
 	.placeholder {

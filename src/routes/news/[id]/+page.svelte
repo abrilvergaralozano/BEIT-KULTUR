@@ -73,8 +73,6 @@
 	}
 
 	.photo {
-		border-radius: var(--radius);
-		overflow: hidden;
 		margin-bottom: 1.5rem;
 	}
 

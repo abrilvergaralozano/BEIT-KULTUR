@@ -189,11 +189,6 @@
 	}
 
 	.big-photo {
-		border: 1px solid var(--text);
-		border-radius: var(--radius);
-		background: var(--text);
-		padding: clamp(0.4rem, 1.2vw, 1rem);
-		overflow: hidden;
 		margin-bottom: 4rem;
 	}
 
