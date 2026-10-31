@@ -21,6 +21,10 @@
 			autoplayVideo = !motionPreference.matches;
 			if (motionPreference.matches) {
 				backgroundVideo.pause();
+			} else {
+				backgroundVideo.play().catch((error) => {
+					console.error('Unable to play the home background video.', error);
+				});
 			}
 		};
 		updateVideoPlayback();
