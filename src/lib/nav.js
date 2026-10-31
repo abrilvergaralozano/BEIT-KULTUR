@@ -4,7 +4,6 @@ export const navLinks = [
 	{ href: '/projects', label: 'Projects' },
 	{ href: '/events', label: 'Events' },
 	{ href: '/news', label: 'News' },
-	{ href: '/gallery', label: 'Gallery' },
 	{ href: '/get-involved', label: 'Get involved' },
 	{ href: '/members', label: 'Membership' }
 ];

@@ -67,7 +67,7 @@ Two lines: `BEIT` (weight 900) and `KULTUR` (weight 900, italic). Links to Home.
 
 ### Header (every page)
 Left to right: logo · menu · "Easy read" button · lime "Donate" button.
-Menu links: **About, Projects, Events, News, Gallery, Get involved, Membership**.
+Menu links: **About, Projects, Events, News, Get involved, Membership**.
 
 "Easy read" button: makes text bigger and adds more spacing (this is the theme switcher for task 4). Uses `aria-pressed`.
 
@@ -177,11 +177,6 @@ Title "Membership". "Members support artists from the global majority. All membe
 3 cards: One time ([PRICE] kr), Monthly ([PRICE] kr a month), Yearly ([PRICE] kr a year). Each: [WHAT IS INCLUDED], button "Join" → /about?topic=member#contact.
 "Already a member and want to renew? Contact us."
 
-### Gallery — `/gallery`
-Title "Gallery". "Photos from our events. More photos are coming soon."
-Only real photos:
-- `sundays-at-beit.jpg` — caption "Sundays at Beit: Softronic live set · [YEAR]"
-- `event-crowd.jpg` — caption "[CAPTION · EVENT · YEAR]"
 
 ### Donate — `/donate` (test mode)
 1. Title "Donate". "Your gift helps artists from the global majority show their work. Why we exist" (→ /about).
