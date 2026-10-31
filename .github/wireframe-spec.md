@@ -111,7 +111,7 @@ Bottom row: "Beit Kultur · non-profit cultural association · Stockholm" and li
 5. **Contact us** (`id="contact"`) — the ONLY contact form on the site:
    - Name (required), Email (required), "What is it about?" select (I want to volunteer / I am an artist / I want to become a member / My association or gallery / Something else), Message (required), button "Send message".
    - If the page opens with `?topic=member`, pre-select "I want to become a member".
-   - Next to it: Email [EMAIL ADDRESS], Address [ADDRESS], Instagram [INSTAGRAM].
+   - Next to it: Email beitkultur@gmail.com, Instagram @beitkultur. No address is displayed.
 
 (Staff and partners sections: hidden until there is real content.)
 
@@ -193,7 +193,7 @@ Title "Membership". "Members support artists from the global majority. All membe
 ### Privacy — `/privacy`
 Title "Privacy", "Last updated: [DATE]".
 **What we collect**: Visits (Vercel Web Analytics, no cookies) · Test donations (amount and date, email only if added) · Contact form (name, email, message) · Comments (name and comment) · Volunteer login (username and a protected password).
-Sections: Why we collect it · How long we keep it · Your rights · "Questions about your data? Email [EMAIL ADDRESS] or use the contact form."
+Sections: Why we collect it · How long we keep it · Your rights · "Questions about your data? Email beitkultur@gmail.com or use the contact form."
 
 ---
 

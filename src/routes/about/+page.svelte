@@ -145,11 +145,9 @@
 		<h3>Other ways to reach us</h3>
 		<dl>
 			<dt>Email</dt>
-			<dd>[EMAIL ADDRESS]</dd>
-			<dt>Address</dt>
-			<dd>[ADDRESS]</dd>
+			<dd><a href="mailto:beitkultur@gmail.com">beitkultur@gmail.com</a></dd>
 			<dt>Instagram</dt>
-			<dd>[INSTAGRAM]</dd>
+			<dd><a href="https://www.instagram.com/beitkultur/">@beitkultur</a></dd>
 		</dl>
 	</div>
 </section>

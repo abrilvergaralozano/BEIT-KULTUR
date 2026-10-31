@@ -33,7 +33,7 @@
 	</section>
 
 	<p class="section">
-		Questions about your data? Email [EMAIL ADDRESS] or use the
+		Questions about your data? Email <a href="mailto:beitkultur@gmail.com">beitkultur@gmail.com</a> or use the
 		<a href="/about#contact">contact form</a>.
 	</p>
 </div>
