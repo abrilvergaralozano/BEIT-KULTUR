@@ -19,8 +19,12 @@
 </svelte:head>
 
 <section class="hero">
-	<h1 class="big-logo"><span>BEIT</span><span>KULTUR</span></h1>
-	<p class="tagline">A non-profit community that makes culture</p>
+	<div class="brand">
+		<h1 class="big-logo"><span>BEIT</span><span>KULTUR</span></h1>
+		<p class="tagline">
+			A non-profit cultural association creating space for diverse voices through the arts.
+		</p>
+	</div>
 	<div class="buttons">
 		<a href="/donate" class="button">Donate</a>
 		<a href="/get-involved" class="button button-second">Get involved</a>
@@ -88,16 +92,21 @@
 		flex-direction: column;
 		font-size: clamp(4rem, 15vw, 9rem);
 		line-height: 0.9;
-		margin-bottom: 1.5rem;
+		margin-bottom: 0.25rem;
 	}
 
 	.big-logo span:last-child {
 		font-style: italic;
 	}
 
+	.brand {
+		margin-bottom: 1.5rem;
+	}
+
 	.tagline {
 		font-size: 1.5rem;
 		font-weight: 600;
+		margin: 0;
 	}
 
 	.buttons {
