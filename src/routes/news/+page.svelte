@@ -32,12 +32,15 @@
 		aiLoading = true;
 		aiError = '';
 		aiStatus = '';
+		const controller = new AbortController();
+		const timeoutId = window.setTimeout(() => controller.abort(), 40_000);
 
 		try {
 			const response = await fetch('/api/ai/post-summary', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ title: draftTitle, text: draftText })
+				body: JSON.stringify({ title: draftTitle, text: draftText }),
+				signal: controller.signal
 			});
 			const result = await response.json().catch(() => null);
 
@@ -51,8 +54,13 @@
 			draftSummary = result.summary;
 			aiStatus = 'Summary drafted. Review and edit it before publishing.';
 		} catch (error) {
-			aiError = error instanceof Error ? error.message : 'The AI summary could not be generated.';
+			aiError = controller.signal.aborted
+				? 'Gemini took too long to respond. Please try again.'
+				: error instanceof Error
+					? error.message
+					: 'The AI summary could not be generated.';
 		} finally {
+			window.clearTimeout(timeoutId);
 			aiLoading = false;
 		}
 	}

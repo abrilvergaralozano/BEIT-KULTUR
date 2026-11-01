@@ -38,6 +38,12 @@ export async function POST({ request, cookies }) {
 		return json({ summary: await createPostSummary({ title, text }) });
 	} catch (cause) {
 		console.error('Gemini post-summary request failed:', cause);
+		if (cause?.name === 'TimeoutError') {
+			return json(
+				{ error: 'Gemini took too long to respond. Please try again.' },
+				{ status: 504 }
+			);
+		}
 		return json(
 			{ error: 'The AI summary could not be generated. Try again later.' },
 			{ status: 502 }
