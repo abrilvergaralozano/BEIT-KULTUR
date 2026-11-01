@@ -4,7 +4,9 @@
 	const amounts = [100, 200, 300, 400];
 
 	let backgroundVideo;
+	let storyVideo;
 	let autoplayVideo = $state(false);
+	let autoplayStory = $state(false);
 	let monthly = $state(false);
 	let selectedAmount = $state(null);
 	let otherAmount = $state('');
@@ -14,12 +16,18 @@
 		const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
 		const updateVideoPlayback = () => {
 			autoplayVideo = !motionPreference.matches;
+			autoplayStory = !motionPreference.matches;
 			if (motionPreference.matches) {
 				backgroundVideo.pause();
+				storyVideo.pause();
 			} else {
 				backgroundVideo.play().catch((error) => {
 					if (error?.name === 'AbortError') return;
 					console.error('Unable to play the Donate background video.', error);
+				});
+				storyVideo.play().catch((error) => {
+					if (error?.name === 'AbortError') return;
+					console.error('Unable to play the Donate story video.', error);
 				});
 			}
 		};
@@ -29,6 +37,7 @@
 		return () => {
 			motionPreference.removeEventListener('change', updateVideoPlayback);
 			backgroundVideo.pause();
+			storyVideo.pause();
 		};
 	});
 
@@ -161,6 +170,10 @@
 	<h2 id="donate-video-title">Beit Kultur in action</h2>
 	<video
 		class="donate-video"
+		bind:this={storyVideo}
+		autoplay={autoplayStory}
+		muted
+		loop
 		controls
 		playsinline
 		preload="metadata"
