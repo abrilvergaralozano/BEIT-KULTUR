@@ -69,13 +69,15 @@ To create a production build, run `npm run build`.
 
 ## Scope and known limits
 
-The project presentation slides still need to be prepared for final submission.
+The first version of the project presentation is in
+`presentation/Beit-Kultur-Project-Presentation.pptx`. Review the sample content and placeholders
+before final submission.
 
 The database connection uses Neon's serverless driver. Posts and comments are persistent when
 `DATABASE_URL` points to the Neon project and the schema has been applied.
 
 ## Presentation
 
-The site demonstrates a searchable article feed, volunteer authentication, AI-assisted article
-summaries, the SMHI external API, and responsive layouts. Before presenting, be ready to explain the
-code and data flow, and to demonstrate the feature yourself.
+The presentation covers the site's purpose, visitor pages, volunteer blog workflow, AI summaries,
+SMHI weather API, Neon database, accessibility, and a live demo walkthrough. Before presenting, be
+ready to explain the code and data flow, and to demonstrate the features yourself.
