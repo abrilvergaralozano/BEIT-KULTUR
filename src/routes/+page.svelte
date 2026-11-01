@@ -10,7 +10,7 @@
 	let autoplayVideo = $state(false);
 
 	onMount(() => {
-		document.body.classList.add('home-background-active');
+		document.body.classList.add('video-background-active');
 		const observer = new ResizeObserver(([entry]) => {
 			brandWidth = entry.contentRect.width;
 		});
@@ -33,7 +33,7 @@
 		return () => {
 			observer.disconnect();
 			motionPreference.removeEventListener('change', updateVideoPlayback);
-			document.body.classList.remove('home-background-active');
+			document.body.classList.remove('video-background-active');
 		};
 	});
 
@@ -146,6 +146,8 @@
 		position: fixed;
 		z-index: -1;
 		inset: 0;
+		width: 100vw;
+		height: 100vh;
 		overflow: hidden;
 		background: var(--bg);
 		pointer-events: none;
@@ -159,24 +161,12 @@
 	}
 
 	.background-video {
+		position: fixed;
+		inset: 0;
 		display: block;
-		width: 100%;
-		height: 100%;
+		width: 100vw;
+		height: 100vh;
 		object-fit: cover;
-	}
-
-	:global(body.home-background-active main) {
-		background-image: none;
-	}
-
-	:global(body.home-background-active header) {
-		background-color: var(--text);
-	}
-
-	:global(body.home-background-active footer) {
-		position: relative;
-		z-index: 1;
-		background-color: var(--text);
 	}
 
 	section {

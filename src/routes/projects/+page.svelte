@@ -7,6 +7,7 @@
 	let autoplayVideo = $state(false);
 
 	onMount(() => {
+		document.body.classList.add('video-background-active');
 		const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
 		const updateVideoPlayback = () => {
 			autoplayVideo = !motionPreference.matches;
@@ -24,6 +25,7 @@
 
 		return () => {
 			motionPreference.removeEventListener('change', updateVideoPlayback);
+			document.body.classList.remove('video-background-active');
 			backgroundVideo.pause();
 		};
 	});
@@ -80,10 +82,11 @@
 	}
 
 	.page-background {
-		position: absolute;
+		position: fixed;
 		z-index: -1;
-		inset: 0 auto 0 calc(-1 * var(--gutter));
-		width: calc(100% + 2 * var(--gutter));
+		inset: 0;
+		width: 100vw;
+		height: 100vh;
 		overflow: hidden;
 		background: var(--bg);
 		pointer-events: none;
@@ -97,9 +100,11 @@
 	}
 
 	.background-video {
+		position: fixed;
+		inset: 0;
 		display: block;
-		width: 100%;
-		height: 100%;
+		width: 100vw;
+		height: 100vh;
 		object-fit: cover;
 	}
 
