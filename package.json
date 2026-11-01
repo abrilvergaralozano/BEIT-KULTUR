@@ -28,18 +28,5 @@
 	},
 	"allowScripts": {
 		"ffmpeg-static@5.3.0": true
-	},
-	"description": "Beit Kultur is a Stockholm non-profit cultural association. This site uses the marketing-site\r alternative in the individual blog project brief: it includes an articles feed and lets volunteers\r add articles.",
-	"main": "vite.config.js",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/abrilvergaralozano/BEIT-KULTUR.git"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/abrilvergaralozano/BEIT-KULTUR/issues"
-	},
-	"homepage": "https://github.com/abrilvergaralozano/BEIT-KULTUR#readme"
+	}
 }
