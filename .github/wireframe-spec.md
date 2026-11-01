@@ -96,6 +96,7 @@ Bottom row: "Beit Kultur · non-profit cultural association · Stockholm" and li
 
 ### About — `/about`
 1. Title "About Beit Kultur".
+   - Full-viewport background video: `static/videos/about-background.mp4`, with `static/images/about-background-poster.jpg` as its poster. Keep it muted and behind all content; respect `prefers-reduced-motion`.
 2. **Our mission**: Beit Kultur is a non-profit cultural association. We give artists from the global majority (BIPOC: Black, Indigenous and People of Color) a platform to show their work in music, poetry and film.
    **Our aim**: Mainstream art spaces mostly cater to white artists. We want to change the lack of representation for artists from the global majority. We are a grassroots movement, and everyone at Beit Kultur is a volunteer.
 3. **Our values** (3 cards with image):
