@@ -105,7 +105,7 @@ body.video-background-active main {
 
 body.video-background-active header,
 body.video-background-active footer {
-	background-color: rgba(26, 26, 26, 0.9);
+	background-color: var(--text);
 }
 
 body.video-background-active footer {
