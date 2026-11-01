@@ -57,8 +57,9 @@
 			loop
 			playsinline
 			preload="metadata"
+			poster="/images/donate-background-poster.jpg"
 		>
-			<source src="/videos/donate-background.mov" type="video/quicktime" />
+			<source src="/videos/donate-background.mp4" type="video/mp4" />
 		</video>
 	</div>
 
@@ -180,12 +181,6 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		.background-video {
-			visibility: hidden;
-		}
 	}
 
 	.gift {
