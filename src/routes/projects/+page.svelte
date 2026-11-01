@@ -82,10 +82,9 @@
 	.page-background {
 		position: absolute;
 		z-index: -1;
-		inset: 0 auto 0 50%;
-		width: 100vw;
+		inset: 0 auto 0 calc(-1 * var(--gutter));
+		width: calc(100% + 2 * var(--gutter));
 		overflow: hidden;
-		transform: translateX(-50%);
 		background: var(--bg);
 		pointer-events: none;
 	}
