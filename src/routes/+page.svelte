@@ -400,6 +400,11 @@
 			flex-direction: column;
 		}
 
+		.buttons .button {
+			justify-content: center;
+			text-align: center;
+		}
+
 		.hero-index {
 			gap: 0.25rem 1rem;
 		}

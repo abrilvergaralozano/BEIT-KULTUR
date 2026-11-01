@@ -156,6 +156,21 @@
 		{/each}
 	</ul>
 </section>
+
+<section class="section video-section" aria-labelledby="donate-video-title">
+	<h2 id="donate-video-title">Beit Kultur in action</h2>
+	<video
+		class="donate-video"
+		controls
+		playsinline
+		preload="metadata"
+		poster="/images/donate-story-poster.jpg"
+		aria-label="Video from Beit Kultur"
+	>
+		<source src="/videos/donate-story.mp4" type="video/mp4" />
+		Your browser does not support video playback.
+	</video>
+</section>
 </div>
 
 <style>
@@ -185,6 +200,18 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+	}
+
+	.video-section {
+		max-width: 48rem;
+		margin-inline: auto;
+	}
+
+	.donate-video {
+		display: block;
+		width: 100%;
+		height: auto;
+		background: var(--text);
 	}
 
 	.gift {
