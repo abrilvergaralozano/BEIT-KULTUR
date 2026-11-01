@@ -1,10 +1,32 @@
 <script>
+	import { onMount } from 'svelte';
+
 	const amounts = [100, 200, 300, 400];
 
+	let backgroundVideo;
+	let autoplayVideo = $state(false);
 	let monthly = $state(false);
 	let selectedAmount = $state(null);
 	let otherAmount = $state('');
 	let sent = $state(false);
+
+	onMount(() => {
+		const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+		const updateVideoPlayback = () => {
+			autoplayVideo = !motionPreference.matches;
+			if (motionPreference.matches) {
+				backgroundVideo.pause();
+			} else {
+				backgroundVideo.play().catch((error) => {
+					console.error('Unable to play the Donate background video.', error);
+				});
+			}
+		};
+		updateVideoPlayback();
+		motionPreference.addEventListener('change', updateVideoPlayback);
+
+		return () => motionPreference.removeEventListener('change', updateVideoPlayback);
+	});
 
 	let amount = $derived(otherAmount ? Number(otherAmount) : selectedAmount);
 	let giveText = $derived(`Give ${amount} kr${monthly ? ' every month' : ''}`);
@@ -25,18 +47,25 @@
 	<title>Donate – Beit Kultur</title>
 </svelte:head>
 
+<div class="donate-page">
+	<div class="page-background" aria-hidden="true">
+		<video
+			class="background-video"
+			bind:this={backgroundVideo}
+			autoplay={autoplayVideo}
+			muted
+			loop
+			playsinline
+			preload="metadata"
+		>
+			<source src="/videos/donate-background.mov" type="video/quicktime" />
+		</video>
+	</div>
+
 <h1>Donate</h1>
 <p class="intro">
 	Your gift helps artists from the global majority show their work. <a href="/about">Why we exist</a>
 </p>
-
-<section class="section">
-	<!-- Placeholder until we have the video -->
-	<div class="video" role="img" aria-label="Video about Beit Kultur, coming soon">
-		<span aria-hidden="true">[VIDEO ABOUT BEIT KULTUR]</span>
-	</div>
-	<p class="muted">The video does not play by itself. It has captions and a text version.</p>
-</section>
 
 <section class="section gift" aria-labelledby="gift-title">
 	<h2 id="gift-title">Give a gift</h2>
@@ -122,23 +151,41 @@
 		{/each}
 	</ul>
 </section>
+</div>
 
 <style>
-	.video {
-		display: flex;
-		align-items: center;
-		justify-content: flex-start;
-		aspect-ratio: 16 / 9;
-		background: var(--text);
-		color: var(--bg);
-		border-radius: var(--radius);
-		font-weight: 800;
-		text-align: left;
-		padding: 1rem;
+	.donate-page {
+		position: relative;
+		isolation: isolate;
 	}
 
-	.video + .muted {
-		margin-top: 0.75rem;
+	.page-background {
+		position: fixed;
+		z-index: -1;
+		inset: 0;
+		overflow: hidden;
+		background: var(--bg);
+		pointer-events: none;
+	}
+
+	.page-background::after {
+		position: absolute;
+		inset: 0;
+		background: rgba(250, 248, 242, 0.72);
+		content: '';
+	}
+
+	.background-video {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.background-video {
+			visibility: hidden;
+		}
 	}
 
 	.gift {

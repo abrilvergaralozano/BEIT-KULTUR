@@ -28,7 +28,7 @@
 	}
 </script>
 
-<header>
+<header class:volunteer={isVolunteer}>
 	<div class="inner">
 		<a href="/" class="logo" onclick={closeMenu}><span>BEIT</span><span>KULTUR</span></a>
 
@@ -139,6 +139,43 @@
 
 	.menu-toggle {
 		display: none;
+	}
+
+	@media (max-width: 1450px) {
+		header.volunteer .donate {
+			margin-left: auto;
+		}
+
+		header.volunteer .menu-toggle {
+			display: inline-flex;
+		}
+
+		header.volunteer nav {
+			display: none;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 1rem;
+			margin: 0;
+			padding: 1rem var(--gutter) 1.5rem;
+			background: var(--text);
+			border-bottom: 1px solid var(--text);
+		}
+
+		header.volunteer nav.open {
+			display: flex;
+		}
+
+		header.volunteer ul {
+			flex-direction: column;
+		}
+
+		header.volunteer ul a {
+			font-size: 1.375rem;
+		}
 	}
 
 	/* Phone: logo · Donate · Menu. The links open in a list below. */
