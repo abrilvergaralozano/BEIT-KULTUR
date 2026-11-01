@@ -33,6 +33,15 @@
 	footer {
 		background: var(--chrome);
 		color: var(--bg);
+		font-size: 0.9rem;
+	}
+
+	footer .logo {
+		font-size: 1.8rem;
+	}
+
+	footer .button {
+		font-size: 0.9rem;
 	}
 
 	.inner {
@@ -98,6 +107,12 @@
 
 		nav ul {
 			flex-direction: column;
+		}
+	}
+
+	@media (max-width: 600px) {
+		footer .logo {
+			font-size: 1.4rem;
 		}
 	}
 </style>

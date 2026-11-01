@@ -79,9 +79,13 @@
 		position: sticky;
 		top: 0;
 		z-index: 10;
+		font-size: 0.9rem;
 	}
 
-	.logo,
+	header .logo {
+		font-size: 1.8rem;
+	}
+
 	ul a {
 		color: var(--bg);
 	}
@@ -130,6 +134,7 @@
 	/* Smaller buttons in the header */
 	.button {
 		padding: 8px 16px;
+		font-size: 0.9rem;
 	}
 
 	.button[aria-pressed='true'] {
@@ -174,7 +179,7 @@
 		}
 
 		header.volunteer ul a {
-			font-size: 1.375rem;
+			font-size: 1.1rem;
 		}
 	}
 
@@ -212,7 +217,13 @@
 		}
 
 		ul a {
-			font-size: 1.375rem;
+			font-size: 1.1rem;
+		}
+	}
+
+	@media (max-width: 600px) {
+		header .logo {
+			font-size: 1.4rem;
 		}
 	}
 
@@ -221,14 +232,14 @@
 			gap: 0.75rem;
 		}
 
-		.logo {
-			font-size: 1.5rem;
+		header .logo {
+			font-size: 1.2rem;
 		}
 
 		.donate,
 		.menu-toggle {
 			padding: 6px 10px;
-			font-size: 1rem;
+			font-size: 0.8rem;
 		}
 	}
 
@@ -237,14 +248,14 @@
 			gap: 0.25rem;
 		}
 
-		.logo {
-			font-size: 1.25rem;
+		header .logo {
+			font-size: 1rem;
 		}
 
 		.donate,
 		.menu-toggle {
 			padding: 4px 6px;
-			font-size: 0.875rem;
+			font-size: 0.7rem;
 		}
 	}
 </style>
