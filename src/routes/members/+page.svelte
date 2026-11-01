@@ -1,11 +1,30 @@
 <script>
 	import { onMount } from 'svelte';
 
+	let backgroundVideo;
+	let autoplayVideo = $state(false);
+
 	onMount(() => {
 		document.body.classList.add('page-background-active');
+		const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+		const updateVideoPlayback = () => {
+			autoplayVideo = !motionPreference.matches;
+			if (motionPreference.matches) {
+				backgroundVideo.pause();
+			} else {
+				backgroundVideo.play().catch((error) => {
+					if (error?.name === 'AbortError') return;
+					console.error('Unable to play the Membership background video.', error);
+				});
+			}
+		};
+		updateVideoPlayback();
+		motionPreference.addEventListener('change', updateVideoPlayback);
 
 		return () => {
+			motionPreference.removeEventListener('change', updateVideoPlayback);
 			document.body.classList.remove('page-background-active');
+			backgroundVideo.pause();
 		};
 	});
 
@@ -52,7 +71,18 @@
 
 <div class="membership-page">
 	<div class="page-background" aria-hidden="true">
-		<img src="/images/membership-background.jpeg" alt="" />
+		<video
+			class="background-video"
+			bind:this={backgroundVideo}
+			autoplay={autoplayVideo}
+			muted
+			loop
+			playsinline
+			preload="metadata"
+			poster="/images/membership-background-poster.jpg"
+		>
+			<source src="/videos/membership-background.mp4" type="video/mp4" />
+		</video>
 	</div>
 
 <h1>Become a member</h1>
@@ -163,9 +193,10 @@
 		content: '';
 	}
 
-	.page-background img {
+	.background-video {
 		position: fixed;
 		inset: 0;
+		display: block;
 		width: 100vw;
 		height: 100vh;
 		object-fit: cover;
