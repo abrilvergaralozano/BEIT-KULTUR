@@ -74,8 +74,8 @@
 
 <style>
 	header {
-		background: var(--text);
-		border-bottom: 1px solid var(--text);
+		background: var(--chrome);
+		border-bottom: 1px solid var(--chrome);
 		position: sticky;
 		top: 0;
 		z-index: 10;
@@ -161,8 +161,8 @@
 			gap: 1rem;
 			margin: 0;
 			padding: 1rem var(--gutter) 1.5rem;
-			background: var(--text);
-			border-bottom: 1px solid var(--text);
+			background: var(--chrome);
+			border-bottom: 1px solid var(--chrome);
 		}
 
 		header.volunteer nav.open {
@@ -199,8 +199,8 @@
 			gap: 1rem;
 			margin: 0;
 			padding: 1rem var(--gutter) 1.5rem;
-			background: var(--text);
-			border-bottom: 1px solid var(--text);
+			background: var(--chrome);
+			border-bottom: 1px solid var(--chrome);
 		}
 
 		nav.open {

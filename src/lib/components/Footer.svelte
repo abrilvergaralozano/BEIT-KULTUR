@@ -31,7 +31,7 @@
 
 <style>
 	footer {
-		background: var(--text);
+		background: var(--chrome);
 		color: var(--bg);
 	}
 

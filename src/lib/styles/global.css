@@ -34,6 +34,7 @@
 :root {
 	--bg: #faf8f2;
 	--text: #1a1a1a;
+	--chrome: #000000;
 	--muted: #555555;
 	--lime: #e8ff5a;
 	--box: #efebe0;
@@ -105,7 +106,7 @@ body.page-background-active main {
 
 body.page-background-active header,
 body.page-background-active footer {
-	background-color: var(--text);
+	background-color: var(--chrome);
 }
 
 body.page-background-active footer {
