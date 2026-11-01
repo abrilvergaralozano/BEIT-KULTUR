@@ -28,14 +28,6 @@
 	}
 </script>
 
-{#if isVolunteer}
-	<div class="volunteer-tools">
-		<form method="POST" action="/logout">
-			<button type="submit" class="signout-link">Sign out</button>
-		</form>
-	</div>
-{/if}
-
 <header class:volunteer={isVolunteer}>
 	<div class="inner">
 		<a href="/" class="logo" onclick={closeMenu}><span>BEIT</span><span>KULTUR</span></a>
@@ -71,6 +63,14 @@
 		</button>
 	</div>
 </header>
+
+{#if isVolunteer}
+	<div class="volunteer-tools">
+		<form method="POST" action="/logout">
+			<button type="submit" class="signout-link">Sign out</button>
+		</form>
+	</div>
+{/if}
 
 <style>
 	header {
