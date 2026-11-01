@@ -239,14 +239,14 @@ main {
 	font-style: italic;
 }
 
-/* Buttons. Main = lime (Donate). */
+/* Buttons use two off-white shades; Donate keeps a neon arrow tile. */
 .button {
 	display: inline-flex;
 	align-items: center;
 	justify-content: space-between;
 	gap: 0.75rem;
 	min-height: 52px;
-	background: var(--lime);
+	background: var(--bg);
 	color: var(--text);
 	text-align: left;
 	font-weight: 800;
@@ -268,7 +268,7 @@ main {
 	width: 2.25rem;
 	height: 2.25rem;
 	border-radius: 8px;
-	background: rgba(26, 26, 26, 0.1);
+	background-color: var(--box);
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a1a1a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17 17 7M7 7h10v10'/%3E%3C/svg%3E");
 	background-position: center;
 	background-repeat: no-repeat;
@@ -284,15 +284,23 @@ button {
 }
 
 .button:hover::after {
-	background: rgba(26, 26, 26, 0.18);
+	filter: brightness(0.96);
 }
 
-/* Keep every button variant in the site's neon-lime style. */
+/* Keep the button variants off-white too. */
 .button-second,
 .button-outline,
 .button-dark {
-	background: var(--lime);
+	background: var(--bg);
 	color: var(--text);
+}
+
+.button.donate {
+	background: var(--bg);
+}
+
+.button.donate::after {
+	background-color: var(--lime);
 }
 
 .button[aria-pressed='true'] {

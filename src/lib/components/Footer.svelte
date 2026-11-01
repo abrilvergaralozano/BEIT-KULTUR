@@ -15,7 +15,7 @@
 				</ul>
 			</nav>
 
-			<a href="/donate" class="button">Donate</a>
+			<a href="/donate" class="button donate">Donate</a>
 		</div>
 
 		<div class="bottom">

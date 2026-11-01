@@ -77,7 +77,7 @@
 		</p>
 	</div>
 	<div class="buttons">
-		<a href="/donate" class="button">Donate</a>
+		<a href="/donate" class="button donate">Donate</a>
 		<a href="/get-involved" class="button button-second">Get involved</a>
 	</div>
 	<nav class="hero-index" aria-label="Explore Beit Kultur">
