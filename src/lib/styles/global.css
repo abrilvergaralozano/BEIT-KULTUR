@@ -99,16 +99,16 @@ body {
 	word-spacing: normal;
 }
 
-body.video-background-active main {
+body.page-background-active main {
 	background-image: none;
 }
 
-body.video-background-active header,
-body.video-background-active footer {
+body.page-background-active header,
+body.page-background-active footer {
 	background-color: var(--text);
 }
 
-body.video-background-active footer {
+body.page-background-active footer {
 	position: relative;
 	z-index: 1;
 }

@@ -10,7 +10,7 @@
 	let autoplayVideo = $state(false);
 
 	onMount(() => {
-		document.body.classList.add('video-background-active');
+		document.body.classList.add('page-background-active');
 		const observer = new ResizeObserver(([entry]) => {
 			brandWidth = entry.contentRect.width;
 		});
@@ -33,7 +33,7 @@
 		return () => {
 			observer.disconnect();
 			motionPreference.removeEventListener('change', updateVideoPlayback);
-			document.body.classList.remove('video-background-active');
+			document.body.classList.remove('page-background-active');
 		};
 	});
 

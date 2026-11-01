@@ -1,4 +1,14 @@
 <script>
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		document.body.classList.add('page-background-active');
+
+		return () => {
+			document.body.classList.remove('page-background-active');
+		};
+	});
+
 	// Prices are decided by the annual meeting, so they stay placeholders.
 	const types = [
 		{
@@ -39,6 +49,11 @@
 <svelte:head>
 	<title>Become a member – Beit Kultur</title>
 </svelte:head>
+
+<div class="membership-page">
+	<div class="page-background" aria-hidden="true">
+		<img src="/images/membership-background.jpeg" alt="" />
+	</div>
 
 <h1>Become a member</h1>
 <p class="intro">Members support artists from the global majority.</p>
@@ -122,8 +137,40 @@
 		<a href="/about?topic=member#contact" class="link">Contact us.</a>
 	</p>
 </div>
+</div>
 
 <style>
+	.membership-page {
+		position: relative;
+		isolation: isolate;
+	}
+
+	.page-background {
+		position: fixed;
+		z-index: -1;
+		inset: 0;
+		width: 100vw;
+		height: 100vh;
+		overflow: hidden;
+		background: var(--bg);
+		pointer-events: none;
+	}
+
+	.page-background::after {
+		position: absolute;
+		inset: 0;
+		background: rgba(250, 248, 242, 0.72);
+		content: '';
+	}
+
+	.page-background img {
+		position: fixed;
+		inset: 0;
+		width: 100vw;
+		height: 100vh;
+		object-fit: cover;
+	}
+
 	fieldset {
 		border: 0;
 		margin-left: 0;

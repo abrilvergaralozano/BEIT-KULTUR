@@ -7,7 +7,7 @@
 	let autoplayVideo = $state(false);
 
 	onMount(() => {
-		document.body.classList.add('video-background-active');
+		document.body.classList.add('page-background-active');
 		const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
 		const updateVideoPlayback = () => {
 			autoplayVideo = !motionPreference.matches;
@@ -25,7 +25,7 @@
 
 		return () => {
 			motionPreference.removeEventListener('change', updateVideoPlayback);
-			document.body.classList.remove('video-background-active');
+			document.body.classList.remove('page-background-active');
 			backgroundVideo.pause();
 		};
 	});
