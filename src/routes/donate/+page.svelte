@@ -4,9 +4,7 @@
 	const amounts = [100, 200, 300, 400];
 
 	let backgroundVideo;
-	let storyVideo;
 	let autoplayVideo = $state(false);
-	let autoplayStory = $state(false);
 	let monthly = $state(false);
 	let selectedAmount = $state(null);
 	let otherAmount = $state('');
@@ -16,18 +14,12 @@
 		const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
 		const updateVideoPlayback = () => {
 			autoplayVideo = !motionPreference.matches;
-			autoplayStory = !motionPreference.matches;
 			if (motionPreference.matches) {
 				backgroundVideo.pause();
-				storyVideo.pause();
 			} else {
 				backgroundVideo.play().catch((error) => {
 					if (error?.name === 'AbortError') return;
 					console.error('Unable to play the Donate background video.', error);
-				});
-				storyVideo.play().catch((error) => {
-					if (error?.name === 'AbortError') return;
-					console.error('Unable to play the Donate story video.', error);
 				});
 			}
 		};
@@ -37,7 +29,6 @@
 		return () => {
 			motionPreference.removeEventListener('change', updateVideoPlayback);
 			backgroundVideo.pause();
-			storyVideo.pause();
 		};
 	});
 
@@ -166,24 +157,6 @@
 	</ul>
 </section>
 
-<section class="section video-section" aria-labelledby="donate-video-title">
-	<h2 id="donate-video-title">Beit Kultur in action</h2>
-	<video
-		class="donate-video"
-		bind:this={storyVideo}
-		autoplay={autoplayStory}
-		muted
-		loop
-		controls
-		playsinline
-		preload="metadata"
-		poster="/images/donate-story-poster.jpg"
-		aria-label="Video from Beit Kultur"
-	>
-		<source src="/videos/donate-story.mp4" type="video/mp4" />
-		Your browser does not support video playback.
-	</video>
-</section>
 </div>
 
 <style>
@@ -213,18 +186,6 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-	}
-
-	.video-section {
-		max-width: 48rem;
-		margin-inline: auto;
-	}
-
-	.donate-video {
-		display: block;
-		width: 100%;
-		height: auto;
-		background: var(--text);
 	}
 
 	.gift {
