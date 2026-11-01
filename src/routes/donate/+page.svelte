@@ -166,7 +166,7 @@
 	}
 
 	.page-background {
-		position: fixed;
+		position: absolute;
 		z-index: -1;
 		inset: 0;
 		overflow: hidden;
