@@ -18,6 +18,7 @@
 				backgroundVideo.pause();
 			} else {
 				backgroundVideo.play().catch((error) => {
+					if (error?.name === 'AbortError') return;
 					console.error('Unable to play the Donate background video.', error);
 				});
 			}
@@ -25,7 +26,10 @@
 		updateVideoPlayback();
 		motionPreference.addEventListener('change', updateVideoPlayback);
 
-		return () => motionPreference.removeEventListener('change', updateVideoPlayback);
+		return () => {
+			motionPreference.removeEventListener('change', updateVideoPlayback);
+			backgroundVideo.pause();
+		};
 	});
 
 	let amount = $derived(otherAmount ? Number(otherAmount) : selectedAmount);
