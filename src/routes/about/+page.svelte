@@ -1,6 +1,31 @@
 <script>
+	import { onMount } from 'svelte';
 	import { page } from '$app/state';
 	import Photo from '#lib/components/Photo.svelte';
+
+	let backgroundVideo;
+	let autoplayVideo = $state(false);
+
+	onMount(() => {
+		const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+		const updateVideoPlayback = () => {
+			autoplayVideo = !motionPreference.matches;
+			if (motionPreference.matches) {
+				backgroundVideo.pause();
+			} else {
+				backgroundVideo.play().catch((error) => {
+					console.error('Unable to play the About background video.', error);
+				});
+			}
+		};
+
+		updateVideoPlayback();
+		motionPreference.addEventListener('change', updateVideoPlayback);
+
+		return () => {
+			motionPreference.removeEventListener('change', updateVideoPlayback);
+		};
+	});
 
 	const values = [
 		{
@@ -42,6 +67,22 @@
 <svelte:head>
 	<title>About – Beit Kultur</title>
 </svelte:head>
+
+<div class="about-page">
+	<div class="page-background" aria-hidden="true">
+		<video
+			class="background-video"
+			bind:this={backgroundVideo}
+			autoplay={autoplayVideo}
+			muted
+			loop
+			playsinline
+			preload="metadata"
+			poster="/images/about-background-poster.jpg"
+		>
+			<source src="/videos/about-background.mp4" type="video/mp4" />
+		</video>
+	</div>
 
 <h1>About Beit Kultur</h1>
 
@@ -151,8 +192,41 @@
 		</dl>
 	</div>
 </section>
+</div>
 
 <style>
+	.about-page {
+		position: relative;
+		isolation: isolate;
+	}
+
+	.page-background {
+		position: fixed;
+		z-index: -1;
+		inset: 0;
+		width: 100vw;
+		height: 100vh;
+		overflow: hidden;
+		background: var(--bg);
+		pointer-events: none;
+	}
+
+	.page-background::after {
+		position: absolute;
+		inset: 0;
+		background: rgba(250, 248, 242, 0.62);
+		content: '';
+	}
+
+	.background-video {
+		position: fixed;
+		inset: 0;
+		display: block;
+		width: 100vw;
+		height: 100vh;
+		object-fit: cover;
+	}
+
 	.mission {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
