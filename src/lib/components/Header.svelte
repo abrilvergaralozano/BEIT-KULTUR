@@ -28,6 +28,14 @@
 	}
 </script>
 
+{#if isVolunteer}
+	<div class="volunteer-tools">
+		<form method="POST" action="/logout">
+			<button type="submit" class="signout-link">Sign out</button>
+		</form>
+	</div>
+{/if}
+
 <header class:volunteer={isVolunteer}>
 	<div class="inner">
 		<a href="/" class="logo" onclick={closeMenu}><span>BEIT</span><span>KULTUR</span></a>
@@ -43,18 +51,10 @@
 						>
 					</li>
 				{/each}
-				{#if isVolunteer}
-					<li><a href="/news#add-post" onclick={closeMenu}>Add a post</a></li>
-				{/if}
 			</ul>
 			<button type="button" class="button button-second" aria-pressed={easyRead} onclick={toggleEasyRead}>
 				Easy read
 			</button>
-			{#if isVolunteer}
-				<form method="POST" action="/logout" class="logout-form">
-					<button type="submit" class="button button-second">Sign out</button>
-				</form>
-			{/if}
 		</nav>
 
 		<a href="/donate" class="button donate" onclick={closeMenu}>Donate</a>
@@ -87,6 +87,34 @@
 		color: var(--bg);
 	}
 
+	.volunteer-tools {
+		display: flex;
+		justify-content: flex-end;
+		max-width: var(--max-width);
+		margin: 0 auto;
+		padding: 0 var(--gutter);
+		background: var(--bg);
+		color: var(--text);
+		font-size: 0.9rem;
+	}
+
+	.volunteer-tools form {
+		margin: 0;
+	}
+
+	.signout-link {
+		appearance: none;
+		min-height: 44px;
+		padding: 0;
+		border: 0;
+		background: none;
+		color: inherit;
+		font: inherit;
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+		cursor: pointer;
+	}
+
 	ul a {
 		color: var(--bg);
 	}
@@ -107,8 +135,8 @@
 		margin-left: auto;
 	}
 
-	.logout-form {
-		margin: 0;
+	header.volunteer .inner {
+		gap: clamp(0.75rem, 1.5vw, 1.5rem);
 	}
 
 	ul {
@@ -124,6 +152,10 @@
 		align-items: center;
 		min-height: 44px;
 		text-decoration: none;
+	}
+
+	header.volunteer ul a {
+		white-space: nowrap;
 	}
 
 	ul a:hover,
