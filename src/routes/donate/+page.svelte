@@ -219,8 +219,7 @@
 	}
 
 	.choices .button[aria-pressed='true'] {
-		background: var(--text);
-		color: var(--bg);
+		border-width: 3px;
 	}
 
 	button:disabled {

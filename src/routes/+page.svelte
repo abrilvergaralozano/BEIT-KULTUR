@@ -391,7 +391,7 @@
 		}
 
 		.buttons .button {
-			justify-content: center;
+			justify-content: space-between;
 			text-align: center;
 		}
 

@@ -94,12 +94,11 @@
 	}
 
 	.filters .button {
-		padding: 8px 18px;
+		padding: 0.25rem 0.4rem 0.25rem 1.25rem;
 	}
 
 	.filters .button[aria-pressed='true'] {
-		background: var(--text);
-		color: var(--bg);
+		border-width: 3px;
 	}
 
 	.count {

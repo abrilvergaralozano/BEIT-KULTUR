@@ -38,9 +38,8 @@ Two lines: `BEIT` (weight 900) and `KULTUR` (weight 900, italic). Links to Home.
 - Use square corners on all boxes, buttons, inputs, cards, and images.
 
 ### Buttons
-- Main: lime background, `2px solid #1A1A1A` border, bold text, padding 14px 28px.
-- Second: background `#FAF8F2`, `2px solid #1A1A1A` border.
-- Dark: background `#1A1A1A`, text `#FAF8F2`.
+- All button variants use the lime `#E8FF5A` background, dark `#1A1A1A` text, and bold labels.
+- Use a rounded outline and a separate rounded arrow tile at the right. Keep the existing button label.
 - Every button and link is **at least 44px tall** to tap.
 
 ---

@@ -84,6 +84,7 @@
 
 	header .logo {
 		font-size: 1.8rem;
+		color: var(--bg);
 	}
 
 	ul a {
@@ -133,13 +134,8 @@
 
 	/* Smaller buttons in the header */
 	.button {
-		padding: 8px 16px;
+		padding: 0.25rem 0.4rem 0.25rem 1rem;
 		font-size: 0.9rem;
-	}
-
-	.button[aria-pressed='true'] {
-		background: var(--text);
-		color: var(--bg);
 	}
 
 	.menu-toggle {
@@ -238,7 +234,7 @@
 
 		.donate,
 		.menu-toggle {
-			padding: 6px 10px;
+			padding: 0.2rem 0.3rem 0.2rem 0.8rem;
 			font-size: 0.8rem;
 		}
 	}
@@ -254,7 +250,7 @@
 
 		.donate,
 		.menu-toggle {
-			padding: 4px 6px;
+			padding: 0.15rem 0.2rem 0.15rem 0.6rem;
 			font-size: 0.7rem;
 		}
 	}
