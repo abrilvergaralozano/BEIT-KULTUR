@@ -16,15 +16,17 @@ copy and should be reviewed before a public launch.
 - Readers can browse the news list, search titles and summaries, open an article, and return to the
   list.
 - Volunteers can sign in, publish an article, and sign out. Only a signed-in volunteer can publish.
+- Admins can review volunteer requests and create a volunteer login after approval.
 - Volunteers can use Gemini to draft a short article summary, then review and edit it before
   publishing.
 - Posts and comments are stored in Neon PostgreSQL after the database is configured.
+- Contact messages, including their topic and review status, are stored in Neon.
 - Without a database connection, the site shows sample articles. Publishing and comments are
   disabled with a setup message.
 - The site has responsive layouts, an Easy read control, and event-category filters.
 - The Events page fetches and displays Stockholm forecast data from SMHI.
-- Donation and contact forms are test interfaces. They do not process real payments or send
-  messages.
+- Donation forms are test interfaces. They do not process real payments. Contact forms save
+  messages to Neon; they do not send email.
 
 ## Run locally
 
@@ -35,16 +37,24 @@ npm install
 Copy-Item .env.example .env
 ```
 
-Create a free Neon project. In the Neon SQL Editor, run `database/schema.sql` to create the tables
-and add the sample articles. Copy the Neon connection string into `DATABASE_URL` in `.env`.
+Create a free Neon project. For a new database, run `database/schema.sql` in the Neon SQL Editor.
+For an existing database, run
+`database/migrations/20261102_add_admin_and_contact_messages.sql` instead. This adds the user and
+contact-message tables without changing existing posts. Copy the Neon connection string into
+`DATABASE_URL` in `.env`.
 
 Create a Gemini API key in [Google AI Studio](https://aistudio.google.com/apikey) and add it as
 `GEMINI_API_KEY` in `.env`. The AI summary helper is available only to signed-in volunteers. Draft
 text is sent to Gemini for the request and is not saved to Beit Kultur's database by the helper.
 Check Google's current API limits and pricing before use.
 
-Then set a volunteer username, a strong password, and a random session secret with at least 32
-characters. To generate a session secret:
+Set `ADMIN_USERNAME` and a strong `ADMIN_PASSWORD` in `.env`. The first successful admin login
+creates the admin account in Neon, with a bcrypt password hash. You can remove those two settings
+after the account has been created. Existing volunteer credentials can still use
+`VOLUNTEER_USERNAME` and `VOLUNTEER_PASSWORD`; the first successful login saves that account to
+Neon too. New volunteer accounts are created by an admin after approval.
+
+Set a random session secret with at least 32 characters. To generate one:
 
 ```powershell
 node -e "console.log(require('node:crypto').randomBytes(32).toString('base64url'))"
@@ -56,14 +66,16 @@ Then start the site:
 npm run dev
 ```
 
-The login uses the values in `.env`. Never use example credentials or commit `.env`. The session
-cookie is signed, HTTP-only, and expires after eight hours. Keep `DATABASE_URL` and `GEMINI_API_KEY`
-private too.
+Admins and volunteers use the same login page at `/login`. Admins are sent to `/admin`; volunteers
+are sent to `/news`. The session cookie is signed, HTTP-only, and expires after eight hours. Never
+use example credentials or commit `.env`. Keep all passwords, `DATABASE_URL`, and `GEMINI_API_KEY`
+private.
 
-For the deployed site, add `VOLUNTEER_USERNAME`, `VOLUNTEER_PASSWORD`, and `SESSION_SECRET` as
-environment variables in the Vercel project settings. Use a new random session secret with at least
-32 characters. Enable the variables for Production, then redeploy. Do not copy `.env` into the
-repository or share these values in chat.
+For the deployed site, add `ADMIN_USERNAME`, `ADMIN_PASSWORD`, and `SESSION_SECRET` as environment
+variables in the Vercel project settings. Keep the existing `DATABASE_URL` and volunteer settings
+if you still need them. Use a new random session secret with at least 32 characters. Enable the
+variables for Production, then redeploy. Do not copy `.env` into the repository or share these
+values in chat.
 
 To create a production build, run `npm run build`.
 

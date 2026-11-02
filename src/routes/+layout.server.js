@@ -1,5 +1,9 @@
-import { isVolunteer } from '#lib/server/auth.js';
+import { getSessionUser } from '#lib/server/auth.js';
 
-export function load({ cookies }) {
-	return { isVolunteer: isVolunteer(cookies) };
+export async function load({ cookies }) {
+	const user = await getSessionUser(cookies);
+	return {
+		isVolunteer: user?.role === 'volunteer',
+		isAdmin: user?.role === 'admin'
+	};
 }

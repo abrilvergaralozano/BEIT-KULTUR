@@ -6,7 +6,7 @@ const MAX_TITLE_LENGTH = 120;
 const MAX_ARTICLE_LENGTH = 10000;
 
 export async function POST({ request, cookies }) {
-	if (!isVolunteer(cookies)) {
+	if (!await isVolunteer(cookies)) {
 		return json({ error: 'Sign in as a volunteer to use the AI writing helper.' }, { status: 401 });
 	}
 	if (!isAiConfigured()) {

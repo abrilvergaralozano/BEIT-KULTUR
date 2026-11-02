@@ -88,7 +88,15 @@ export async function createVolunteerAccount({ messageId, username, password }) 
 		LEFT JOIN linked_message ON true
 	`;
 
-	if (!rows.length) return { created: false, reason: 'username-taken' };
+	if (!rows.length) {
+		const existingUsers = await sql`
+			SELECT id FROM users WHERE lower(username) = ${username} LIMIT 1
+		`;
+		return {
+			created: false,
+			reason: existingUsers.length ? 'username-taken' : 'not-approved'
+		};
+	}
 	if (!rows[0].message_id) throw new Error('The approved volunteer account could not be linked.');
 
 	return { created: true, username: rows[0].username };

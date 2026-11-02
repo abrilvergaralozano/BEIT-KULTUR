@@ -1,7 +1,7 @@
 import { redirect } from '@sveltejs/kit';
-import { endVolunteerSession } from '#lib/server/auth.js';
+import { endUserSession } from '#lib/server/auth.js';
 
 export function POST({ cookies }) {
-	endVolunteerSession(cookies);
+	endUserSession(cookies);
 	redirect(303, '/news');
 }

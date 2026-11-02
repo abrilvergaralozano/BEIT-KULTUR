@@ -7,7 +7,7 @@ import { isAiConfigured } from '#lib/server/ai.js';
 export async function load({ cookies }) {
 	return {
 		posts: await getPosts(),
-		isVolunteer: isVolunteer(cookies),
+		isVolunteer: await isVolunteer(cookies),
 		databaseConfigured: isDatabaseConfigured(),
 		aiConfigured: isAiConfigured()
 	};
@@ -15,7 +15,7 @@ export async function load({ cookies }) {
 
 export const actions = {
 	create: async ({ request, cookies }) => {
-		if (!isVolunteer(cookies)) {
+		if (!await isVolunteer(cookies)) {
 			return fail(401, { createError: 'Your volunteer session has ended. Please sign in again.' });
 		}
 		if (!isDatabaseConfigured()) {

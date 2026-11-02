@@ -9,7 +9,7 @@ import {
 } from '$app/env/private';
 import { getSql, isDatabaseConfigured } from '#lib/server/db.js';
 
-const COOKIE_NAME = 'beit-volunteer-session';
+const COOKIE_NAME = 'beit-session';
 const SESSION_DURATION = 8 * 60 * 60;
 const BCRYPT_ROUNDS = 12;
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
@@ -158,6 +158,6 @@ export async function isVolunteer(cookies) {
 	return (await getSessionUser(cookies))?.role === 'volunteer';
 }
 
-export function endVolunteerSession(cookies) {
+export function endUserSession(cookies) {
 	cookies.delete(COOKIE_NAME, { path: '/' });
 }

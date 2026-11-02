@@ -13,7 +13,7 @@
 
 <a href="#main" class="skip-link">Skip to main content</a>
 
-<Header isVolunteer={data.isVolunteer} />
+<Header isVolunteer={data.isVolunteer} isAdmin={data.isAdmin} />
 
 <main id="main" tabindex="-1">
 	{@render children()}

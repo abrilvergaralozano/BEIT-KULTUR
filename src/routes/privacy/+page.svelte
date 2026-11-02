@@ -11,9 +11,16 @@
 		<ul>
 			<li><strong>Visits:</strong> Vercel Web Analytics. No cookies.</li>
 			<li><strong>Test donations:</strong> the amount and the date. Your email only if you add it.</li>
-			<li><strong>Contact form:</strong> your name, email and message.</li>
+			<li><strong>Contact form:</strong> your name, email, topic and message, saved in Neon.</li>
 			<li><strong>Comments:</strong> your name and your comment.</li>
-			<li><strong>Volunteer login:</strong> your username and a protected password.</li>
+			<li>
+				<strong>Volunteer requests:</strong> your contact message and its review status. Admins can
+				approve or reject a request.
+			</li>
+			<li>
+				<strong>Team login:</strong> your username, role and a bcrypt-protected password hash. Plain
+				passwords are not stored.
+			</li>
 		</ul>
 	</section>
 

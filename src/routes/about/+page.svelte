@@ -2,7 +2,9 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/state';
 	import Photo from '#lib/components/Photo.svelte';
+	import { contactTopics } from '#lib/data/contact-topics.js';
 
+	let { form } = $props();
 	let backgroundVideo;
 	let autoplayVideo = $state(false);
 
@@ -48,22 +50,9 @@
 	];
 
 	// The ?topic= in the link picks the right option, like /about?topic=member#contact
-	const topics = [
-		{ value: 'volunteer', label: 'I want to volunteer' },
-		{ value: 'artist', label: 'I am an artist' },
-		{ value: 'member', label: 'I want to become a member' },
-		{ value: 'association', label: 'My association or gallery' },
-		{ value: 'other', label: 'Something else' }
-	];
-
-	let topic = $state(page.url.searchParams.get('topic') ?? 'volunteer');
-	let sent = $state(false);
-
-	// Test mode: the message is not sent anywhere yet.
-	function handleSubmit(event) {
-		event.preventDefault();
-		sent = true;
-	}
+	const selectedTopic = $derived(
+		form?.values?.topic ?? page.url.searchParams.get('topic') ?? 'volunteer'
+	);
 </script>
 
 <svelte:head>
@@ -157,31 +146,53 @@
 	<div>
 		<h2>Contact us</h2>
 
-		{#if sent}
-			<p class="notice" role="status">
-				Thank you for your message. Test mode: messages are not sent yet.
-			</p>
-		{:else}
-			<form onsubmit={handleSubmit}>
-				<label for="name">Name (required)</label>
-				<input id="name" name="name" type="text" autocomplete="name" required />
-
-				<label for="email">Email (required)</label>
-				<input id="email" name="email" type="email" autocomplete="email" required />
-
-				<label for="topic">What is it about?</label>
-				<select id="topic" name="topic" bind:value={topic}>
-					{#each topics as option}
-						<option value={option.value}>{option.label}</option>
-					{/each}
-				</select>
-
-				<label for="message">Message (required)</label>
-				<textarea id="message" name="message" required></textarea>
-
-				<button type="submit" class="button">Send message</button>
-			</form>
+		{#if form?.contactSuccess}
+			<p class="notice" role="status">Thank you. Your message has been saved for our team.</p>
 		{/if}
+		{#if form?.contactError}
+			<p class="notice" role="alert">{form.contactError}</p>
+		{/if}
+
+		<form method="POST" action="?/contact">
+			<label for="name">Name (required)</label>
+			<input
+				id="name"
+				name="name"
+				type="text"
+				autocomplete="name"
+				maxlength="120"
+				value={form?.values?.name ?? ''}
+				required
+			/>
+
+			<label for="email">Email (required)</label>
+			<input
+				id="email"
+				name="email"
+				type="email"
+				autocomplete="email"
+				maxlength="254"
+				value={form?.values?.email ?? ''}
+				required
+			/>
+
+			<label for="topic">What is it about?</label>
+			<select id="topic" name="topic" value={selectedTopic}>
+				{#each contactTopics as option}
+					<option value={option.value}>{option.label}</option>
+				{/each}
+			</select>
+
+			<label for="message">Message (required)</label>
+			<textarea
+				id="message"
+				name="message"
+				maxlength="2000"
+				required
+			>{form?.values?.message ?? ''}</textarea>
+
+			<button type="submit" class="button">Send message</button>
+		</form>
 	</div>
 
 	<div class="box details">

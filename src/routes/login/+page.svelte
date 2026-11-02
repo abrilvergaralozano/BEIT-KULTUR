@@ -4,16 +4,16 @@
 </script>
 
 <svelte:head>
-	<title>Volunteer login – Beit Kultur</title>
+	<title>Team login – Beit Kultur</title>
 </svelte:head>
 
 <div class="card login">
-	<h1>Volunteer login</h1>
-	<p>Only volunteers can add news posts.</p>
+	<h1>Team login</h1>
+	<p>Volunteers can publish news. Admins can review volunteer requests.</p>
 
 	{#if !data.isConfigured}
 		<p class="notice" role="status">
-			Volunteer login is not configured yet. Follow the setup steps in README.md.
+			Login is not configured yet. Follow the setup steps in README.md.
 		</p>
 	{/if}
 

@@ -26,7 +26,7 @@ export const variables = defineEnvVars({
 		schema: (value) => value || undefined
 	},
 	SESSION_SECRET: {
-		description: 'Random secret used to sign volunteer session cookies.',
+		description: 'Random secret used to sign team session cookies.',
 		schema: (value) => {
 			if (!value) return undefined;
 			if (value.length < 32) throw new Error('SESSION_SECRET must contain at least 32 characters.');

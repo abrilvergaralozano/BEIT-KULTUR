@@ -2,7 +2,7 @@
 	import { page } from '$app/state';
 	import { navLinks } from '#lib/nav.js';
 
-	let { isVolunteer = false } = $props();
+	let { isVolunteer = false, isAdmin = false } = $props();
 	let menuOpen = $state(false);
 	let easyRead = $state(false);
 
@@ -28,7 +28,7 @@
 	}
 </script>
 
-<header class:volunteer={isVolunteer}>
+<header class:volunteer={isVolunteer || isAdmin}>
 	<div class="inner">
 		<a href="/" class="logo" onclick={closeMenu}><span>BEIT</span><span>KULTUR</span></a>
 
@@ -43,6 +43,15 @@
 						>
 					</li>
 				{/each}
+				{#if isAdmin}
+					<li>
+						<a
+							href="/admin"
+							aria-current={page.url.pathname.startsWith('/admin') ? 'page' : undefined}
+							onclick={closeMenu}>Admin</a
+						>
+					</li>
+				{/if}
 			</ul>
 			<button type="button" class="button button-second" aria-pressed={easyRead} onclick={toggleEasyRead}>
 				Easy read
@@ -64,7 +73,7 @@
 	</div>
 </header>
 
-{#if isVolunteer}
+{#if isVolunteer || isAdmin}
 	<div class="volunteer-tools">
 		<form method="POST" action="/logout">
 			<button type="submit" class="signout-link">Sign out</button>
@@ -100,6 +109,15 @@
 
 	.volunteer-tools form {
 		margin: 0;
+	}
+
+	.volunteer-tools a {
+		display: inline-flex;
+		align-items: center;
+		min-height: 44px;
+		margin-right: 1rem;
+		color: inherit;
+		text-underline-offset: 0.2em;
 	}
 
 	.signout-link {
