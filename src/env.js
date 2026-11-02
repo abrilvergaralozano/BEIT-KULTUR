@@ -17,6 +17,14 @@ export const variables = defineEnvVars({
 		description: 'Password used for volunteer sign-in.',
 		schema: (value) => value || undefined
 	},
+	ADMIN_USERNAME: {
+		description: 'Initial admin username used to bootstrap the first admin account.',
+		schema: (value) => value || undefined
+	},
+	ADMIN_PASSWORD: {
+		description: 'Initial admin password used to bootstrap the first admin account.',
+		schema: (value) => value || undefined
+	},
 	SESSION_SECRET: {
 		description: 'Random secret used to sign volunteer session cookies.',
 		schema: (value) => {

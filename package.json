@@ -24,7 +24,9 @@
 		"@google/genai": "^2.32.0",
 		"@neon/config": "^1.10.0",
 		"@neon/env": "^1.6.8",
-		"@neondatabase/serverless": "^1.2.0"
+		"@neondatabase/serverless": "^1.2.0",
+		"bcryptjs": "^3.0.3",
+		"bcryptjs": "^3.0.3"
 	},
 	"allowScripts": {
 		"ffmpeg-static@5.3.0": true
