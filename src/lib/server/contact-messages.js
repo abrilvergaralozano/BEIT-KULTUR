@@ -1,4 +1,5 @@
 import { randomUUID } from 'node:crypto';
+import bcrypt from 'bcryptjs';
 import { getSql } from '#lib/server/db.js';
 import { contactTopics } from '#lib/data/contact-topics.js';
 
@@ -55,43 +56,40 @@ export async function updateVolunteerMessageStatus(id, status) {
 export async function createVolunteerAccount({ messageId, username, password }) {
 	const sql = getSql();
 	const userId = randomUUID();
-	const passwordHash = await (await import('bcryptjs')).default.hash(password, 12);
+	const passwordHash = await bcrypt.hash(password, 12);
 
-	const [, createdUsers, linkedMessages] = await sql.transaction((transaction) => [
-		transaction`
-			SELECT id
+	const rows = await sql`
+		WITH approved_message AS MATERIALIZED (
+			SELECT id, email
 			FROM contact_messages
 			WHERE id = ${messageId}
 				AND topic = ${VOLUNTEER_TOPIC}
 				AND status = 'approved'
 				AND volunteer_user_id IS NULL
 			FOR UPDATE
-		`,
-		transaction`
+		),
+		created_user AS (
 			INSERT INTO users (id, username, email, password_hash, role)
 			SELECT ${userId}, ${username}, email, ${passwordHash}, 'volunteer'
-			FROM contact_messages
-			WHERE id = ${messageId}
-				AND topic = ${VOLUNTEER_TOPIC}
-				AND status = 'approved'
-				AND volunteer_user_id IS NULL
+			FROM approved_message
 			ON CONFLICT DO NOTHING
 			RETURNING id, username
-		`,
-		transaction`
-			UPDATE contact_messages
-			SET volunteer_user_id = ${userId}
-			WHERE id = ${messageId}
-				AND topic = ${VOLUNTEER_TOPIC}
-				AND status = 'approved'
-				AND volunteer_user_id IS NULL
-				AND EXISTS (SELECT 1 FROM users WHERE id = ${userId})
-			RETURNING id
-		`
-	]);
+		),
+		linked_message AS (
+			UPDATE contact_messages AS messages
+			SET volunteer_user_id = created_user.id
+			FROM created_user, approved_message
+			WHERE messages.id = approved_message.id
+				AND messages.volunteer_user_id IS NULL
+			RETURNING messages.id
+		)
+		SELECT created_user.username, linked_message.id AS message_id
+		FROM created_user
+		LEFT JOIN linked_message ON true
+	`;
 
-	if (!createdUsers.length) return { created: false, reason: 'username-taken' };
-	if (!linkedMessages.length) throw new Error('The approved volunteer account could not be linked.');
+	if (!rows.length) return { created: false, reason: 'username-taken' };
+	if (!rows[0].message_id) throw new Error('The approved volunteer account could not be linked.');
 
-	return { created: true, username: createdUsers[0].username };
+	return { created: true, username: rows[0].username };
 }
