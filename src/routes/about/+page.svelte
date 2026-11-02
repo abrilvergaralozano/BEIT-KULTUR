@@ -150,7 +150,10 @@
 			<p class="notice" role="status">Thank you. Your message has been saved for our team.</p>
 		{/if}
 		{#if form?.contactError}
-			<p class="notice" role="alert">{form.contactError}</p>
+			<p class="notice notice-error" role="alert">
+				<span aria-hidden="true">!</span>
+				{form.contactError}
+			</p>
 		{/if}
 
 		<form method="POST" action="?/contact">
@@ -282,6 +285,12 @@
 
 	dt {
 		font-weight: 800;
+	}
+
+	.notice-error {
+		display: flex;
+		gap: 0.5rem;
+		align-items: flex-start;
 	}
 
 	dd {

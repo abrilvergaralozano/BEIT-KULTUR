@@ -18,7 +18,10 @@
 <p>Review people who asked to volunteer with Beit Kultur.</p>
 
 {#if form?.error}
-	<p class="notice" role="alert">{form.error}</p>
+	<p class="notice notice-error" role="alert">
+		<span aria-hidden="true">!</span>
+		{form.error}
+	</p>
 {/if}
 {#if form?.success}
 	<p class="notice" role="status">{form.success}</p>
@@ -68,7 +71,7 @@
 						<h3>Create volunteer login</h3>
 						<input type="hidden" name="messageId" value={message.id} />
 
-						<label for={`username-${message.id}`}>Username</label>
+						<label for={`username-${message.id}`}>Username (required)</label>
 						<input
 							id={`username-${message.id}`}
 							name="username"
@@ -81,7 +84,7 @@
 							required
 						/>
 
-						<label for={`password-${message.id}`}>Temporary password</label>
+						<label for={`password-${message.id}`}>Temporary password (required)</label>
 						<input
 							id={`password-${message.id}`}
 							name="password"
@@ -105,6 +108,12 @@
 	.requests {
 		display: grid;
 		gap: 1.25rem;
+	}
+
+	.notice-error {
+		display: flex;
+		gap: 0.5rem;
+		align-items: flex-start;
 	}
 
 	.request,

@@ -77,6 +77,15 @@ if you still need them. Use a new random session secret with at least 32 charact
 variables for Production, then redeploy. Do not copy `.env` into the repository or share these
 values in chat.
 
+## Test volunteer approval
+
+1. Apply the database schema or migration above.
+2. Set `ADMIN_USERNAME`, `ADMIN_PASSWORD`, and `SESSION_SECRET`.
+3. Start the site, then open `/about` and send a message with the volunteer topic.
+4. Open `/login` and sign in with the admin details. The first login creates the admin account.
+5. Open `/admin`, approve the request, then create a username and password for the volunteer.
+6. Sign out and sign in with that new volunteer account. Open `/news` to publish a post.
+
 To create a production build, run `npm run build`.
 
 ## Scope and known limits

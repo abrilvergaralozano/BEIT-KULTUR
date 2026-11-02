@@ -10,11 +10,11 @@ export const variables = defineEnvVars({
 		schema: (value) => value || undefined
 	},
 	VOLUNTEER_USERNAME: {
-		description: 'Username used for volunteer sign-in.',
+		description: 'Initial volunteer username used to create the first volunteer account.',
 		schema: (value) => value || undefined
 	},
 	VOLUNTEER_PASSWORD: {
-		description: 'Password used for volunteer sign-in.',
+		description: 'Initial volunteer password used to create the first volunteer account.',
 		schema: (value) => value || undefined
 	},
 	ADMIN_USERNAME: {

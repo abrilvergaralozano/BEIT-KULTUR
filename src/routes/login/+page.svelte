@@ -18,11 +18,14 @@
 	{/if}
 
 	{#if form?.error}
-		<p class="error" role="alert">{form.error}</p>
+		<p class="error" role="alert">
+			<span aria-hidden="true">!</span>
+			{form.error}
+		</p>
 	{/if}
 
 	<form method="POST">
-		<label for="username">Username</label>
+		<label for="username">Username (required)</label>
 		<input
 			id="username"
 			name="username"
@@ -32,7 +35,7 @@
 			disabled={!data.isConfigured}
 		/>
 
-		<label for="password">Password</label>
+		<label for="password">Password (required)</label>
 		<div class="password-row">
 			<input
 				id="password"
@@ -72,6 +75,9 @@
 	}
 
 	.error {
+		display: flex;
+		gap: 0.5rem;
+		align-items: flex-start;
 		border: 2px solid var(--text);
 		border-radius: var(--radius-small);
 		background: var(--box);
