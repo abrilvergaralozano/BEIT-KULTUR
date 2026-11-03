@@ -8,14 +8,22 @@
 	onMount(() => {
 		document.body.classList.add('page-background-active');
 		const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+		const projectVideos = document.querySelectorAll('.project-video');
 		const updateVideoPlayback = () => {
 			autoplayVideo = !motionPreference.matches;
 			if (motionPreference.matches) {
 				backgroundVideo.pause();
+				projectVideos.forEach((video) => video.pause());
 			} else {
 				backgroundVideo.play().catch((error) => {
 					if (error?.name === 'AbortError') return;
 					console.error('Unable to play the Projects background video.', error);
+				});
+				projectVideos.forEach((video) => {
+					video.play().catch((error) => {
+						if (error?.name === 'AbortError') return;
+						console.error('Unable to autoplay a project video.', error);
+					});
 				});
 			}
 		};
@@ -26,6 +34,7 @@
 			motionPreference.removeEventListener('change', updateVideoPlayback);
 			document.body.classList.remove('page-background-active');
 			backgroundVideo.pause();
+			projectVideos.forEach((video) => video.pause());
 		};
 	});
 </script>
@@ -61,7 +70,10 @@
 			<li class="card">
 				<video
 					class="project-video"
+					autoplay={autoplayVideo}
 					controls
+					muted
+					loop
 					playsinline
 					preload="none"
 					style:aspect-ratio={project.videoRatio}
