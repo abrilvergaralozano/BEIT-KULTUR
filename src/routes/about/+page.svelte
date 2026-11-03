@@ -102,7 +102,7 @@
 
 <section class="section">
 	<h2>Our values</h2>
-	<ul class="grid">
+	<ul class="grid values">
 		{#each values as value}
 			<li class="card">
 				<Photo file={value.image} />
@@ -251,6 +251,10 @@
 
 	.mission p:last-child {
 		margin-bottom: 0;
+	}
+
+	.values :global(li:nth-child(2) img) {
+		object-position: center bottom;
 	}
 
 	.questions {
