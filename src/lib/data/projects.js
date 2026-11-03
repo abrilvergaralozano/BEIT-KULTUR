@@ -5,7 +5,8 @@ export const projects = [
 		title: 'Sundays at Beit',
 		year: '[YEAR]',
 		artForm: 'Music, live sets',
-		image: 'sundays-at-beit.jpg',
+		video: 'sundays-at-beit.mp4',
+		poster: 'project-sundays-at-beit.jpg',
 		description:
 			'Sundays at Beit presents live sets by artists, like the Softronic live set. [MORE ABOUT THE SERIES]'
 	},
@@ -13,7 +14,8 @@ export const projects = [
 		title: 'Beit Kultur goes digital',
 		year: '[YEAR]',
 		artForm: 'Digital',
-		image: 'beit-kultur-main.jpeg',
+		video: 'beit-kultur-goes-digital.mp4',
+		poster: 'project-beit-kultur-goes-digital.jpg',
 		description:
 			'Our first website. Before this, Beit Kultur had no digital platform. Now artists, members, volunteers and donors can find us online.'
 	},
@@ -21,28 +23,32 @@ export const projects = [
 		title: '[PROJECT NAME]',
 		year: '[YEAR]',
 		artForm: '[ART FORM]',
-		image: 'live-performance.jpeg',
+		video: 'project-3.mp4',
+		poster: 'project-3.jpg',
 		description: '[DESCRIPTION]'
 	},
 	{
 		title: '[PROJECT NAME]',
 		year: '[YEAR]',
 		artForm: '[ART FORM]',
-		image: 'event-crowd.jpg',
+		video: 'project-4.mp4',
+		poster: 'project-4.jpg',
 		description: '[DESCRIPTION]'
 	},
 	{
 		title: '[PROJECT NAME]',
 		year: '[YEAR]',
 		artForm: '[ART FORM]',
-		image: 'beit-kultur-main.jpeg',
+		video: 'project-5.mp4',
+		poster: 'project-5.jpg',
 		description: '[DESCRIPTION]'
 	},
 	{
 		title: '[PROJECT NAME]',
 		year: '[YEAR]',
 		artForm: '[ART FORM]',
-		image: 'sundays-at-beit.jpg',
+		video: 'project-6.mp4',
+		poster: 'project-6.jpg',
 		description: '[DESCRIPTION]'
 	}
 ];

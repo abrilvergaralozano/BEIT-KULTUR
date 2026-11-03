@@ -1,6 +1,5 @@
 <script>
 	import { onMount } from 'svelte';
-	import Photo from '#lib/components/Photo.svelte';
 	import { projects } from '#lib/data/projects.js';
 
 	let backgroundVideo;
@@ -60,7 +59,17 @@
 	<ul class="grid projects">
 		{#each projects as project}
 			<li class="card">
-				<Photo file={project.image} />
+				<video
+					class="project-video"
+					controls
+					playsinline
+					preload="none"
+					poster="/images/{project.poster}"
+					aria-label="Video for {project.title}"
+				>
+					<source src="/videos/projects/{project.video}" type="video/mp4" />
+					Your browser does not support video playback.
+				</video>
 				<div class="card-body">
 					<p class="muted">{project.year} · {project.artForm}</p>
 					<h2>{project.title}</h2>
@@ -110,6 +119,14 @@
 
 	.projects {
 		margin-top: 2rem;
+	}
+
+	.project-video {
+		display: block;
+		width: 100%;
+		aspect-ratio: 9 / 16;
+		background: var(--chrome);
+		object-fit: cover;
 	}
 
 	h2 {
