@@ -2,6 +2,7 @@ import { error, fail, redirect } from '@sveltejs/kit';
 import { getSessionUser } from '#lib/server/auth.js';
 import {
 	createVolunteerAccount,
+	getArtistMessages,
 	getVolunteerMessages,
 	updateVolunteerMessageStatus
 } from '#lib/server/contact-messages.js';
@@ -24,7 +25,12 @@ export async function load({ cookies }) {
 	if (!user) redirect(303, '/login');
 	if (user.role !== 'admin') error(403, 'Only admins can review volunteer requests.');
 
-	return { messages: await getVolunteerMessages() };
+	const [messages, artistMessages] = await Promise.all([
+		getVolunteerMessages(),
+		getArtistMessages()
+	]);
+
+	return { messages, artistMessages };
 }
 
 export const actions = {

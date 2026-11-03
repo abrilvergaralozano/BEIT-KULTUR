@@ -104,7 +104,37 @@
 	</div>
 {/if}
 
+<section class="artist-inquiries">
+	<h2>Artist inquiries</h2>
+	<p>Messages from artists who want to share their work with Beit Kultur.</p>
+
+	{#if data.artistMessages.length === 0}
+		<p>No artist messages yet.</p>
+	{:else}
+		<div class="requests">
+			{#each data.artistMessages as message (message.id)}
+				<article class="request">
+					<div class="request-heading">
+						<div>
+							<h3>{message.name}</h3>
+							<a href={`mailto:${message.email}`}>{message.email}</a>
+						</div>
+						<time datetime={new Date(message.created_at).toISOString()}>
+							{formatDate(message.created_at)} UTC
+						</time>
+					</div>
+					<p class="message">{message.body}</p>
+				</article>
+			{/each}
+		</div>
+	{/if}
+</section>
+
 <style>
+	.artist-inquiries {
+		margin-top: 3rem;
+	}
+
 	.requests {
 		display: grid;
 		gap: 1.25rem;
@@ -131,6 +161,10 @@
 	}
 
 	.request-heading h2 {
+		margin-bottom: 0.25rem;
+	}
+
+	.request-heading h3 {
 		margin-bottom: 0.25rem;
 	}
 

@@ -4,6 +4,7 @@ import { getSql } from '#lib/server/db.js';
 import { contactTopics } from '#lib/data/contact-topics.js';
 
 export const VOLUNTEER_TOPIC = contactTopics.find((topic) => topic.value === 'volunteer').label;
+export const ARTIST_TOPIC = contactTopics.find((topic) => topic.value === 'artist').label;
 
 export async function createContactMessage({ name, email, topic, body }) {
 	const selectedTopic = contactTopics.find((option) => option.value === topic);
@@ -33,6 +34,16 @@ export async function getVolunteerMessages() {
 		LEFT JOIN users ON users.id = messages.volunteer_user_id
 		WHERE messages.topic = ${VOLUNTEER_TOPIC}
 		ORDER BY messages.created_at DESC
+	`;
+}
+
+export async function getArtistMessages() {
+	const sql = getSql();
+	return sql`
+		SELECT id, name, email, body, created_at
+		FROM contact_messages
+		WHERE topic = ${ARTIST_TOPIC}
+		ORDER BY created_at DESC
 	`;
 }
 

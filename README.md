@@ -19,6 +19,8 @@ copy and should be reviewed before a public launch.
 - Admins can review volunteer requests and create a volunteer login after approval.
 - Prospective volunteers can send an application with their background, motivation, skills and
   preferred involvement level. Applications are reviewed by an admin before a login is created.
+- Artists can send an inquiry with information about themselves, their work and optional portfolio
+  links. Admins can read artist inquiries in the admin area.
 - Volunteers can use Gemini to draft a short article summary, then review and edit it before
   publishing.
 - Posts and comments are stored in Neon PostgreSQL after the database is configured.

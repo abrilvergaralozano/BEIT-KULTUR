@@ -13,7 +13,7 @@
 				'Are you an artist from the global majority?',
 				'We want to give your music, poetry or film a stage.'
 			],
-			link: { href: '/about?topic=artist#contact', label: 'Contact us as an artist' }
+			link: { href: '/artist-contact', label: 'Contact us as an artist' }
 		},
 		{
 			title: 'Become a member',
