@@ -119,9 +119,12 @@ Bottom row: "Beit Kultur · non-profit cultural association · Stockholm" and li
 Title "Our projects". Intro: Projects that give artists from the global majority space to show their work in music, poetry and film.
 Full-page background image: `static/images/projects-background-poster.jpg`, with a light overlay for readability. Keep the header and footer opaque.
 Project cards (muted autoplaying video with controls and poster, year · art form, title, description), 3 per row desktop, 1 on phone. Videos loop, respect reduced-motion settings, and use short 4:3 frames. Store video and poster paths in `src/lib/data/projects.js` as a list of objects.
-- Sundays at Beit · [YEAR] · Music, live sets · `sundays-at-beit.mp4` · "Sundays at Beit presents live sets by artists, like the Softronic live set. [MORE ABOUT THE SERIES]"
-- Beit Kultur goes digital · [YEAR] · Digital · `beit-kultur-goes-digital.mp4` · "Our first website. Before this, Beit Kultur had no digital platform. Now artists, members, volunteers and donors can find us online."
-- 4 × [PROJECT NAME] placeholders, each with a video.
+- SWANA Fundraiser · [YEAR] · Fundraiser · `sundays-at-beit.mp4` · "A fundraiser for children in Palestine. Sixteen artists joined Konsthall C to support the Palestine Children’s Relief Fund."
+- Beit Kultur and Geist at Konsthall C · [YEAR] · [ART FORM] · `beit-kultur-goes-digital.mp4` · "A collaboration between Beit Kultur and Geist at Konsthall C."
+- Hara Alonso & Tobias Karlehag: Ambient Set · [YEAR] · Ambient music · `project-3.mp4` · "Afternoons of music in Beit Kultur’s community garden."
+- Konsthall C and Beit: Loppis and Day Festival · [YEAR] · Day festival · `project-4.mp4` · "A day of music, food and live performances."
+- Igmar Kviele and Beit with Geist at Eden · [YEAR] · [ART FORM] · `project-5.mp4` · "Moods and projections at Eden."
+- Dina Hamida at the SWANA Fundraiser · [YEAR] · Dance · `project-6.mp4` · "Dance in resistance."
 End: "Want to support a project? Get involved" (link).
 
 ### Events — `/events`
