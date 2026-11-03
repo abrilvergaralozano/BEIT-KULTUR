@@ -1,8 +1,11 @@
 <script>
+	import { onMount } from 'svelte';
 	import Photo from '#lib/components/Photo.svelte';
 	import { events } from '#lib/data/events.js';
 
 	let { data } = $props();
+	let backgroundVideo;
+	let autoplayVideo = $state(false);
 
 	const filters = ['All', 'Music', 'Poetry', 'Film', 'Festivals', 'Exhibitions'];
 	let filter = $state('All');
@@ -10,11 +13,52 @@
 	let shown = $derived(
 		filter === 'All' ? events : events.filter((event) => event.category === filter)
 	);
+
+	onMount(() => {
+		document.body.classList.add('page-background-active');
+		const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+		const updateVideoPlayback = () => {
+			autoplayVideo = !motionPreference.matches;
+			if (motionPreference.matches) {
+				backgroundVideo.pause();
+			} else {
+				backgroundVideo.play().catch((error) => {
+					if (error?.name === 'AbortError') return;
+					console.error('Unable to play the Events background video.', error);
+				});
+			}
+		};
+
+		updateVideoPlayback();
+		motionPreference.addEventListener('change', updateVideoPlayback);
+
+		return () => {
+			motionPreference.removeEventListener('change', updateVideoPlayback);
+			document.body.classList.remove('page-background-active');
+			backgroundVideo.pause();
+		};
+	});
 </script>
 
 <svelte:head>
 	<title>Events – Beit Kultur</title>
 </svelte:head>
+
+<div class="events-page">
+	<div class="page-background" aria-hidden="true">
+		<video
+			class="background-video"
+			bind:this={backgroundVideo}
+			autoplay={autoplayVideo}
+			muted
+			loop
+			playsinline
+			preload="metadata"
+			poster="/images/events-background-poster.jpg"
+		>
+			<source src="/videos/events-background.mp4" type="video/mp4" />
+		</video>
+	</div>
 
 <h1>Events</h1>
 <p class="intro">
@@ -66,8 +110,41 @@
 		{/each}
 	</ul>
 </section>
+</div>
 
 <style>
+	.events-page {
+		position: relative;
+		isolation: isolate;
+	}
+
+	.page-background {
+		position: fixed;
+		z-index: -1;
+		inset: 0;
+		width: 100vw;
+		height: 100vh;
+		overflow: hidden;
+		background: var(--bg);
+		pointer-events: none;
+	}
+
+	.page-background::after {
+		position: absolute;
+		inset: 0;
+		background: rgba(250, 248, 242, 0.72);
+		content: '';
+	}
+
+	.background-video {
+		position: fixed;
+		inset: 0;
+		display: block;
+		width: 100vw;
+		height: 100vh;
+		object-fit: cover;
+	}
+
 	.weather {
 		max-width: 28rem;
 		margin-inline: auto;
