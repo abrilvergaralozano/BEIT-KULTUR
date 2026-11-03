@@ -2,7 +2,6 @@
 	import { onMount } from 'svelte';
 	import { projects } from '#lib/data/projects.js';
 
-	let backgroundVideo;
 	let autoplayVideo = $state(false);
 
 	onMount(() => {
@@ -12,13 +11,8 @@
 		const updateVideoPlayback = () => {
 			autoplayVideo = !motionPreference.matches;
 			if (motionPreference.matches) {
-				backgroundVideo.pause();
 				projectVideos.forEach((video) => video.pause());
 			} else {
-				backgroundVideo.play().catch((error) => {
-					if (error?.name === 'AbortError') return;
-					console.error('Unable to play the Projects background video.', error);
-				});
 				projectVideos.forEach((video) => {
 					video.play().catch((error) => {
 						if (error?.name === 'AbortError') return;
@@ -33,7 +27,6 @@
 		return () => {
 			motionPreference.removeEventListener('change', updateVideoPlayback);
 			document.body.classList.remove('page-background-active');
-			backgroundVideo.pause();
 			projectVideos.forEach((video) => video.pause());
 		};
 	});
@@ -45,18 +38,7 @@
 
 <div class="projects-page">
 	<div class="page-background" aria-hidden="true">
-		<video
-			class="background-video"
-			bind:this={backgroundVideo}
-			autoplay={autoplayVideo}
-			muted
-			loop
-			playsinline
-			preload="metadata"
-			poster="/images/projects-background-poster.jpg"
-		>
-			<source src="/videos/projects-background.mp4" type="video/mp4" />
-		</video>
+		<img class="background-image" src="/images/projects-background-poster.jpg" alt="" />
 	</div>
 
 	<h1>Our projects</h1>
@@ -117,17 +99,18 @@
 	.page-background::after {
 		position: absolute;
 		inset: 0;
-		background: rgba(250, 248, 242, 0.72);
+		background: rgba(250, 248, 242, 0.5);
 		content: '';
 	}
 
-	.background-video {
+	.background-image {
 		position: fixed;
 		inset: 0;
 		display: block;
 		width: 100vw;
 		height: 100vh;
 		object-fit: cover;
+		object-position: center;
 	}
 
 	.projects {

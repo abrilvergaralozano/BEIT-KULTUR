@@ -117,6 +117,7 @@ Bottom row: "Beit Kultur · non-profit cultural association · Stockholm" and li
 
 ### Projects — `/projects`
 Title "Our projects". Intro: Projects that give artists from the global majority space to show their work in music, poetry and film.
+Full-page background image: `static/images/projects-background-poster.jpg`, with a light overlay for readability. Keep the header and footer opaque.
 Project cards (muted autoplaying video with controls and poster, year · art form, title, description), 3 per row desktop, 1 on phone. Videos loop, respect reduced-motion settings, and use short 4:3 frames. Store video and poster paths in `src/lib/data/projects.js` as a list of objects.
 - Sundays at Beit · [YEAR] · Music, live sets · `sundays-at-beit.mp4` · "Sundays at Beit presents live sets by artists, like the Softronic live set. [MORE ABOUT THE SERIES]"
 - Beit Kultur goes digital · [YEAR] · Digital · `beit-kultur-goes-digital.mp4` · "Our first website. Before this, Beit Kultur had no digital platform. Now artists, members, volunteers and donors can find us online."
@@ -167,6 +168,7 @@ Error example: icon + "The username or password is wrong. Please try again."
 Button "Log in". Link "Back to the home page".
 
 ### Get involved — `/get-involved`
+Full-page background video: `static/videos/get-involved-background.mp4`, with `static/images/projects-background-poster.jpg` as its poster. Keep it muted and looping behind the content, use a light overlay for readability, respect `prefers-reduced-motion`, and keep the header and footer opaque.
 Title + "Beit Kultur is run by volunteers. There are four ways you can take part." Image `drawing-hanging-art.jpg`.
 4 numbered cards, NO forms:
 1. Volunteer — Give your time to help make events and projects happen. [WHAT VOLUNTEERS DO] → "Contact us to volunteer" (/about?topic=volunteer#contact)
