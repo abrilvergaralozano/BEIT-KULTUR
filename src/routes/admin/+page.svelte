@@ -30,7 +30,7 @@
 {#if data.messages.length === 0}
 	<section class="empty-state">
 		<h2>No volunteer requests yet</h2>
-		<p>New requests from the About page will appear here.</p>
+		<p>New applications from the volunteer sign-up page will appear here.</p>
 	</section>
 {:else}
 	<div class="requests">

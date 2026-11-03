@@ -5,7 +5,7 @@
 		{
 			title: 'Volunteer',
 			text: ['Give your time to help make events and projects happen.', '[WHAT VOLUNTEERS DO]'],
-			link: { href: '/about?topic=volunteer#contact', label: 'Contact us to volunteer' }
+			link: { href: '/volunteer-signup', label: 'Sign up as a volunteer' }
 		},
 		{
 			title: 'Show your work',

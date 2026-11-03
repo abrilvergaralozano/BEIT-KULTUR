@@ -14,8 +14,9 @@
 			<li><strong>Contact form:</strong> your name, email, topic and message, saved in Neon.</li>
 			<li><strong>Comments:</strong> your name and your comment.</li>
 			<li>
-				<strong>Volunteer requests:</strong> your contact message and its review status. Admins can
-				approve or reject a request.
+				<strong>Volunteer applications:</strong> your name, email, about-you answers, motivation,
+				skills and preferred involvement, plus the review status. Admins can approve or reject an
+				application.
 			</li>
 			<li>
 				<strong>Team login:</strong> your username, role and a bcrypt-protected password hash. Plain

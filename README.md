@@ -17,6 +17,8 @@ copy and should be reviewed before a public launch.
   list.
 - Volunteers can sign in, publish an article, and sign out. Only a signed-in volunteer can publish.
 - Admins can review volunteer requests and create a volunteer login after approval.
+- Prospective volunteers can send an application with their background, motivation, skills and
+  preferred involvement level. Applications are reviewed by an admin before a login is created.
 - Volunteers can use Gemini to draft a short article summary, then review and edit it before
   publishing.
 - Posts and comments are stored in Neon PostgreSQL after the database is configured.
@@ -54,6 +56,10 @@ after the account has been created. Existing volunteer credentials can still use
 `VOLUNTEER_USERNAME` and `VOLUNTEER_PASSWORD`; the first successful login saves that account to
 Neon too. New volunteer accounts are created by an admin after approval.
 
+To change an existing admin login, run `npm run admin:reset` in the VS Code terminal. Enter the new
+username and password when prompted. The password stays hidden while you type and is saved as a
+bcrypt hash in Neon. The command uses the database in the local `.env` file.
+
 Set a random session secret with at least 32 characters. To generate one:
 
 ```powershell
@@ -81,7 +87,7 @@ values in chat.
 
 1. Apply the database schema or migration above.
 2. Set `ADMIN_USERNAME`, `ADMIN_PASSWORD`, and `SESSION_SECRET`.
-3. Start the site, then open `/about` and send a message with the volunteer topic.
+3. Start the site, open `/get-involved`, then choose "Sign up as a volunteer" and send an application.
 4. Open `/login` and sign in with the admin details. The first login creates the admin account.
 5. Open `/admin`, approve the request, then create a username and password for the volunteer.
 6. Sign out and sign in with that new volunteer account. Open `/news` to publish a post.
