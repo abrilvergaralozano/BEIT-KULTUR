@@ -125,6 +125,7 @@ End: "Want to support a project? Get involved" (link).
 
 ### Events — `/events`
 1. Title "Events". Intro: Music, poetry, film, festivals and exhibitions by artists from the global majority.
+   - Full-page background video: `static/videos/events-background.mp4`, with `static/images/events-background-poster.jpg` as its poster. Keep it muted and looping behind the content, use a light overlay for readability, respect `prefers-reduced-motion`, and keep the header and footer opaque.
 2. **Weather box** (task 5, SMHI API): "Weather today in Stockholm", [TEMP] °C, "Forecast from SMHI". Stockholm ≈ latitude 59.33, longitude 18.07.
 3. **Filter buttons** (task 4): All, Music, Poetry, Film, Festivals, Exhibitions. Use `aria-pressed`. Under them: "Showing X events" with `aria-live="polite"`. If none: "No events of this type right now."
 4. **Event list**: date block ([DD] [MON]), image, category tag, title, "[TIME] · [PLACE] · [PRICE]", "Read more" → event page.
