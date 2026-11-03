@@ -5,7 +5,7 @@ export const projects = [
 		title: 'Sundays at Beit',
 		year: '[YEAR]',
 		artForm: 'Music, live sets',
-		image: 'live-performance.jpeg',
+		image: 'sundays-at-beit.jpg',
 		description:
 			'Sundays at Beit presents live sets by artists, like the Softronic live set. [MORE ABOUT THE SERIES]'
 	},

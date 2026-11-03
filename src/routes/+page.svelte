@@ -37,10 +37,10 @@
 		};
 	});
 
-	// The three events on the Home page. Sundays at Beit uses a drawing here.
+	// The three events on the Home page.
 	const find = (slug) => events.find((event) => event.slug === slug);
 	const nextEvents = [
-		{ ...find('sundays-at-beit-softronic'), image: 'live-performance.jpeg' },
+		{ ...find('sundays-at-beit-softronic'), image: 'sundays-at-beit.jpg' },
 		{ ...find('food-festival'), category: 'Festival' },
 		{ ...find('exhibition'), category: 'Exhibition' }
 	];

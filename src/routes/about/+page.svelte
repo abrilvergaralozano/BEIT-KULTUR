@@ -69,9 +69,9 @@
 			loop
 			playsinline
 			preload="metadata"
-			poster="/images/about-background-poster.jpg"
+			poster="/images/membership-background-poster.jpg"
 		>
-			<source src="/videos/about-background.mp4" type="video/mp4" />
+			<source src="/videos/membership-background.mp4" type="video/mp4" />
 		</video>
 	</div>
 

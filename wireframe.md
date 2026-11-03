@@ -89,9 +89,9 @@ Bottom row: "Beit Kultur · non-profit cultural association · Stockholm" and li
    - **This is what Beit Kultur is.**
    - Link: "Read more about us" → /about
 4. **Next events**: 3 cards (image, date · category, title, "Read more" → event page). Link "See all events" → /events.
-   - Sundays at Beit: Softronic live set · Music · `drawing-stage.jpg`
-   - [EVENT NAME] · Festival · `drawing-food-festival.jpg`
-   - [EVENT NAME] · Exhibition · `drawing-gallery.jpg`
+   - Sundays at Beit: Softronic live set · Music · `sundays-at-beit.jpg`
+   - [Beit Kultur Food Festival] · Festival · `drawing-food-festival.jpg`
+   - [New Voices Art Exhibition] · Exhibition · `drawing-gallery.jpg`
 5. **Latest news**: 3 newest posts (date, title, link). Link "All news" → /news.
 
 ### About — `/about`
@@ -117,7 +117,7 @@ Bottom row: "Beit Kultur · non-profit cultural association · Stockholm" and li
 ### Projects — `/projects`
 Title "Our projects". Intro: Projects that give artists from the global majority space to show their work in music, poetry and film.
 Project cards (image, year · art form, title, description), 3 per row desktop, 1 on phone. Store projects in `src/lib/data/projects.js` as a list of objects.
-- Sundays at Beit · [YEAR] · Music, live sets · `drawing-stage.jpg` · "Sundays at Beit presents live sets by artists, like the Softronic live set. [MORE ABOUT THE SERIES]"
+- Sundays at Beit · [YEAR] · Music, live sets · `sundays-at-beit.jpg` · "Sundays at Beit presents live sets by artists, like the Softronic live set. [MORE ABOUT THE SERIES]"
 - Beit Kultur goes digital · [YEAR] · Digital · no image yet · "Our first website. Before this, Beit Kultur had no digital platform. Now artists, members, volunteers and donors can find us online."
 - 4 × [PROJECT NAME] placeholders.
 End: "Want to support a project? Get involved" (link).
@@ -130,9 +130,9 @@ End: "Want to support a project? Get involved" (link).
    - Sundays at Beit: Softronic live set · Music · `sundays-at-beit.jpg`
    - [EVENT NAME] · Poetry · `drawing-stage.jpg`
    - [EVENT NAME] · Film · `drawing-calendar.jpg`
-   - [EVENT NAME] · Festivals · `drawing-food-festival.jpg`
+   - [Beit Kultur Food Festival] · Festivals · `drawing-food-festival.jpg`
    - [EVENT NAME] · Festivals · `drawing-street-dance.jpg`
-   - [EVENT NAME] · Exhibitions · `drawing-gallery.jpg`
+   - [New Voices Art Exhibition] · Exhibitions · `drawing-gallery.jpg`
 
 ### One event — `/events/[slug]`
 "← Back to all events". Image, category, title. Details list: Date, Time, Place ([ADDRESS], Stockholm), Price.
@@ -229,7 +229,7 @@ Sections: Why we collect it · How long we keep it · Your rights · "Questions 
 | File | Alt text |
 |---|---|
 | `event-crowd.jpg` | A crowd at a Beit Kultur event in a bright room with textiles hanging from the ceiling |
-| `sundays-at-beit.jpg` | A live DJ set at Sundays at Beit, with people standing in a room lit in pink and blue |
+| `sundays-at-beit.jpg` | A DJ performing at Sundays at Beit beneath a colorful sign that names Softronic |
 | `drawing-stage.jpg` | Drawing of people dancing in front of a stage with string lights |
 | `drawing-food-festival.jpg` | Drawing of people sharing food at long tables at an outdoor festival |
 | `drawing-street-dance.jpg` | Drawing of people dancing together in the street |

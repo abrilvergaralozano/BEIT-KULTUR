@@ -36,7 +36,7 @@ export const events = [
 	},
 	{
 		slug: 'food-festival',
-		title: '[EVENT NAME]',
+		title: '[Beit Kultur Food Festival]',
 		category: 'Festivals',
 		image: 'event-crowd.jpg',
 		day: '[DD]',
@@ -58,7 +58,7 @@ export const events = [
 	},
 	{
 		slug: 'exhibition',
-		title: '[EVENT NAME]',
+		title: '[New Voices Art Exhibition]',
 		category: 'Exhibitions',
 		image: 'beit-kultur-main.jpeg',
 		day: '[DD]',
