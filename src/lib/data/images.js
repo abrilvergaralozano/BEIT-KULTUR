@@ -7,5 +7,10 @@ export const altText = {
 	'sundays-at-beit.jpg':
 		'A DJ performing at Sundays at Beit beneath a colorful sign that names Softronic',
 	'live-performance.jpeg':
-		'A keyboardist and musician performing together at a Beit Kultur event'
+		'A keyboardist and musician performing together at a Beit Kultur event',
+	'sundays-live-set.jpg': 'DJs performing beneath a Sundays at Beit sign',
+	'poetry-reading.jpg': 'A poet reading at a microphone',
+	'food-festival.jpg': 'Guests gathering in a warmly lit event room',
+	'street-festival.jpg': 'A crowd beneath colorful hanging textiles at a Beit Kultur event',
+	'art-exhibition.jpg': 'Visitors browsing a display in a tiled room'
 };

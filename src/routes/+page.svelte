@@ -40,7 +40,7 @@
 	// The three events on the Home page.
 	const find = (slug) => events.find((event) => event.slug === slug);
 	const nextEvents = [
-		{ ...find('sundays-at-beit-softronic'), image: 'sundays-at-beit.jpg' },
+		find('sundays-at-beit-softronic'),
 		{ ...find('food-festival'), category: 'Festival' },
 		{ ...find('exhibition'), category: 'Exhibition' }
 	];

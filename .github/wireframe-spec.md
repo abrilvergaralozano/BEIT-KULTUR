@@ -89,9 +89,9 @@ Bottom row: "Beit Kultur · non-profit cultural association · Stockholm" and li
    - **This is what Beit Kultur is.**
    - Link: "Read more about us" → /about
 4. **Next events**: 3 cards (image, date · category, title, "Read more" → event page). Link "See all events" → /events.
-   - Sundays at Beit: Softronic live set · Music · `sundays-at-beit.jpg`
-   - [Beit Kultur Food Festival] · Festival · `drawing-food-festival.jpg`
-   - [New Voices Art Exhibition] · Exhibition · `drawing-gallery.jpg`
+   - Sundays at Beit: Softronic live set · Music · `sundays-live-set.jpg`
+   - [Beit Kultur Food Festival] · Festival · `food-festival.jpg`
+   - [New Voices Art Exhibition] · Exhibition · `art-exhibition.jpg`
 5. **Latest news**: 3 newest posts (date, title, link). Link "All news" → /news.
 
 ### About — `/about`
@@ -129,12 +129,12 @@ End: "Want to support a project? Get involved" (link).
 2. **Weather box** (task 5, SMHI API): "Weather today in Stockholm", [TEMP] °C, "Forecast from SMHI". Stockholm ≈ latitude 59.33, longitude 18.07.
 3. **Filter buttons** (task 4): All, Music, Poetry, Film, Festivals, Exhibitions. Use `aria-pressed`. Under them: "Showing X events" with `aria-live="polite"`. If none: "No events of this type right now."
 4. **Event list**: date block ([DD] [MON]), image, category tag, title, "[TIME] · [PLACE] · [PRICE]", "Read more" → event page.
-   - Sundays at Beit: Softronic live set · Music · `sundays-at-beit.jpg`
-   - [EVENT NAME] · Poetry · `drawing-stage.jpg`
+   - Sundays at Beit: Softronic live set · Music · `sundays-live-set.jpg`
+   - [EVENT NAME] · Poetry · `poetry-reading.jpg`
    - [EVENT NAME] · Film · `drawing-calendar.jpg`
-   - [Beit Kultur Food Festival] · Festivals · `drawing-food-festival.jpg`
-   - [EVENT NAME] · Festivals · `drawing-street-dance.jpg`
-   - [New Voices Art Exhibition] · Exhibitions · `drawing-gallery.jpg`
+   - [Beit Kultur Food Festival] · Festivals · `food-festival.jpg`
+   - [EVENT NAME] · Festivals · `street-festival.jpg`
+   - [New Voices Art Exhibition] · Exhibitions · `art-exhibition.jpg`
 
 ### One event — `/events/[slug]`
 "← Back to all events". Image, category, title. Details list: Date, Time, Place ([ADDRESS], Stockholm), Price.
