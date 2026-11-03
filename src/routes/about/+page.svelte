@@ -35,23 +35,17 @@
 		{
 			title: 'Community',
 			text: 'We bring people of all ages together through culture.',
-			image: 'about-community-poster.jpeg',
-			ratio: '4 / 5',
-			objectFit: 'contain'
+			image: 'about-community-poster.jpeg'
 		},
 		{
 			title: 'Collaboration',
 			text: 'We connect artists, cultural associations and galleries to make projects together.',
-			image: 'about-collaboration-poster.jpeg',
-			ratio: '3 / 4',
-			objectFit: 'contain'
+			image: 'about-collaboration-poster.jpeg'
 		},
 		{
 			title: 'Inclusion',
 			text: 'We make space for artists who are often left out of mainstream art spaces.',
-			image: 'about-inclusion-poster.jpg',
-			ratio: '454 / 640',
-			objectFit: 'contain'
+			image: 'about-inclusion-poster.jpg'
 		}
 	];
 
@@ -111,11 +105,9 @@
 	<ul class="grid">
 		{#each values as value}
 			<li class="card">
-				<Photo
-					file={value.image}
-					ratio={value.ratio}
-					objectFit={value.objectFit}
-				/>
+				<div class="value-poster">
+					<Photo file={value.image} ratio="3 / 4" objectFit="contain" />
+				</div>
 				<div class="card-body">
 					<h3>{value.title}</h3>
 					<p>{value.text}</p>
@@ -251,6 +243,12 @@
 		width: 100vw;
 		height: 100vh;
 		object-fit: cover;
+	}
+
+	.value-poster {
+		aspect-ratio: 3 / 4;
+		overflow: hidden;
+		background: var(--chrome);
 	}
 
 	.mission {
