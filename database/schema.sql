@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS contact_messages (
 	status varchar(20) NOT NULL DEFAULT 'pending'
 		CHECK (status IN ('pending', 'approved', 'rejected')),
 	volunteer_user_id uuid REFERENCES users (id) ON DELETE SET NULL,
+	artist_replied_at timestamptz,
 	created_at timestamptz NOT NULL DEFAULT now()
 );
 

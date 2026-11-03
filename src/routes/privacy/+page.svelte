@@ -20,7 +20,8 @@
 			</li>
 			<li>
 				<strong>Artist inquiries:</strong> your name, email, information about you and your work,
-				why you are interested in Beit Kultur, and any Instagram or portfolio links you share.
+				why you are interested in Beit Kultur, any Instagram or portfolio links you share, and
+				whether an admin marked the inquiry as replied.
 			</li>
 			<li>
 				<strong>Team login:</strong> your username, role and a bcrypt-protected password hash. Plain

@@ -40,11 +40,24 @@ export async function getVolunteerMessages() {
 export async function getArtistMessages() {
 	const sql = getSql();
 	return sql`
-		SELECT id, name, email, body, created_at
+		SELECT id, name, email, body, created_at, artist_replied_at
 		FROM contact_messages
 		WHERE topic = ${ARTIST_TOPIC}
 		ORDER BY created_at DESC
 	`;
+}
+
+export async function markArtistMessageReplied(id) {
+	const sql = getSql();
+	const rows = await sql`
+		UPDATE contact_messages
+		SET artist_replied_at = now()
+		WHERE id = ${id}
+			AND topic = ${ARTIST_TOPIC}
+			AND artist_replied_at IS NULL
+		RETURNING id
+	`;
+	return rows.length > 0;
 }
 
 export async function updateVolunteerMessageStatus(id, status) {

@@ -4,6 +4,7 @@ import {
 	createVolunteerAccount,
 	getArtistMessages,
 	getVolunteerMessages,
+	markArtistMessageReplied,
 	updateVolunteerMessageStatus
 } from '#lib/server/contact-messages.js';
 import { isDatabaseConfigured } from '#lib/server/db.js';
@@ -34,6 +35,25 @@ export async function load({ cookies }) {
 }
 
 export const actions = {
+	markArtistReplied: async ({ request, cookies }) => {
+		if (!await requireAdmin(cookies)) {
+			return fail(401, { error: 'Sign in as an admin to update artist inquiries.' });
+		}
+
+		const formData = await request.formData();
+		const messageId = String(formData.get('messageId') ?? '');
+		if (!UUID_PATTERN.test(messageId)) {
+			return fail(400, { error: 'Choose a valid artist inquiry.' });
+		}
+
+		const updated = await markArtistMessageReplied(messageId);
+		if (!updated) {
+			return fail(409, { error: 'This inquiry was already marked as replied.' });
+		}
+
+		return { success: 'Artist inquiry marked as replied.' };
+	},
+
 	approve: async ({ request, cookies }) => {
 		if (!await requireAdmin(cookies)) {
 			return fail(401, { error: 'Sign in as an admin to review volunteer requests.' });

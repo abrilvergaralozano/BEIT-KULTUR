@@ -20,7 +20,8 @@ copy and should be reviewed before a public launch.
 - Prospective volunteers can send an application with their background, motivation, skills and
   preferred involvement level. Applications are reviewed by an admin before a login is created.
 - Artists can send an inquiry with information about themselves, their work and optional portfolio
-  links. Admins can read artist inquiries in the admin area.
+  links. Admins can reply using a prefilled email draft and mark inquiries as replied in the admin
+  area.
 - Volunteers can use Gemini to draft a short article summary, then review and edit it before
   publishing.
 - Posts and comments are stored in Neon PostgreSQL after the database is configured.
@@ -46,6 +47,9 @@ For an existing database, run
 `database/migrations/20261102_add_admin_and_contact_messages.sql` instead. This adds the user and
 contact-message tables without changing existing posts. Copy the Neon connection string into
 `DATABASE_URL` in `.env`.
+For an existing database, also run
+`database/migrations/20261103_add_artist_reply_tracking.sql` to track which artist inquiries have
+received a reply.
 
 Create a Gemini API key in [Google AI Studio](https://aistudio.google.com/apikey) and add it as
 `GEMINI_API_KEY` in `.env`. The AI summary helper is available only to signed-in volunteers. Draft

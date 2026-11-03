@@ -8,6 +8,12 @@
 			timeZone: 'UTC'
 		}).format(new Date(value));
 	}
+
+	function artistReplyLink(message) {
+		const subject = 'Thank you for contacting Beit Kultur';
+		const body = `Hi ${message.name},\n\nThank you for getting in touch with Beit Kultur and sharing your work with us. We have received your message and will be in touch soon.\n\nBest,\nBeit Kultur`;
+		return `mailto:${encodeURIComponent(message.email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+	}
 </script>
 
 <svelte:head>
@@ -119,11 +125,30 @@
 							<h3>{message.name}</h3>
 							<a href={`mailto:${message.email}`}>{message.email}</a>
 						</div>
-						<time datetime={new Date(message.created_at).toISOString()}>
-							{formatDate(message.created_at)} UTC
-						</time>
+						<div class="status">
+							{#if message.artist_replied_at}
+								<span>Replied</span>
+								<time datetime={new Date(message.artist_replied_at).toISOString()}>
+									{formatDate(message.artist_replied_at)} UTC
+								</time>
+							{:else}
+								<span>Not replied</span>
+								<time datetime={new Date(message.created_at).toISOString()}>
+									Received {formatDate(message.created_at)} UTC
+								</time>
+							{/if}
+						</div>
 					</div>
 					<p class="message">{message.body}</p>
+					<div class="actions">
+						<a class="button button-dark" href={artistReplyLink(message)}>Reply by email</a>
+						{#if !message.artist_replied_at}
+							<form method="POST" action="?/markArtistReplied">
+								<input type="hidden" name="messageId" value={message.id} />
+								<button type="submit" class="button button-second">Mark as replied</button>
+							</form>
+						{/if}
+					</div>
 				</article>
 			{/each}
 		</div>
@@ -195,6 +220,14 @@
 	.actions form,
 	.create-account {
 		margin: 0;
+	}
+
+	.actions a {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 44px;
+		text-decoration: none;
 	}
 
 	.create-account {
