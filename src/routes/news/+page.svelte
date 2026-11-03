@@ -1,7 +1,10 @@
 <script>
+	import { onMount } from 'svelte';
 	import Photo from '#lib/components/Photo.svelte';
 
 	let { data, form } = $props();
+	let backgroundVideo;
+	let autoplayVideo = $state(false);
 	let draftTitle = $state('');
 	let draftSummary = $state('');
 	let draftText = $state('');
@@ -16,6 +19,31 @@
 			(post.title + ' ' + post.summary).toLowerCase().includes(query.trim().toLowerCase())
 		)
 	);
+
+	onMount(() => {
+		document.body.classList.add('page-background-active');
+		const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+		const updateVideoPlayback = () => {
+			autoplayVideo = !motionPreference.matches;
+			if (motionPreference.matches) {
+				backgroundVideo.pause();
+			} else {
+				backgroundVideo.play().catch((error) => {
+					if (error?.name === 'AbortError') return;
+					console.error('Unable to play the News background video.', error);
+				});
+			}
+		};
+
+		updateVideoPlayback();
+		motionPreference.addEventListener('change', updateVideoPlayback);
+
+		return () => {
+			motionPreference.removeEventListener('change', updateVideoPlayback);
+			document.body.classList.remove('page-background-active');
+			backgroundVideo.pause();
+		};
+	});
 
 	function handleSearch(event) {
 		event.preventDefault();
@@ -69,6 +97,22 @@
 <svelte:head>
 	<title>News – Beit Kultur</title>
 </svelte:head>
+
+<div class="news-page">
+	<div class="page-background" aria-hidden="true">
+		<video
+			class="background-video"
+			bind:this={backgroundVideo}
+			autoplay={autoplayVideo}
+			muted
+			loop
+			playsinline
+			preload="metadata"
+			poster="/images/news-background-poster.jpg"
+		>
+			<source src="/videos/news-background.mp4" type="video/mp4" />
+		</video>
+	</div>
 
 <h1>News</h1>
 <p class="intro">
@@ -162,8 +206,41 @@
 		</li>
 	{/each}
 </ul>
+</div>
 
 <style>
+	.news-page {
+		position: relative;
+		isolation: isolate;
+	}
+
+	.page-background {
+		position: fixed;
+		z-index: -1;
+		inset: 0;
+		width: 100vw;
+		height: 100vh;
+		overflow: hidden;
+		background: var(--bg);
+		pointer-events: none;
+	}
+
+	.page-background::after {
+		position: absolute;
+		inset: 0;
+		background: rgba(250, 248, 242, 0.72);
+		content: '';
+	}
+
+	.background-video {
+		position: fixed;
+		inset: 0;
+		display: block;
+		width: 100vw;
+		height: 100vh;
+		object-fit: cover;
+	}
+
 	.search {
 		max-width: 36rem;
 		margin: 2rem auto 0;

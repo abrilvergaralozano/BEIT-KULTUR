@@ -13,7 +13,10 @@ export const altText = {
 	'food-festival.jpg': 'Guests gathering in a warmly lit event room',
 	'street-festival.jpg': 'A crowd beneath colorful hanging textiles at a Beit Kultur event',
 	'art-exhibition.jpg': 'Visitors browsing a display in a tiled room',
-	'about-community.jpg': 'A collage of Beit Kultur event posters featuring artists and performers',
-	'about-collaboration.jpg': 'Visitors gathering at a Beit Kultur event beneath colorful textiles',
-	'about-inclusion.jpg': 'A crowd gathered at a Beit Kultur event in a bright gallery'
+	'about-community-poster.jpeg':
+		'Poster for a Loppis folk festival at Konsthall C, with music and reuse themes',
+	'about-collaboration-poster.jpeg':
+		'Beit Kultur poster for an arts, music and crafts fundraiser at Konsthall C',
+	'about-inclusion-poster.jpg':
+		'Beit Kultur Loppis poster listing live sets, visuals, food and DJ sets'
 };
