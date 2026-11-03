@@ -116,7 +116,7 @@ Bottom row: "Beit Kultur · non-profit cultural association · Stockholm" and li
 
 ### Projects — `/projects`
 Title "Our projects". Intro: Projects that give artists from the global majority space to show their work in music, poetry and film.
-Project cards (video with controls and poster, year · art form, title, description), 3 per row desktop, 1 on phone. Videos do not autoplay and preserve the full portrait frame. Store video and poster paths in `src/lib/data/projects.js` as a list of objects.
+Project cards (video with controls and poster, year · art form, title, description), 3 per row desktop, 1 on phone. Videos do not autoplay and preserve each video's full frame. Store video, poster and frame-ratio paths in `src/lib/data/projects.js` as a list of objects.
 - Sundays at Beit · [YEAR] · Music, live sets · `sundays-at-beit.mp4` · "Sundays at Beit presents live sets by artists, like the Softronic live set. [MORE ABOUT THE SERIES]"
 - Beit Kultur goes digital · [YEAR] · Digital · `beit-kultur-goes-digital.mp4` · "Our first website. Before this, Beit Kultur had no digital platform. Now artists, members, volunteers and donors can find us online."
 - 4 × [PROJECT NAME] placeholders, each with a video.

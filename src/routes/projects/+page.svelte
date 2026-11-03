@@ -64,6 +64,7 @@
 					controls
 					playsinline
 					preload="none"
+					style:aspect-ratio={project.videoRatio}
 					poster="/images/{project.poster}"
 					aria-label="Video for {project.title}"
 				>
@@ -124,7 +125,6 @@
 	.project-video {
 		display: block;
 		width: 100%;
-		aspect-ratio: 9 / 16;
 		background: var(--chrome);
 		object-fit: cover;
 	}
