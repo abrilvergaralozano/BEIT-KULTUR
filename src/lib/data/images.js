@@ -12,5 +12,8 @@ export const altText = {
 	'poetry-reading.jpg': 'A poet reading at a microphone',
 	'food-festival.jpg': 'Guests gathering in a warmly lit event room',
 	'street-festival.jpg': 'A crowd beneath colorful hanging textiles at a Beit Kultur event',
-	'art-exhibition.jpg': 'Visitors browsing a display in a tiled room'
+	'art-exhibition.jpg': 'Visitors browsing a display in a tiled room',
+	'about-community.jpg': 'A collage of Beit Kultur event posters featuring artists and performers',
+	'about-collaboration.jpg': 'Visitors gathering at a Beit Kultur event beneath colorful textiles',
+	'about-inclusion.jpg': 'A crowd gathered at a Beit Kultur event in a bright gallery'
 };

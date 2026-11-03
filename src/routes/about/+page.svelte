@@ -35,17 +35,17 @@
 		{
 			title: 'Community',
 			text: 'We bring people of all ages together through culture.',
-			image: 'event-crowd.jpg'
+			image: 'about-community.jpg'
 		},
 		{
 			title: 'Collaboration',
 			text: 'We connect artists, cultural associations and galleries to make projects together.',
-			image: 'live-performance.jpeg'
+			image: 'about-collaboration.jpg'
 		},
 		{
 			title: 'Inclusion',
 			text: 'We make space for artists who are often left out of mainstream art spaces.',
-			image: 'beit-kultur-main.jpeg'
+			image: 'about-inclusion.jpg'
 		}
 	];
 
