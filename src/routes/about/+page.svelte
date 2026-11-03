@@ -35,17 +35,20 @@
 		{
 			title: 'Community',
 			text: 'We bring people of all ages together through culture.',
-			image: 'about-community-poster.jpeg'
+			image: 'about-community-poster.jpeg',
+			frameBackground: 'linear-gradient(180deg, #f8c99f 0%, #ffc1e6 100%)'
 		},
 		{
 			title: 'Collaboration',
 			text: 'We connect artists, cultural associations and galleries to make projects together.',
-			image: 'about-collaboration-poster.jpeg'
+			image: 'about-collaboration-poster.jpeg',
+			frameBackground: '#f3e8d8'
 		},
 		{
 			title: 'Inclusion',
 			text: 'We make space for artists who are often left out of mainstream art spaces.',
-			image: 'about-inclusion-poster.jpg'
+			image: 'about-inclusion-poster.jpg',
+			frameBackground: '#edf2ae'
 		}
 	];
 
@@ -105,7 +108,7 @@
 	<ul class="grid">
 		{#each values as value}
 			<li class="card">
-				<div class="value-poster">
+				<div class="value-poster" style:background={value.frameBackground}>
 					<Photo file={value.image} ratio="3 / 4" objectFit="contain" />
 				</div>
 				<div class="card-body">
@@ -248,7 +251,7 @@
 	.value-poster {
 		aspect-ratio: 3 / 4;
 		overflow: hidden;
-		background: var(--chrome);
+		background: var(--bg);
 	}
 
 	.mission {
