@@ -13,7 +13,9 @@
 	<a href="/events" class="link">← Back to all events</a>
 
 	<article>
-		<div class="photo"><Photo file={event.image} ratio="16 / 9" /></div>
+		<div class="photo">
+			<Photo file={event.image} ratio="16 / 9" objectPosition={event.objectPosition} />
+		</div>
 
 		<span class="tag">{event.category}</span>
 		<h1>{event.title}</h1>

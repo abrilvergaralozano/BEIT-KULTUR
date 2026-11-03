@@ -3,7 +3,7 @@
 	// If the file is missing, it shows a grey box instead of a broken image.
 	import { altText } from '#lib/data/images.js';
 
-	let { file, ratio = '4 / 3' } = $props();
+	let { file, ratio = '4 / 3', objectPosition = 'center' } = $props();
 
 	let failed = $state(false);
 	let missing = $derived(!file || failed);
@@ -18,6 +18,7 @@
 		src="/images/{file}"
 		alt={altText[file]}
 		style:aspect-ratio={ratio}
+		style:object-position={objectPosition}
 		onerror={() => (failed = true)}
 	/>
 {/if}

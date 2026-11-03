@@ -107,7 +107,7 @@
 		{#each nextEvents as event}
 			<li class="card">
 				<div class="card-image">
-					<Photo file={event.image} />
+					<Photo file={event.image} objectPosition={event.objectPosition} />
 				</div>
 				<div class="card-body">
 					<p class="muted">{event.day} {event.month} · {event.category}</p>

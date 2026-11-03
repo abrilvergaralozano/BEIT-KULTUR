@@ -97,7 +97,9 @@
 		{#each shown as event (event.slug)}
 			<li class="card event">
 				<p class="date"><span>{event.day}</span> <span>{event.month}</span></p>
-				<div class="image"><Photo file={event.image} /></div>
+				<div class="image">
+					<Photo file={event.image} objectPosition={event.objectPosition} />
+				</div>
 				<div class="card-body">
 					<span class="tag">{event.category}</span>
 					<h2>{event.title}</h2>

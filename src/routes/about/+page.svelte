@@ -40,7 +40,8 @@
 		{
 			title: 'Collaboration',
 			text: 'We connect artists, cultural associations and galleries to make projects together.',
-			image: 'about-collaboration.jpg'
+			image: 'about-collaboration.jpg',
+			objectPosition: 'center bottom'
 		},
 		{
 			title: 'Inclusion',
@@ -102,10 +103,10 @@
 
 <section class="section">
 	<h2>Our values</h2>
-	<ul class="grid values">
+	<ul class="grid">
 		{#each values as value}
 			<li class="card">
-				<Photo file={value.image} />
+				<Photo file={value.image} objectPosition={value.objectPosition} />
 				<div class="card-body">
 					<h3>{value.title}</h3>
 					<p>{value.text}</p>
@@ -251,10 +252,6 @@
 
 	.mission p:last-child {
 		margin-bottom: 0;
-	}
-
-	.values :global(li:nth-child(2) img) {
-		object-position: center bottom;
 	}
 
 	.questions {

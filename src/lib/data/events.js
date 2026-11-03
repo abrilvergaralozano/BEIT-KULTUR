@@ -50,6 +50,7 @@ export const events = [
 		title: '[EVENT NAME]',
 		category: 'Festivals',
 		image: 'street-festival.jpg',
+		objectPosition: 'center bottom',
 		day: '[DD]',
 		month: '[MON]',
 		time: '[TIME]',
